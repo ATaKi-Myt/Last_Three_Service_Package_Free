@@ -3,7 +3,7 @@ services:
     image: linuxserver/transmission:4.0.5
     container_name: transmission
     ports:
-      - 3025:9091
+      - 28005:9091
     volumes:
       - /vol1/1000/Docker/transmission:/config
       - /vol1/1000/Video:/downloads
