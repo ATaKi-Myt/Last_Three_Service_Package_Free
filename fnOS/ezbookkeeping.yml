@@ -3,7 +3,7 @@ services:
     image: mayswind/ezbookkeeping:latest
     container_name: ezbookkeeping
     ports:
-      - 8080:8080
+      - 25005:8080
     volumes:
       - /vol1/1000/Docker/ezbookkeeping/storage:/ezbookkeeping/storage
       - /vol1/1000/Docker/ezbookkeeping/log:/ezbookkeeping/log
