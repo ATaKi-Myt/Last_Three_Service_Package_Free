@@ -4,7 +4,7 @@ services:
     container_name: xunlei
     privileged: true
     ports:
-      - 3035:2345
+      - 28010:2345
     volumes:
       - /vol1/1000/Docker/xunlei:/xunlei/data
       - /vol1/1000/Downloads:/xunlei/downloads
