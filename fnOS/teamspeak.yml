@@ -1,13 +1,12 @@
 services:
-
   teamspeak:
     image: teamspeak:latest
     container_name: teamspeak
     ports:
-      - 10010:9987/udp
-      - 30033:30033
-      - 41144:41144
-      - 10011:10011
+      - 23005:9987/udp
+      - 23006:30033
+      - 23007:41144
+      - 23008:10011
     volumes:
       - /vol1/1000/Docker/teamspeak:/var/ts3server
     environment:
@@ -20,4 +19,4 @@ services:
       - TS3SERVER_DB_WAITUNTILREADY=30
       - TS3SERVER_LICENSE=accept
     restart: always
-    network_mode: teamspeak
+    network_mode: bridge
