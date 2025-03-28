@@ -3,7 +3,7 @@ services:
     image: jxxghp/moviepilot-v2:latest
     container_name: moviepilot
     ports:
-      - 3005:3000
+      - 20005:3000
     volumes:
       - /vol1/1000/Video:/downloads
       - /vol1/1000/Docker/moviepilot:/config
