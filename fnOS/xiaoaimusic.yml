@@ -3,7 +3,7 @@ services:
     image: hanxi/xiaomusic:latest
     container_name: xiaoaimusic
     ports:
-      - 8090:8090
+      - 25025:8090
     volumes:
       - /vol1/1000/Docker/xiaoaimusic:/app/conf
       - /vol1/1000/Music:/app/music
