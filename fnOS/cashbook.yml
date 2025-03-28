@@ -3,7 +3,7 @@ services:
     container_name: cashbook
     image: dingdangdog/cashbook:latest
     ports:
-      - 12010:9090
+      - 25000:9090
     volumes:
       - /vol1/1000/Docker/cashbook/data:/app/data
     environment:
