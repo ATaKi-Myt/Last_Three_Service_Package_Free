@@ -3,7 +3,7 @@ services:
     image: homeassistant/home-assistant:latest
     container_name: homeassistant
     ports:
-      - 11020:8123
+      - 25030:8123
     volumes:
       - /vol1/1000/Docker/homeassistant:/config
     environment:
