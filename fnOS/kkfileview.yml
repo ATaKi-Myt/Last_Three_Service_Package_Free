@@ -3,9 +3,9 @@ services:
     image: pi4k8s/kkfileview:4.4.0
     container_name: kkfileview
     ports:
-    - 26020:8012
+      - 26020:8012
     volumes:
-       - /vol1/1000/Docker/kkfileview:/opt/kkFileView-4.4.0
+      - /vol1/1000/Docker/kkfileview:/opt/kkFileView-4.4.0
     environment:
       - KK_OFFICE_PREVIEW_TYPE=pdf
       - KK_OFFICE_PREVIEW_SWITCH_DISABLED=true
