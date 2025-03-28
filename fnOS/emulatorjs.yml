@@ -1,9 +1,9 @@
 services:
   emulatorjs:
-    image: linuxserver/emulatorjs:latest
+    image: lscr.io/linuxserver/emulatorjs:latest
     container_name: emulatorjs
     ports:
-      - 10001:3000
+      - 23000:3000
       - 10000:80
     volumes:
       - /vol1/1000/Docker/emulatorjs/config:/config
