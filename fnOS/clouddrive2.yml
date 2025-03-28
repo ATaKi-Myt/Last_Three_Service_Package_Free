@@ -4,7 +4,7 @@ services:
     container_name: clouddrive2
     privileged: true
     ports:
-      - 3075:19798
+      - 24015:19798
     volumes:
       - /vol1/1000/Docker/clouddrive2:/Config
       - /vol1/1000/Cloud:/CloudNAS:shared
