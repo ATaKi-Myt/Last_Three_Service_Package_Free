@@ -3,7 +3,7 @@ services:
     image: gotson/komga:latest
     container_name: komga
     ports:
-      - 6010:25600
+      - 22005:25600
     volumes:
       - /vol1/1000/Docker/komga/config:/config
       - /vol1/1000/Docker/komga/data:/data
