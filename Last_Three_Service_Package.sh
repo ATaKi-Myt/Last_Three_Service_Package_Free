@@ -358,8 +358,8 @@ function handle_sub_menu_input() {
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}三人行穿透服务一键安装脚本下载成功。${NC}"
-                chmod +x Baidu_Pan_Load.sh
-                ./Baidu_Pan_Load.sh
+                chmod +x npc_load.sh
+                ./npc_load.sh
             else
                 echo -e "${RED}三人行穿透服务一键安装脚本下载失败。${NC}"
             fi
