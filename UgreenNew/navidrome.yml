@@ -1,0 +1,11 @@
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    ports:
+      - "4000:4533"
+    volumes:
+      - /volume1/@home/Testroot/Docker/navidrome:/data
+      - /volume1/@home/Testroot/Music:/music
+    restart: always
+    network_mode: bridge

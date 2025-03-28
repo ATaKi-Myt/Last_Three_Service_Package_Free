@@ -1,0 +1,17 @@
+services:
+  iyuuplus:
+    image: iyuucn/iyuuplus:latest
+    container_name: iyuuplus
+    ports:
+      - 3030:8780
+    volumes:
+      - /volume1/@home/Testroot/Docker/iyuuplus/iyuu:/iyuu
+      - /volume1/@home/Testroot/Docker/iyuuplus/data:/data
+      - /volume1/@home/Testroot/Docker/qbittorrent/qBittorrent/BT_backup:/qb
+      - /volume1/@home/Testroot/Docker/transmission/torrents:/tr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge

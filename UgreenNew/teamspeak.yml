@@ -1,0 +1,39 @@
+services:
+
+  db:
+    image: mariadb:latest
+    container_name: mysql
+    privileged: true
+    user: "1026:100"
+    volumes:
+      - /volume1/@home/Testroot/Docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: teamspeak
+    restart: always
+
+  teamspeak:
+    image: teamspeak:latest
+    container_name: teamspeak
+    privileged: true
+    user: "1026:100"
+    ports:
+      - 10010:9987/udp
+      - 30033:30033
+      - 41144:41144
+      - 10011:10011
+    volumes:
+      - /volume1/@home/Testroot/Docker/teamspeak:/var/ts3server
+      - /volume1/@home/Testroot/Docker/teamspeak/files:/var/ts3server/files
+      - /volume1/@home/Testroot/Docker/teamspeak/logs:/var/ts3server/logs
+      - /volume1/@home/Testroot/Docker/teamspeak/var/run/ts3server:/var/run/ts3server
+    environment:
+      TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      TS3SERVER_DB_HOST: db
+      TS3SERVER_DB_USER: root
+      TS3SERVER_DB_PASSWORD: password
+      TS3SERVER_DB_NAME: teamspeak
+      TS3SERVER_DB_WAITUNTILREADY: 30
+      TS3SERVER_LICENSE: accept
+    restart: always

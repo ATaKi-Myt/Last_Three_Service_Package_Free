@@ -1,0 +1,13 @@
+services:
+  clouddriver2:
+    image: cloudnas/clouddrive2:latest
+    container_name: clouddriver2
+    ports:
+      - 12000:19798
+    volumes:
+      - /volume1/@home/Testroot/clouddrive2:/Config
+    environment:
+      - TZ=Asia/Shanghai
+      - CLOUDDRIVE_HOME=/Config
+    restart: always
+    network_mode: bridge

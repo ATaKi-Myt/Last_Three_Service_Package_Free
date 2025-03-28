@@ -1,0 +1,10 @@
+services:
+  lyricapi:
+    image: hisatri/lyricapi
+    container_name: lyricapi
+    ports:
+      - 4030:28883
+    volumes:
+      - /volume1/@home/Testroot/Music:/music
+    restart: always
+    network_mode: bridge

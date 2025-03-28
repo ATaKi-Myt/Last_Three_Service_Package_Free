@@ -1,0 +1,17 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    privileged: true
+    ports:
+      - 3020:3020
+    volumes:
+      - /volume1/@home/Testroot/Docker/qbittorrent:/config
+      - /volume1/@home/Testroot/Video:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=3020
+    restart: always
+    network_mode: bridge

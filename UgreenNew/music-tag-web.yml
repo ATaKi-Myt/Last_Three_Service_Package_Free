@@ -1,0 +1,11 @@
+services:
+  music-tag-web:
+    image: xhongc/music_tag_web:latest
+    container_name: music-tag-web
+    ports:
+      - 4010:8001
+    volumes:
+      - /volume1/@home/Testroot/Music:/app/media
+      - /volume1/@home/Testroot/Docker/music-tag-web:/app/data
+    restart: always
+    network_mode: bridge
