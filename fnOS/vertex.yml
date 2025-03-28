@@ -3,7 +3,7 @@ services:
     image: lswl/vertex:latest
     container_name: vertex
     ports:
-      - 3050:32110
+      - 30020:32110
     volumes:
       - /vol1/1000/Docker/vertex:/vertex
     environment:
