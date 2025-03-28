@@ -1,30 +1,34 @@
 services:
 
-  #nastools: # 服务名称
-  #  image: nastools/nas-tools:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: nastools # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3000:3000 
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/nastools:/config
-  #    - /vol1/1000/Video:/downloads
-  #  environment: # 环境变量
-  #    - PUID=0
-  #    - PGID=0
-  #    - TZ=Asia/Shanghai
-  #    - UMASK=022
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+# 影视
 
-  moviepilot: # 服务名称
-    image: jxxghp/moviepilot-v2:latest # 镜像名称（可更改冒号后版本）
-    container_name: moviepilot # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3005:3000
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  nastools:
+    image: hsuyelin/nas-tools:latest
+    container_name: nastools
+    ports:
+      - 20000:3000
+    volumes:
+      - /vol1/1000/Docker/nastools:/config
+      - /vol1/1000/Video:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=000
+      - NASTOOL_AUTO_UPDATE=false
+      - NASTOOL_CN_UPDATE=false
+      - REPO_URL=https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git
+    restart: always
+    network_mode: bridge
+
+  moviepilot:
+    image: jxxghp/moviepilot-v2:latest
+    container_name: moviepilot
+    ports:
+      - 20005:3000
+    volumes:
       - /vol1/1000/Video:/downloads
       - /vol1/1000/Docker/moviepilot:/config
-    environment: # 环境变量
+    environment:
       - NGINX_PORT=3000
       - PORT=3001
       - PUID=0
@@ -32,286 +36,473 @@ services:
       - UMASK=000
       - TZ=Asia/Shanghai
       - SUPERUSER=admin
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  #jellyfin: # 服务名称
-  #  image: nyanmisaka/jellyfin:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: jellyfin # 容器名称（可更改）
-  #  privileged: true # 配置最高权限
-  #  devices:
-  #   - /dev/dri:/dev/dri
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3010:8096
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/jellyfin/config:/config
-  #    - /vol1/1000/Docker/jellyfin/cache:/cache
-  #    - /vol1/1000/Video:/video
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  jellyfin:
+    image: nyanmisaka/jellyfin:latest
+    container_name: jellyfin
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - 20010:8096
+    volumes:
+      - /vol1/1000/Docker/jellyfin/config:/config
+      - /vol1/1000/Docker/jellyfin/cache:/cache
+      - /vol1/1000/Video:/video
+    restart: always
+    network_mode: bridge
 
-  emby: # 服务名称
-    image: amilys/embyserver:latest # 镜像名称（可更改冒号后版本）
-    container_name: embyserver # 容器名称（可更改）
-    privileged: true # 配置最高权限
-    ports: # 容器端口（可更改冒号前端口）
-      - 3015:8096
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  emby:
+    image: amilys/embyserver:latest
+    container_name: embyserver
+    privileged: true
+    ports:
+      - 20015:8096
+    volumes:
       - /vol1/1000/Docker/emby/config:/config
       - /vol1/1000/Video:/data
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  qbittorrent: # 服务名称
-    image: linuxserver/qbittorrent:4.6.6 # 镜像名称（可更改冒号后版本）
-    container_name: qbittorrent # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3020:3020
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Docker/qbittorrent:/config
-      - /vol1/1000/Video:/downloads
-    environment: # 环境变量
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
-      - WEBUI_PORT=3020
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-
-  transmission: # 服务名称
-    image: linuxserver/transmission:4.0.5 # 镜像名称（可更改冒号后版本）
-    container_name: transmission # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3025:9091
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Docker/transmission:/config
-      - /vol1/1000/Video:/downloads
-    environment: # 环境变量
-      - PUID=0
-      - PGID=0
-      - TZ=Asia/Shanghai
-      - TRANSMISSION_WEB_HOME=/config/webui/Transmission Theme
-      - USER=root
-      - PASS=root
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-
-  iyuuplus: # 服务名称
-    image: iyuucn/iyuuplus:latest # 镜像名称（可更改冒号后版本）
-    container_name: iyuuplus # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3030:8780
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Docker/iyuuplus/iyuu:/iyuu
-      - /vol1/1000/Docker/iyuuplus/data:/data
-      - /vol1/1000/Docker/qbittorrent/qBittorrent/BT_backup:/qb
-      - /vol1/1000/Docker/transmission/torrents:/tr
-    environment: # 环境变量
-      - PUID=0
-      - PGID=0
-      - TZ=Asia/Shanghai
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-
-  xunlei: # 服务名称
-    image: cnk3x/xunlei:latest # 镜像名称（可更改冒号后版本）
-    container_name: xunlei # 容器名称（可更改）
-    privileged: true # 配置最高权限
-    ports: # 容器端口（可更改冒号前端口）
-      - 3035:2345
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Docker/xunlei:/xunlei/data
-      - /vol1/1000/Downloads:/xunlei/downloads
-    environment: # 环境变量
-      - XL_GID=0
-      - XL_UID=0
-      - TZ=Asia/Shanghai
-      - XL_DASHBOARD_USERNAME=admin
-      - XL_DASHBOARD_PASSWORD=admin
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接  
-  
-  #jackett: # 服务名称
-  #  image: linuxserver/jackett:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: jackett # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3040:9117
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/jackett/config:/config
-  #    - /vol1/1000/Docker/jackett/downloads:/downloads
-  #  environment: # 环境变量
-  #    - PUID=0
-  #    - PGID=0
-  #    - TZ=Asia/Shanghai
-  #    - AUTO_UPDATE=false
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
-
-  aipan: # 服务名称
-    image: fooololo/aipan-netdisk-search:latest # 镜像名称（可更改冒号后版本）
-    container_name: aipan # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3045:3000
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-
-  #vertex:
-  #  image: lswl/vertex:latest
-  #  container_name: vertex
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3050:32110
-  #  volumes:
-  #    - /vol1/1000/Docker/vertex:/vertex
-  #  environment:
-  #    - PORT=32110
-  #    - TZ=Asia/Shanghai
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
-
-  iptv-api: # 服务名称
-    image: guovern/iptv-api:latest # 镜像名称（可更改冒号后版本）
-    container_name: iptv-api # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3055:8000
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  iptv-api:
+    image: guovern/iptv-api:latest
+    container_name: iptv-api
+    ports:
+      - 20020:8000
+    volumes:
       - /vol1/1000/Docker/iptv-api/config:/iptv-api/config
       - /vol1/1000/Docker/iptv-api/output:/iptv-api/output
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-    
-  #metatube: # 服务名称
-  #  image: metatube/metatube-server:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: metatube # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3060:8080
-  #  environment: # 环境变量
-  #    - PORT=8080
-  #    - DB_MAX_IDLE_CONNS=0
-  #    - DB_MAX_OPEN_CONNS=0
-  #    - DB_PREPARED_STMT=0
-  #    - DB_AUTO_MIGRATE=0
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  navidrome: # 服务名称
-    image: deluan/navidrome:latest # 镜像名称（可更改冒号后版本）
-    container_name: navidrome # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - "4000:4533"
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  chinesesubfinder:
+    image: allanpk716/chinesesubfinder:latest
+    container_name: chinesesubfinder
+    ports:
+      - 20025:19035
+    volumes:
+      - /vol1/1000/Docker/chinesesubfinder/config:/config
+      - /vol1/1000/Docker/chinesesubfinder/cache:/app/cache
+      - /vol1/1000/Video:/media
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  metatube:
+    image: metatube/metatube-server:latest
+    container_name: metatube
+    ports:
+      - 20030:8080
+    environment:
+      - PORT=8080
+      - DB_MAX_IDLE_CONNS=0
+      - DB_MAX_OPEN_CONNS=0
+      - DB_PREPARED_STMT=0
+      - DB_AUTO_MIGRATE=0
+    restart: always
+    network_mode: bridge
+
+# 音乐
+
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    ports:
+      - 21000:4533
+    volumes:
       - /vol1/1000/Docker/navidrome:/data
       - /vol1/1000/Music:/music
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  music-tag: # 服务名称
-    image: xhongc/music_tag_web:latest # 镜像名称（可更改冒号后版本）
-    container_name: music-tag-web # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - "4010:8001"
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  music-tag-web:
+    image: xhongc/music_tag_web:latest
+    container_name: music-tag-web
+    ports:
+      - 21005:8001
+    volumes:
       - /vol1/1000/Music:/app/media
       - /vol1/1000/Docker/music-tag-web:/app/data
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  reader: # 服务名称
-    image: hectorqin/reader:latest # 镜像名称（可更改冒号后版本）
-    container_name: reader # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 5000:8080
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  lyricapi:
+    image: hisatri/lyricapi:latest
+    container_name: lyricapi
+    ports:
+      - 21010:28883
+    volumes:
+      - /vol1/1000/Music:/music
+    restart: always
+    network_mode: bridge
+
+# 书籍
+
+  reader:
+    image: hectorqin/reader:latest
+    container_name: reader
+    ports:
+      - 22000:8080
+    volumes:
       - /vol1/1000/Docker/reader/log:/log
       - /vol1/1000/Docker/reader/storage:/storage
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  komga: # 服务名称
-    image: gotson/komga:latest # 镜像名称（可更改冒号后版本）
-    container_name: komga # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 6010:25600
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  komga:
+    image: gotson/komga:latest
+    container_name: komga
+    ports:
+      - 22005:25600
+    volumes:
       - /vol1/1000/Docker/komga/config:/config
       - /vol1/1000/Docker/komga/data:/data
-    environment: # 环境变量
+    environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai
-    network_mode: bridge # 总是启动容器
-    restart: always # 网络桥接
+    network_mode: bridge
+    restart: always
 
-  #wps-office: # 服务名称
-  #  image: linuxserver/wps-office:chinese # 镜像名称（可更改冒号后版本）
-  #  container_name: wps-office # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 7000:3000
-  #    - 7001:3001
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/wps-office/config:/config
-  #    - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
-  #    - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
-  #  environment: # 环境变量
-  #    - PUID=0
-  #    - PGID=0
-  #    - TZ=Asia/Shanghai
-  #    - CUSTOM_USER=admin
-  #    - PASSWORD=admin
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+# 娱乐
 
-  verysync: # 服务名称
-    image: jonnyan404/verysync:latest # 镜像名称（可更改冒号后版本）
-    container_name: verysync # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 7010:8886
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  emulatorjs:
+    image: lscr.io/linuxserver/emulatorjs:latest
+    container_name: emulatorjs
+    ports:
+      - 23000:3000
+      - 10000:80
+    volumes:
+      - /vol1/1000/Docker/emulatorjs/config:/config
+      - /vol1/1000/Docker/emulatorjs/data:/data
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+  
+  teamspeak:
+    image: teamspeak:latest
+    container_name: teamspeak
+    ports:
+      - 23005:9987/udp
+      - 23006:30033
+      - 23007:41144
+      - 23008:10011
+    volumes:
+      - /vol1/1000/Docker/teamspeak:/var/ts3server
+    environment:
+      TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      TS3SERVER_DB_HOST: db
+      TS3SERVER_DB_USER: root
+      TS3SERVER_DB_PASSWORD: password
+      TS3SERVER_DB_NAME: teamspeak
+      TS3SERVER_DB_WAITUNTILREADY: 30
+      TS3SERVER_LICENSE: accept
+    restart: always
+    network_mode: bridge
+
+# 网盘资源
+
+  aipan:
+    image: unilei/aipan-netdisk-search-simple:latest
+    container_name: aipan
+    ports:
+      - 24000:3000
+    environment:
+      - NUXT_HOST="0.0.0.0"
+      - NUXT_PORT=3000
+    restart: always
+    network_mode: bridge
+
+  alist:
+    image: xhofe/alist:latest
+    container_name: alist
+    ports:
+      - 24005:5244
+    volumes:
+      - /vol1/1000/Docker/alist:/opt/alist/data
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  cloudsaver:
+    image: jiangrui1994/cloudsaver:latest
+    container_name: cloudsaver
+    ports:
+      - 24010:8008
+    volumes:
+      - /vol1/1000/Docker/cloudsaver/data:/app/data
+      - /vol1/1000/Docker/cloudsaver/config:/app/config
+    restart: always
+    network_mode: bridge
+
+  clouddrive2:
+    image: cloudnas/clouddrive2:latest
+    container_name: clouddrive2
+    privileged: true
+    ports:
+      - 24015:19798
+    volumes:
+      - /vol1/1000/Docker/clouddrive2:/Config
+      - /vol1/1000/Cloud:/CloudNAS:shared
+      - /vol1/1000/Video:/media:shared
+    environment:
+      - TZ=Asia/Shanghai
+      - CLOUDDRIVE_HOME=/Config
+    restart: always
+    network_mode: bridge
+
+  icloudpd:
+    image: icloudpd/icloudpd:latest
+    container_name: icloudpd
+    tty: true
+    ports:
+      - 24020:8080
+    volumes:
+      - /vol1/1000/Photos:/data
+    environment:
+      - TZ=Asia/Shanghai
+    command: icloudpd --directory /data --username youemail@xx.xx --mfa-provider webui --domain cn --password-provider webui --watch-with-interval 3600
+    restart: always
+    network_mode: bridge
+
+# 家庭
+
+  cashbook:
+    container_name: cashbook
+    image: dingdangdog/cashbook:latest
+    ports:
+      - 25000:9090
+    volumes:
+      - /vol1/1000/Docker/cashbook/data:/app/data
+    environment:
+      DATABASE_URL: "postgresql://admin:password@127.0.0.1:5432/cashbook?schema=public"
+      NUXT_DATA_PATH: "/app/data"
+      NUXT_APP_URL: "https://127.0.0.1:5432"
+      NUXT_AUTH_ORIGIN: "https://127.0.0.1:5432/api/auth"
+      NUXT_AUTH_SECRET: "auth_secret"
+      NUXT_ADMIN_USERNAME: "admin"
+      NUXT_ADMIN_PASSWORD: "749f09bade8aca755660eeb17792da880218d4fbdc4e25fbec279d7fe9f65d70"
+    restart: always
+    network_mode: cashbook
+
+  ezbookkeeping:
+    image: mayswind/ezbookkeeping:latest
+    container_name: ezbookkeeping
+    ports:
+      - 25005:8080
+    volumes:
+      - /vol1/1000/Docker/ezbookkeeping/storage:/ezbookkeeping/storage
+      - /vol1/1000/Docker/ezbookkeeping/log:/ezbookkeeping/log
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - EBK_SERVER_ENABLE_GZIP=true
+      - EBK_DATABASE_TYPE=mysql
+      - EBK_DATABASE_HOST=127.0.0.1:3306
+      - EBK_DATABASE_NAME=ezbookkeeping
+      - EBK_DATABASE_USER=root
+      - EBK_DATABASE_PASSWD=password
+      - EBK_LOG_MODE=console file
+      - EBK_SECURITY_SECRET_KEY=123456
+    restart: always
+    network_mode: ezbookkeeping
+
+  wallos:
+    image: bellamy/wallos:latest
+    container_name: wallos
+    ports:
+      - 25010:80
+    volumes:
+      - /vol1/1000/Docker/wallos/data:/var/www/html/db
+      - /vol1/1000/Docker/wallos/logos:/var/www/html/images/uploads/logos
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  homebox:
+    image: hfhc1309/homebox-zh:latest
+    container_name: homebox
+    ports:
+      - 25015:7745
+    volumes:
+      - /vol1/1000/Docker/homebox:/data/
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  babybuddy:
+    image: linuxserver/babybuddy:latest
+    container_name: babybuddy
+    ports:
+      - 25020:8000
+    volumes:
+      - /vol1/1000/Docker/babybuddy:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  xiaoaimusic:
+    image: hanxi/xiaomusic:latest
+    container_name: xiaoaimusic
+    ports:
+      - 25025:8090
+    volumes:
+      - /vol1/1000/Docker/xiaoaimusic:/app/conf
+      - /vol1/1000/Music:/app/music
+    environment:
+      - XIAOMUSIC_PUBLIC_PORT=8090
+    restart: always
+    network_mode: bridge
+
+  homeassistant:
+    image: homeassistant/home-assistant:latest
+    container_name: homeassistant
+    ports:
+      - 25030:8123
+    volumes:
+      - /vol1/1000/Docker/homeassistant:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+# 办公
+
+  wps-office:
+    image: linuxserver/wps-office:chinese
+    container_name: wps-office
+    ports:
+      - 26000:3000
+      - 26001:3001
+    volumes:
+      - /vol1/1000/Docker/wps-office/config:/config
+      - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
+      - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - CUSTOM_USER=admin
+      - PASSWORD=admin
+    restart: always
+    network_mode: bridge
+
+  wechat:
+    image: ricwang/docker-wechat:latest
+    container_name: wechat
+    privileged: true
+    ports:
+      - 26005:5800
+      - 26006:5900
+    volumes:
+      - /vol1/1000/Docker/wechat/config:/root/.xwechat
+      - /vol1/1000/Docker/wechat/files:/root/xwechat_files
+      - /vol1/1000/Downloads:/root/downloads
+    environment:
+      - TZ=Asia/Shanghai
+      - LANG=zh_CN.UTF-8
+      - USER_ID=0
+      - GROUP_ID=0
+      - WEB_AUDIO=0
+    network_mode: bridge
+    restart: always
+
+  verysync:
+    image: jonnyan404/verysync:latest
+    container_name: verysync
+    ports:
+      - 26010:8886
+    volumes:
       - /vol1/1000/Synchronous:/data
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-    
+    restart: always
+    network_mode: bridge
+
   stirling-pdf:
-    image: stirlingtools/stirling-pdf:latest # 镜像名称（可更改冒号后版本）
-    container_name: pdftool # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 7020:8080
-    volumes: # 冒号前替换成自身路径即可（可更改）
+    image: stirlingtools/stirling-pdf:latest
+    container_name: pdftool
+    ports:
+      - 26015:8080
+    volumes:
       - /vol1/1000/Docker/pdftool/trainingData:/usr/share/tessdata
       - /vol1/1000/Docker/pdftool/extraConfigs:/configs
       - /vol1/1000/Docker/pdftool/customFiles:/customFiles/
       - /vol1/1000/Docker/pdftool/logs:/logs/
       - /vol1/1000/Docker/pdftool/pipeline:/pipeline/
-    environment: # 环境变量
+    environment:
       - DOCKER_ENABLE_SECURITY=false
       - LANGS=en_GB
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  kkfileview: # 服务名称
-    image: pi4k8s/kkfileview:4.4.0 # 镜像名称（可更改冒号后版本）
-    container_name: kkfileview # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-    - 7030:8012
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  kkfileview:
+    image: pi4k8s/kkfileview:4.4.0
+    container_name: kkfileview
+    ports:
+    - 26020:8012
+    volumes:
        - /vol1/1000/Docker/kkfileview:/opt/kkFileView-4.4.0
-    environment: # 环境变量
+    environment:
       - KK_OFFICE_PREVIEW_TYPE=pdf
       - KK_OFFICE_PREVIEW_SWITCH_DISABLED=true
       - KK_PDF_DOWNLOAD_DISABLE=true
       - KK_FILE_UPLOAD_ENABLED=false
       - KK_CONTEXT_PATH=/
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  siyuan-note-unlock: # 服务名称
-    image: apkdv/siyuan-unlock:latest # 镜像名称（可更改冒号后版本）
-    container_name: siyuan-note-unlock # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 7040:6806/tcp
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - 26025:11434
+    volumes:
+      - /vol1/1000/Docker/ollama:/root/.ollama
+      - /vol1/1000/Docker/ollama/models:/data/models
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge    
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:latest
+    container_name: open-webui
+    ports:
+      - 26030:8080
+    volumes:
+      - /vol1/1000/Docker/open-webui:/app/backend/data
+    environment:
+      - ENABLE_OPENAI_API=False
+      - OFFLINE_MODE=True
+      - OLLAMA_BASE_URL=http://192.168.199.131:11434
+      - USE_OLLAMA_DOCKER=False
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge    
+
+  siyuan-note-unlock:
+    image: apkdv/siyuan-unlock:latest
+    container_name: siyuan-note-unlock
+    ports:
+      - 26035:6806
     command:
       - --workspace=/siyuan/workspace/
       - --accessAuthCode=100
-    volumes: # 冒号前替换成自身路径即可（可更改）
+    volumes:
       - /vol1/1000/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
       - PUID=1000
@@ -320,139 +511,209 @@ services:
       - TZ=Asia/Shanghai
       - LANG=zh_CN.UTF-8
       - LC_ALL=zh_CN.UTF-8
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  alist: # 服务名称
-    image: xhofe/alist:latest # 镜像名称（可更改冒号后版本）
-    container_name: alist # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 7050:5244
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Docker/alist:/opt/alist/data
-    environment:
-      - PUID=0
-      - PGID=0
-      - UMASK=022
-      - TZ=Asia/Shanghai
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-  
-  newsnow: # 服务名称
-    image: ghcr.io/ourongxing/newsnow:latest # 镜像名称（可更改冒号后版本）
-    container_name: newsnow # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 7060:4444
-    environment:
-      - G_CLIENT_ID=
-      - G_CLIENT_SECRET=
-      - JWT_SECRET=
-      - INIT_TABLE=true=
-      - ENABLE_CACHE=true
-    network_mode: bridge # 总是启动容器
-    restart: always # 网络桥接
+# 网络
 
-  firefox: # 服务名称
-    image: jlesage/firefox:latest # 镜像名称（可更改冒号后版本）
-    container_name: firefox # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 8010:5800
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  firefox:
+    image: jlesage/firefox:latest
+    container_name: firefox
+    ports:
+      - 27000:5800
+    volumes:
       - /vol1/1000/Docker/firefox/config:/config:rw
       - /vol1/1000/Docker/firefox/fonts:/usr/share/fonts
       - /vol1/1000/Downloads:/config/downloads
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  #npc: # 服务名称
-  #  image: yisier1/npc:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: npc # 容器名称（可更改）
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/npc:/conf
-  #  command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp # 启动命令
-  #  restart: always # 总是启动容器
-  #  network_mode: host # 网络本地
+  ip-tool:
+    image: jason5ng32/myip:latest
+    container_name: ip-tool
+    ports:
+      - 27005:18966
+    restart: always
+    network_mode: bridge
 
-  #frpc: # 服务名称
-  #  image: snowdreamtech/frpc # 镜像名称（可更改冒号后版本）
-  #  container_name: frpc # 容器名称（可更改）
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Frpc:/etc/frp
-  #  command: -c /etc/frp/frpc.ini # 启动命令
-  #  restart: always # 总是启动容器
-  #  network_mode: host # 网络本地
+  v2raya:
+    image: v2raya/v2raya:latest
+    container_name: v2raya
+    privileged: true
+    ports:
+      - 27010:2017
+    volumes:
+      - /vol1/1000/Docker/v2raya:/etc/v2raya
+    restart: always
+    network_mode: bridge
 
-  #v2raya: # 服务名称
-  #  image: v2raya/v2raya:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: v2raya # 容器名称（可更改）
-  #  privileged: true
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 8020:2017
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/v2raya:/etc/v2raya
-  #  environment: # 环境变量
-  #    - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  frpc:
+    image: snowdreamtech/frpc:latest
+    container_name: frpc
+    volumes:
+      - /vol1/1000/Frpc:/etc/frp
+    command: -c /etc/frp/frpc.ini
+    restart: always
+    network_mode: host
 
-  sun-panel: # 服务名称
-    image: hslr/sun-panel:latest # 镜像名称（可更改冒号后版本）
-    container_name: sun-panel # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 9000:3002
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  npc:
+    image: yisier1/npc:latest
+    container_name: npc
+    volumes:
+      - /vol1/1000/Docker/npc:/conf
+    command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp
+    restart: always
+    network_mode: host   
+
+# 下载器
+
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    ports:
+      - 28000:3020
+    volumes:
+      - /vol1/1000/Docker/qbittorrent:/config
+      - /vol1/1000/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=3020
+    restart: always
+    network_mode: bridge
+
+  transmission:
+    image: linuxserver/transmission:4.0.5
+    container_name: transmission
+    ports:
+      - 28005:9091
+    volumes:
+      - /vol1/1000/Docker/transmission:/config
+      - /vol1/1000/Video:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - TRANSMISSION_WEB_HOME=/config/webui/Transmission Theme
+      - USER=root
+      - PASS=root
+    restart: always
+    network_mode: bridge
+
+  xunlei:
+    image: cnk3x/xunlei:latest
+    container_name: xunlei
+    privileged: true
+    ports:
+      - 28010:2345
+    volumes:
+      - /vol1/1000/Docker/xunlei:/xunlei/data
+      - /vol1/1000/Downloads:/xunlei/downloads
+    environment:
+      - XL_GID=0
+      - XL_UID=0
+      - TZ=Asia/Shanghai
+      - XL_DASHBOARD_USERNAME=admin
+      - XL_DASHBOARD_PASSWORD=admin
+    restart: always
+    network_mode: bridge
+
+  mediago:
+    image: registry.cn-beijing.aliyuncs.com/caorushizi/mediago:latest
+    container_name: mediago
+    ports:
+      - 28015:8899
+    volumes:
+      - /vol1/1000/Downloads:/root/mediago
+    restart: always
+    network_mode: bridge
+
+# 数据库
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - 29000:3306
+    volumes:
+      - /vol1/1000/Docker/mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=password
+    restart: always
+    network_mode: bridge
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    ports:
+      - 29005:5432
+    volumes:
+      - /vol1/1000/Docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    restart: always
+    network_mode: bridge
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - 29010:3306
+    volumes:
+      - /vol1/1000/Docker/mariadb/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123456
+    restart: always
+    network_mode: bridge
+
+# 工具
+
+  iyuuplus:
+    image: iyuucn/iyuuplus:latest
+    container_name: iyuuplus
+    ports:
+      - 30000:8780
+    volumes:
+      - /vol1/1000/Docker/iyuuplus/iyuu:/iyuu
+      - /vol1/1000/Docker/iyuuplus/data:/data
+      - /vol1/1000/Docker/qbittorrent/qBittorrent/BT_backup:/qb
+      - /vol1/1000/Docker/transmission/torrents:/tr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  sun-panel:
+    image: hslr/sun-panel:latest
+    container_name: sun-panel
+    ports:
+      - 30005:3002
+    volumes:
       - /vol1/1000/Docker/sun-panel:/app/conf
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+    restart: always
+    network_mode: bridge
 
-  #emulatorjs: # 服务名称
-  #  image: lscr.io/linuxserver/emulatorjs:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: emulatorjs # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 10001:3000
-  #    - 10000:80
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/emulatorjs/config:/config
-  #    - /vol1/1000/Docker/emulatorjs/data:/data
-  #  environment:
-  #    - PUID=1000
-  #    - PGID=1000
-  #    - TZ=Asia/Shanghai
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
-  
-  #teamspeak: # 服务名称
-  #  image: teamspeak:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: teamspeak # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 10010:9987/udp
-  #    - 10011:30033
-  #    - 10012:41144
-  #    - 10013:10011
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/teamspeak:/var/ts3server
-  #  environment:
-  #    TS3SERVER_DB_PLUGIN: ts3db_mariadb
-  #    TS3SERVER_DB_SQLCREATEPATH: create_mariadb
-  #    TS3SERVER_DB_HOST: db
-  #    TS3SERVER_DB_USER: root
-  #    TS3SERVER_DB_PASSWORD: password
-  #    TS3SERVER_DB_NAME: teamspeak
-  #    TS3SERVER_DB_WAITUNTILREADY: 30
-  #    TS3SERVER_LICENSE: accept
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
-
-  1panel: # 服务名称
-    image: koryking/1panel:latest # 镜像名称（可更改冒号后版本）
-    container_name: 1panel # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 11000:10086
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /var/run/docker.sock:/var/run/docker.sock
+  1panel:
+    image: koryking/1panel:latest
+    container_name: 1panel
+    ports:
+      - 30010:10086
+    volumes:
       - /vol1/1000/Docker/1panel:/opt/1panel
       - /vol1/1000/:/vol1/1000/
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Asia/Shanghai
       - PANEL_BASE_DIR=/opt/1panel
@@ -460,39 +721,68 @@ services:
       - PANEL_ENTRANCE=123456
       - PANEL_USERNAME=admin
       - PANEL_PASSWORD=password
-    network_mode: bridge # 总是启动容器
-    restart: always # 网络桥接
+    network_mode: bridge
+    restart: always
 
-  qinglong: # 服务名称
-    image: whyour/qinglong:latest # 镜像名称（可更改冒号后版本）
-    container_name: qinglong # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 11010:5700
-    volumes: # 冒号前替换成自身路径即可（可更改）
+  qinglong:
+    image: whyour/qinglong:latest
+    container_name: qinglong
+    ports:
+      - 30015:5700
+    volumes:
       - /vol1/1000/Docker/qinglong:/ql/data
     environment:
       - QlPort=5700
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-    
-  #homeassistant: # 服务名称
-  #  image: homeassistant/home-assistant:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: homeassistant # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 11020:8123
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/homeassistant:/config
-  #  environment:
-  #    - TZ=Asia/Shanghai
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
- 
-  #mysql:
-  #  image: mariadb:latest
-  #  container_name: mysql # 容器名称（可更改）
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/mysql:/var/lib/mysql
-  #  environment:
-  #    MYSQL_ROOT_PASSWORD: password
-  #    MYSQL_DATABASE: teamspeak
-  #  restart: always # 总是启动容器
+    restart: always
+    network_mode: bridge
+
+  vertex:
+    image: lswl/vertex:latest
+    container_name: vertex
+    ports:
+      - 30020:32110
+    volumes:
+      - /vol1/1000/Docker/vertex:/vertex
+    environment:
+      - PORT=32110
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  newsnow:
+    image: ghcr.io/ourongxing/newsnow:latest
+    container_name: newsnow
+    ports:
+      - 30025:4444
+    environment:
+      - INIT_TABLE=true
+      - ENABLE_CACHE=true
+    network_mode: bridge
+    restart: always
+
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    ports:
+      - 30030:9117
+    volumes:
+      - /vol1/1000/Docker/jackett/config:/config
+      - /vol1/1000/Docker/jackett/downloads:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=false
+    restart: always
+    network_mode: bridge
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_RUN_ONCE=true
+      - TZ=Asia/Shanghai
+    restart: always
+    command: --schedule "0 0 20 * * 0" --cleanup
