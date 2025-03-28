@@ -1,0 +1,16 @@
+services:
+  clouddrive2:
+    image: cloudnas/clouddrive2:latest
+    container_name: clouddrive2
+    privileged: true
+    ports:
+      - 3075:19798
+    volumes:
+      - /vol1/1000/Docker/clouddrive2:/Config
+      - /vol1/1000/Cloud:/CloudNAS:shared
+      - /vol1/1000/Video:/media:shared
+    environment:
+      - TZ=Asia/Shanghai
+      - CLOUDDRIVE_HOME=/Config
+    restart: always
+    network_mode: bridge

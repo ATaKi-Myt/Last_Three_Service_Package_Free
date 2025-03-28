@@ -1,0 +1,15 @@
+services:
+  komga:
+    image: gotson/komga:latest
+    container_name: komga
+    ports:
+      - 6010:25600
+    volumes:
+      - /vol1/1000/Docker/komga/config:/config
+      - /vol1/1000/Docker/komga/data:/data
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    network_mode: bridge
+    restart: always

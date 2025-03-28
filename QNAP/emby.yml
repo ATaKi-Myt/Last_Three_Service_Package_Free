@@ -1,0 +1,12 @@
+services:
+  emby:
+    image: amilys/embyserver:latest
+    container_name: embyserver
+    privileged: true
+    ports:
+      - 3015:8096
+    volumes:
+      - /vol1/1000/Docker/emby/config:/config
+      - /vol1/1000/Video:/data
+    restart: always
+    network_mode: bridge

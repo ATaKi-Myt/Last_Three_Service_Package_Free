@@ -1,0 +1,16 @@
+services:
+  chinesesubfinder:
+    image: allanpk716/chinesesubfinder:latest
+    container_name: chinesesubfinder
+    ports:
+      - 3070:19035
+    volumes:
+      - /vol1/1000/Docker/chinesesubfinder/config:/config
+      - /vol1/1000/Docker/chinesesubfinder/cache:/app/cache
+      - /vol1/1000/Video:/media
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
