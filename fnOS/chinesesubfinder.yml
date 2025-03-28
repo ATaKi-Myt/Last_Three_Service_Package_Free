@@ -3,7 +3,7 @@ services:
     image: allanpk716/chinesesubfinder:latest
     container_name: chinesesubfinder
     ports:
-      - 3070:19035
+      - 20025:19035
     volumes:
       - /vol1/1000/Docker/chinesesubfinder/config:/config
       - /vol1/1000/Docker/chinesesubfinder/cache:/app/cache
