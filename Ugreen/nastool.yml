@@ -1,0 +1,16 @@
+services:
+  nastools:
+    image: syly948/nastools:2.9.1
+    container_name: nastools
+    ports:
+      - 3000:3000 
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/nastools:/config
+      - /mnt/dm-1/.ugreen_nas/509155/Video:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - UMASK=022
+    restart: always
+    network_mode: bridge
