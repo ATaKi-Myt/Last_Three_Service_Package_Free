@@ -3,7 +3,7 @@ services:
     image: ghcr.io/ourongxing/newsnow:latest
     container_name: newsnow
     ports:
-      - 7060:4444
+      - 30025:4444
     environment:
       - INIT_TABLE=true
       - ENABLE_CACHE=true
