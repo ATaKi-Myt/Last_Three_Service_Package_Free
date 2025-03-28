@@ -3,7 +3,7 @@ services:
     image: jiangrui1994/cloudsaver:latest
     container_name: cloudsaver
     ports:
-      - 3065:8008
+      - 24010:8008
     volumes:
       - /vol1/1000/Docker/cloudsaver/data:/app/data
       - /vol1/1000/Docker/cloudsaver/config:/app/config
