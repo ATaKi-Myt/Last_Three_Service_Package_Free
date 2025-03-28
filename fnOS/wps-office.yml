@@ -3,8 +3,8 @@ services:
     image: linuxserver/wps-office:chinese
     container_name: wps-office
     ports:
-      - 7000:3000
-      - 7001:3001
+      - 26000:3000
+      - 26001:3001
     volumes:
       - /vol1/1000/Docker/wps-office/config:/config
       - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
