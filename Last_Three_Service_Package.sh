@@ -327,28 +327,20 @@ function handle_sub_menu_input() {
             ;;
         1)
             echo "正在下载精简版适配插件"
-            # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh.enc"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Get_Plugins.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
-                echo -e "${GREEN}精简版适配插件下载成功。${NC}"
-                # 解密文件
-                openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in Get_Plugins.sh.enc -out Get_Plugins.sh -k Rs940904.
-                if [ $? -eq 0 ]; then
-                    echo -e "${GREEN}精简版适配插件解密成功。${NC}"
-                    chmod +x Get_Plugins.sh
-                    ./Get_Plugins.sh
-                else
-                    echo -e "${RED}精简版适配插件解密失败。${NC}"
-                fi
+                echo -e "${GREEN}载精简版适配插件下载成功。${NC}"
+                chmod +x Get_Plugins.sh
+                ./Get_Plugins.sh
             else
-                echo -e "${RED}精简版适配插件下载失败。${NC}"
+                echo -e "${RED}载精简版适配插件下载失败。${NC}"
             fi
             ;;
         2)
             echo "正在下载百度网盘拉取镜像脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Baidu_Pan_Load.sh"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Baidu_Pan_Load.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}百度网盘拉取镜像脚本下载成功。${NC}"
@@ -361,19 +353,13 @@ function handle_sub_menu_input() {
         3)
             echo "正在下载三人行穿透服务一键安装脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh.enc"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/npc_load.sh.enc"
+            wget -q "$url"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}三人行穿透服务一键安装脚本下载成功。${NC}"
-                # 解密文件
-                openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in npc_load.sh.enc -out npc_load.sh -k Rs940904.
-                if [ $? -eq 0 ]; then
-                    echo -e "${GREEN}三人行穿透服务一键安装脚本解密成功。${NC}"
-                    chmod +x npc_load.sh
-                    ./npc_load.sh
-                else
-                    echo -e "${RED}三人行穿透服务一键安装脚本解密失败。${NC}"
-                fi
+                chmod +x Baidu_Pan_Load.sh
+                ./Baidu_Pan_Load.sh
             else
                 echo -e "${RED}三人行穿透服务一键安装脚本下载失败。${NC}"
             fi
