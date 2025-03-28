@@ -3,7 +3,7 @@ services:
     image: jlesage/firefox:latest
     container_name: firefox
     ports:
-      - 8010:5800
+      - 27000:5800
     volumes:
       - /vol1/1000/Docker/firefox/config:/config:rw
       - /vol1/1000/Docker/firefox/fonts:/usr/share/fonts
