@@ -469,7 +469,7 @@ function handle_number_choices_input() {
 function download_compose_file() {
     local idx=$1
     local file="${COMPOSE_FILES[$idx]}.yml"
-    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/${selected_system}/${file}"
+    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/${selected_system}/${file}"
     if [ -f "$file" ]; then
         read -p "文件 $file 已存在，是否重新下载？(y/n): " re_download
         if [[ $re_download =~ ^[Yy]$ ]]; then
