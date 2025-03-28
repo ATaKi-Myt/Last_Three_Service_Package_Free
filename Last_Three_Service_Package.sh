@@ -327,20 +327,28 @@ function handle_sub_menu_input() {
             ;;
         1)
             echo "正在下载精简版适配插件"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Get_Plugins.sh"
+            # 拼接下载链接
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh.enc"
             wget -q "$url"
             if [ $? -eq 0 ]; then
-                echo -e "${GREEN}载精简版适配插件下载成功。${NC}"
-                chmod +x Get_Plugins.sh
-                ./Get_Plugins.sh
+                echo -e "${GREEN}精简版适配插件下载成功。${NC}"
+                # 解密文件
+                openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in Get_Plugins.sh.enc -out Get_Plugins.sh -k Rs940904.
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}精简版适配插件解密成功。${NC}"
+                    chmod +x Get_Plugins.sh
+                    ./Get_Plugins.sh
+                else
+                    echo -e "${RED}精简版适配插件解密失败。${NC}"
+                fi
             else
-                echo -e "${RED}载精简版适配插件下载失败。${NC}"
+                echo -e "${RED}精简版适配插件下载失败。${NC}"
             fi
             ;;
         2)
             echo "正在下载百度网盘拉取镜像脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Baidu_Pan_Load.sh"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Baidu_Pan_Load.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}百度网盘拉取镜像脚本下载成功。${NC}"
@@ -353,13 +361,19 @@ function handle_sub_menu_input() {
         3)
             echo "正在下载三人行穿透服务一键安装脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/npc_load.sh"
-            wget -q "$url"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh.enc"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}三人行穿透服务一键安装脚本下载成功。${NC}"
-                chmod +x npc_load.sh
-                ./npc_load.sh
+                # 解密文件
+                openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in npc_load.sh.enc -out npc_load.sh -k Rs940904.
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}三人行穿透服务一键安装脚本解密成功。${NC}"
+                    chmod +x npc_load.sh
+                    ./npc_load.sh
+                else
+                    echo -e "${RED}三人行穿透服务一键安装脚本解密失败。${NC}"
+                fi
             else
                 echo -e "${RED}三人行穿透服务一键安装脚本下载失败。${NC}"
             fi
@@ -469,7 +483,7 @@ function handle_number_choices_input() {
 function download_compose_file() {
     local idx=$1
     local file="${COMPOSE_FILES[$idx]}.yml"
-    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/${selected_system}/${file}"
+    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/${selected_system}/${file}"
     if [ -f "$file" ]; then
         read -p "文件 $file 已存在，是否重新下载？(y/n): " re_download
         if [[ $re_download =~ ^[Yy]$ ]]; then
@@ -502,11 +516,11 @@ function download_compose_file() {
 function path_replace() {
     local file=$1
     case $friendly_selected in
-        "飞牛系统") echo -e "${YELLOW}飞牛路径示例：/vol*/1000/${NC}" ;;
-        "群晖系统") echo -e "${YELLOW}群晖路径示例：/volume*/My/ My：根路径名称${NC}" ;;
-        "绿联（旧系统）") echo -e "${YELLOW}绿联旧系统路径示例：/mnt/dm-*/.ugreen_nas/509155/ 509155：用户文件名${NC}" ;;
-        "绿联（新系统）") echo -e "${YELLOW}绿联新系统路径示例：/volume*/@home/My/ My：根路径名称${NC}" ;;
-        "极空间") echo -e "${YELLOW}极空间路径示例：/path/to/jikongjian/${NC}" ;;
+        "飞牛系统") echo -e "${YELLOW}飞牛路径示例：/vol1/*/ * vol1 存储空间1 * 用户ID${NC}" ;;
+        "群晖系统") echo -e "${YELLOW}群晖路径示例：/volume1/*/ volume1 存储空间1 * 根路径名称${NC}" ;;
+        "绿联（旧系统）") echo -e "${YELLOW}绿联旧系统路径示例：/mnt/dm-1/.ugreen_nas/*/ dm-1 存储空间1 * 根路径名称${NC}" ;;
+        "绿联（新系统）") echo -e "${YELLOW}绿联新系统路径示例：/volume1/@home/*/ volume1 存储空间1 * 根路径名称${NC}" ;;
+        "极空间") echo -e "${YELLOW}极空间路径示例：/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称${NC}" ;;
         "威联通") echo -e "${YELLOW}威联通路径示例：/share/CACHEDEV1_DATA/MyApp/ ${NC}" ;;
     esac
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
@@ -533,8 +547,8 @@ function path_replace() {
                 sed_commands=("s|/volume1/@home/Testroot/|$new_path|g")
                 ;;
             "极空间")
-                echo -e "${YELLOW}/path/to/jikongjian/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/path/to/jikongjian/|$new_path|g")
+                echo -e "${YELLOW}/tmp/zfsv3/sata11/*/data/ → [新路径] $new_path${NC}"
+                sed_commands=("s|/tmp/zfsv3/sata11/13051661743/data/|$new_path|g")
                 ;;
             "威联通")
                 echo -e "${YELLOW}/share/CACHEDEV1_DATA/MyApp/ → [新路径] $new_path${NC}"
@@ -559,6 +573,7 @@ function modify_ports() {
     if [[ $do_port_change =~ ^[Yy]$ ]]; then
         local port_count=0
         local in_ports=false
+        local existing_ports=()
         while IFS= read -r line; do
             if [[ $line =~ ^([[:space:]]*)[Pp][Oo][Rr][Tt][Ss]:[[:space:]]*$ ]]; then
                 in_ports=true
@@ -571,9 +586,13 @@ function modify_ports() {
             fi
             if $in_ports && [[ $line =~ ^[[:space:]]*-[[:space:]]*([0-9]+):([0-9]+) ]]; then
                 ((port_count++))
+                existing_ports+=("${BASH_REMATCH[1]}:${BASH_REMATCH[2]}")
             fi
         done < "$file"
-        echo -e "${YELLOW}查询到文件中有 $port_count 个端口需要修改。${NC}"
+        echo -e "${YELLOW}查询到文件中有 $port_count 个端口需要修改。当前端口如下：${NC}"
+        for port in "${existing_ports[@]}"; do
+            echo -e "${YELLOW}- $port${NC}"
+        done
         read -p "请输入新的主机端口（共 $port_count 个，用空格分隔）: " new_host_ports
         local IFS=' '
         local -a new_ports_array=($new_host_ports)
@@ -615,7 +634,6 @@ function modify_ports() {
             fi
         done < "$file"
 
-        # 替换原文件
         mv "$temp_file" "$file"
 
         echo -e "${GREEN}端口修改完成。${NC}"
