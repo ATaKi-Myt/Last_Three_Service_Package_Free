@@ -1,0 +1,16 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    ports:
+      - 3020:3020
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/qbittorrent:/config
+      - /tmp/zfsv3/sata11/13051661743/data/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=3020
+    restart: always
+    network_mode: bridge

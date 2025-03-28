@@ -1,0 +1,16 @@
+services:
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    ports:
+      - 3040:9117
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/jackett/config:/config
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/jackett/downloads:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=false
+    restart: always
+    network_mode: bridge

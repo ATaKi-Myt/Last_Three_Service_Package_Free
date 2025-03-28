@@ -1,0 +1,11 @@
+services:
+  v2raya:
+    image: v2raya/v2raya:latest
+    container_name: v2raya
+    privileged: true
+    ports:
+      - 8020:2017
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/v2raya:/etc/v2raya
+    restart: always
+    network_mode: bridge

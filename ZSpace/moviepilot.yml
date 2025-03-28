@@ -1,0 +1,19 @@
+services:
+  moviepilot:
+    image: jxxghp/moviepilot-v2:latest
+    container_name: moviepilot
+    ports:
+      - 3005:3000
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/moviepilot:/config
+      - /tmp/zfsv3/sata11/13051661743/data/Video:/downloads
+    environment:
+      - NGINX_PORT=3000
+      - PORT=3001
+      - PUID=0
+      - PGID=0
+      - UMASK=000
+      - TZ=Asia/Shanghai
+      - SUPERUSER=admin
+    restart: always
+    network_mode: bridge

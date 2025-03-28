@@ -1,0 +1,12 @@
+services:
+  firefox:
+    image: jlesage/firefox:latest
+    container_name: firefox
+    ports:
+      - 8010:5800
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/firefox/config:/config:rw
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/firefox/fonts:/usr/share/fonts
+      - /tmp/zfsv3/sata11/13051661743/data/Downloads:/config/downloads
+    restart: always
+    network_mode: bridge

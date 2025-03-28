@@ -1,0 +1,16 @@
+services:
+  nastools:
+    image: syly948/nastools:2.9.1
+    container_name: nastools
+    ports:
+      - 3000:3000 
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/nastools:/config
+      - /tmp/zfsv3/sata11/13051661743/data/Video:/downloads
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - UMASK=022
+    restart: always
+    network_mode: bridge

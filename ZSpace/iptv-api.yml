@@ -1,0 +1,11 @@
+services:
+  iptv-api:
+    image: guovern/iptv-api:latest
+    container_name: iptv-api
+    ports:
+      - 3055:8000
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/iptv-api/config:/iptv-api/config
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/iptv-api/output:/iptv-api/output
+    restart: always
+    network_mode: bridge

@@ -1,0 +1,10 @@
+services:
+  mediago:
+    image: registry.cn-beijing.aliyuncs.com/caorushizi/mediago:latest
+    container_name: mediago
+    ports:
+      - 8899:8899
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Downloads:/root/mediago
+    restart: always
+    network_mode: bridge

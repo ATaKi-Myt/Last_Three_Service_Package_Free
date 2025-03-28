@@ -1,0 +1,13 @@
+services:
+  xiaoaimusic:
+    image: hanxi/xiaomusic:latest
+    container_name: xiaoaimusic
+    ports:
+      - 8090:8090
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/xiaoaimusic:/app/conf
+      - /tmp/zfsv3/sata11/13051661743/data/Music:/app/music
+    environment:
+      XIAOMUSIC_PUBLIC_PORT: 8090
+    restart: always
+    network_mode: bridge
