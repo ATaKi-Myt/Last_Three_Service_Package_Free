@@ -3,7 +3,7 @@ services:
     image: apkdv/siyuan-unlock:latest
     container_name: siyuan-note-unlock
     ports:
-      - 7040:6806
+      - 26035:6806
     command:
       - --workspace=/siyuan/workspace/
       - --accessAuthCode=100
