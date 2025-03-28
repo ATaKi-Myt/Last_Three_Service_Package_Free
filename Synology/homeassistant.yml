@@ -1,0 +1,12 @@
+services:
+  homeassistant:
+    image: homeassistant/home-assistant:latest
+    container_name: homeassistant
+    ports:
+      - 11020:8123
+    volumes:
+      - /volume1/My/Docker/homeassistant:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge

@@ -1,0 +1,16 @@
+services:
+  firefox:
+    image: jlesage/firefox:latest
+    container_name: firefox
+    privileged: true
+    ports:
+      - 8010:5800
+    volumes:
+      - /volume1/My/Docker/firefox/config:/config:rw
+      - /volume1/My/Docker/firefox/fonts:/usr/share/fonts
+      - /volume1/My/Downloads:/config/downloads
+    environment:
+      - USER_ID=0
+      - GROUP_ID=0
+    restart: always
+    network_mode: bridge

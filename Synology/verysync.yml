@@ -1,0 +1,10 @@
+services:
+  verysync:
+    image: jonnyan404/verysync:latest
+    container_name: verysync
+    ports:
+      - 7010:8886
+    volumes:
+      - /volume1/My/Synchronous:/data
+    restart: always
+    network_mode: bridge
