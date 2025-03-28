@@ -3,7 +3,7 @@ services:
     image: hslr/sun-panel:latest
     container_name: sun-panel
     ports:
-      - 9000:3002
+      - 30005:3002
     volumes:
       - /vol1/1000/Docker/sun-panel:/app/conf
       - /var/run/docker.sock:/var/run/docker.sock
