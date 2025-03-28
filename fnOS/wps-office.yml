@@ -1,0 +1,19 @@
+services:
+  wps-office:
+    image: linuxserver/wps-office:chinese
+    container_name: wps-office
+    ports:
+      - 7000:3000
+      - 7001:3001
+    volumes:
+      - /vol1/1000/Docker/wps-office/config:/config
+      - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
+      - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - CUSTOM_USER=admin
+      - PASSWORD=admin
+    restart: always
+    network_mode: bridge

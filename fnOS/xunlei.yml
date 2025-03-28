@@ -1,0 +1,18 @@
+services:
+  xunlei:
+    image: cnk3x/xunlei:latest
+    container_name: xunlei
+    privileged: true
+    ports:
+      - 3035:2345
+    volumes:
+      - /vol1/1000/Docker/xunlei:/xunlei/data
+      - /vol1/1000/Downloads:/xunlei/downloads
+    environment:
+      - XL_GID=0
+      - XL_UID=0
+      - TZ=Asia/Shanghai
+      - XL_DASHBOARD_USERNAME=admin
+      - XL_DASHBOARD_PASSWORD=admin
+    restart: always
+    network_mode: bridge

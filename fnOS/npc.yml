@@ -1,0 +1,9 @@
+services:
+  npc:
+    image: yisier1/npc:latest
+    container_name: npc
+    volumes:
+      - /vol1/1000/Docker/npc:/conf
+    command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp
+    restart: always
+    network_mode: host
