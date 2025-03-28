@@ -4,7 +4,7 @@ services:
     container_name: embyserver
     privileged: true
     ports:
-      - 3015:8096
+      - 20015:8096
     volumes:
       - /vol1/1000/Docker/emby/config:/config
       - /vol1/1000/Video:/data
