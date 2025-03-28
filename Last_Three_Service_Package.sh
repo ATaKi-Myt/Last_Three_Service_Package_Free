@@ -353,7 +353,7 @@ function handle_sub_menu_input() {
         3)
             echo "正在下载三人行穿透服务一键安装脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/npc_load.sh.enc"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/npc_load.sh"
             wget -q "$url"
             wget -q "$url"
             if [ $? -eq 0 ]; then
