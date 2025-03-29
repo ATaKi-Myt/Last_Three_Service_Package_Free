@@ -3,7 +3,7 @@ services:
     image: linuxserver/qbittorrent:4.6.6
     container_name: qbittorrent
     ports:
-      - 28000:3020
+      - 28000:28000
     volumes:
       - /vol1/1000/Docker/qbittorrent:/config
       - /vol1/1000/Video:/downloads
@@ -11,6 +11,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai
-      - WEBUI_PORT=3020
+      - WEBUI_PORT=28000
     restart: always
     network_mode: bridge
