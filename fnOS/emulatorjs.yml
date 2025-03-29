@@ -4,7 +4,7 @@ services:
     container_name: emulatorjs
     ports:
       - 23000:3000
-      - 10000:80
+      - 23001:80
     volumes:
       - /vol1/1000/Docker/emulatorjs/config:/config
       - /vol1/1000/Docker/emulatorjs/data:/data
