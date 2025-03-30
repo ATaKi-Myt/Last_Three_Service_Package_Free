@@ -3,11 +3,11 @@ services:
     image: ollama/ollama:latest
     container_name: ollama
     ports:
-      - 11434:11434
+      - 26025:11434
     volumes:
       - /volume1/@home/Testroot/Docker/ollama:/root/.ollama
       - /volume1/@home/Testroot/Docker/ollama/models:/data/models
     environment:
       - TZ=Asia/Shanghai
     restart: always
-    network_mode: bridge    
+    network_mode: bridge
