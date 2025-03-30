@@ -3,7 +3,7 @@ services:
     image: jonnyan404/verysync:latest
     container_name: verysync
     ports:
-      - 7010:8886
+      - 26010:8886
     volumes:
       - /volume1/@home/Testroot/Synchronous:/data
     restart: always
