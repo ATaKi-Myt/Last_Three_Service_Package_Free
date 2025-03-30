@@ -1,4 +1,4 @@
-service:
+services:
   babybuddy:
     image: linuxserver/babybuddy:latest
     container_name: babybuddy
