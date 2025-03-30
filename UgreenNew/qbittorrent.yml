@@ -9,7 +9,7 @@ services:
       - /volume1/@home/Testroot/Video:/downloads
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=10
       - TZ=Asia/Shanghai
       - WEBUI_PORT=28000
     restart: always
