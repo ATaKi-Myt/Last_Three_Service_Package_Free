@@ -3,7 +3,7 @@ services:
     image: hectorqin/reader:latest
     container_name: reader
     ports:
-      - 5000:8080
+      - 22000:8080
     volumes:
       - /volume1/@home/Testroot/Docker/reader/log:/log
       - /volume1/@home/Testroot/Docker/reader/storage:/storage
