@@ -5,7 +5,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-    # - WATCHTOWER_RUN_ONCE=true
-    - TZ=Asia/Shanghai
+      - WATCHTOWER_RUN_ONCE=true
+      - TZ=Asia/Shanghai
     restart: always
     command: --schedule "0 0 20 * * 0" --cleanup
