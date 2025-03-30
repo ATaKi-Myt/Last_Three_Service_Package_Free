@@ -1,6 +1,6 @@
 services:
   frpc:
-    image: snowdreamtech/frpc
+    image: snowdreamtech/frpc:latest
     container_name: frpc
     volumes:
       - /volume1/@home/Testroot/Frpc:/etc/frp
