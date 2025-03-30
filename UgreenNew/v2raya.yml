@@ -4,7 +4,7 @@ services:
     container_name: v2raya
     privileged: true
     ports:
-      - 8020:2017
+      - 27010:2017
     volumes:
       - /volume1/@home/Testroot/Docker/v2raya:/etc/v2raya
     restart: always
