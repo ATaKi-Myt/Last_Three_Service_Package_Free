@@ -11,7 +11,7 @@ services:
       - /volume1/@home/Testroot/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
       - PUID=1000
-      - PGID=100
+      - PGID=10
       - UMASK=022
       - TZ=Asia/Shanghai
       - LANG=zh_CN.UTF-8
