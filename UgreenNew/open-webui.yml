@@ -3,7 +3,7 @@ services:
     image: ghcr.io/open-webui/open-webui:latest
     container_name: open-webui
     ports:
-      - 3000:8080
+      - 26030:8080
     volumes:
       - /volume1/@home/Testroot/Docker/open-webui:/app/backend/data
     environment:
@@ -13,4 +13,4 @@ services:
       - USE_OLLAMA_DOCKER=False
       - TZ=Asia/Shanghai
     restart: always
-    network_mode: bridge    
+    network_mode: bridge
