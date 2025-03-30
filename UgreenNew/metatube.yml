@@ -1,9 +1,9 @@
 services:
   metatube:
-    image: ghcr.io/metatube-community/metatube-server:latest
+    image: metatube/metatube-server:latest
     container_name: metatube
     ports:
-      - 3060:8080
+      - 20030:8080
     environment:
       - PORT=8080
       - DB_MAX_IDLE_CONNS=0
