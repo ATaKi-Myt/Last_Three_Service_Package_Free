@@ -1,11 +1,13 @@
 services:
-  watchtower:
-    image: containrrr/watchtower:latest
-    container_name: watchtower
+  wallos:
+    image: bellamy/wallos:latest
+    container_name: wallos
+    ports:
+      - 25010:80
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/@home/Testroot/Docker/wallos/data:/var/www/html/db
+      - /volume1/@home/Testroot/Docker/wallos/logos:/var/www/html/images/uploads/logos
     environment:
-      - WATCHTOWER_RUN_ONCE=true
       - TZ=Asia/Shanghai
     restart: always
-    command: --schedule "0 0 20 * * 0" --cleanup
+    network_mode: bridge
