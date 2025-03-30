@@ -3,7 +3,7 @@ services:
     image: stirlingtools/stirling-pdf:latest
     container_name: pdftool
     ports:
-      - 7020:8080
+      - 26015:8080
     volumes:
       - /volume1/@home/Testroot/Docker/pdftool/trainingData:/usr/share/tessdata
       - /volume1/@home/Testroot/Docker/pdftool/extraConfigs:/configs
