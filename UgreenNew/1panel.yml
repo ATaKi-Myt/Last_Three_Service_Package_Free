@@ -3,7 +3,7 @@ services:
     image: koryking/1panel:latest
     container_name: 1panel
     ports:
-      - 11000:10086
+      - 30010:10086
     volumes:
       - /volume1/@home/Testroot/Docker/1panel:/opt/1panel
       - /volume1/@home/Testroot/:/volume1/@home/Testroot/
