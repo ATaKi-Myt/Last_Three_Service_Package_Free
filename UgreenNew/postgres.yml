@@ -3,7 +3,7 @@ services:
     image: postgres:14
     container_name: postgres
     ports:
-      - 11030:5432
+      - 29005:5432
     volumes:
       - /volume1/@home/Testroot/Docker/postgres/data:/var/lib/postgresql/data
     environment:
