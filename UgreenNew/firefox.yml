@@ -5,9 +5,9 @@ services:
     ports:
       - 27000:5800
     volumes:
-      - /vol1/1000/Docker/firefox/config:/config:rw
-      - /vol1/1000/Docker/firefox/fonts:/usr/share/fonts
-      - /vol1/1000/Downloads:/config/downloads
+      - /volume1/@home/Testroot/Docker/firefox/config:/config:rw
+      - /volume1/@home/Testroot/Docker/firefox/fonts:/usr/share/fonts
+      - /volume1/@home/Testroot/Downloads:/config/downloads
     environment:
       - PUID=1000
       - PGID=10
