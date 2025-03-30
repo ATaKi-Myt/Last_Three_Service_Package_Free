@@ -244,25 +244,19 @@ function select_system() {
 function show_menu() {
     clear
     show_info
-    # 修改提示信息，将 s 改为 f
-    echo -e "${YELLOW}请选择要下载和运行的 Compose 文件（输入 1 - ${#COMPOSE_FILES[@]} 之间的序号，多个序号用空格分隔，输入 0 退出，输入 f 搜索，输入 d 删除容器，输入 i 查看 UID 和 GID，输入 s 查看其他服务，输入 cn 显示服务中文名对照表）：${NC}"
-    local num_cols=3
-    local num_files=${#COMPOSE_FILES[@]}
-    for ((i = 0; i < num_files; i += num_cols)); do
-        for ((j = 0; j < num_cols; j++)); do
-            idx=$((i + j))
-            if [ $idx -lt $num_files ]; then
-                printf "%2d. %-20s" $((idx + 1)) "${COMPOSE_FILES[idx]}"
-            fi
-        done
-        echo
+    # 直接显示中英文对照表
+    echo -e "${YELLOW}服务信息：${NC}"
+    for i in "${!COMPOSE_FILES[@]}"; do
+        printf "%2d. %-20s - %s\n" $((i + 1)) "${COMPOSE_FILES[i]}" "${SERVICE_ALIASES[i]}"
     done
+    # 提示用户输入信息
+    echo -e "${YELLOW}请输入要下载的服务序号（可多个，用空格分隔，输入 0 返回主菜单，输入 f 搜索，输入 d 删除容器，输入 i 查看 UID 和 GID，输入 s 查看其他服务）：${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 i 或 s 或 cn: " input
+    read -e -p "请输入序号或 f 或 d 或 i 或 s: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -279,9 +273,6 @@ function handle_input() {
             ;;
         i)
             handle_query_uid_gid_input
-            ;;
-        cn)
-            handle_service_alias_input
             ;;
         *)
             handle_number_choices_input "$input"
@@ -483,13 +474,20 @@ function handle_number_choices_input() {
 function download_compose_file() {
     local idx=$1
     local file="${COMPOSE_FILES[$idx]}.yml"
-    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/${selected_system}/${file}"
+    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/${selected_system}/${file}"
     if [ -f "$file" ]; then
         read -p "文件 $file 已存在，是否重新下载？(y/n): " re_download
         if [[ $re_download =~ ^[Yy]$ ]]; then
             wget -q "$url" -O "$file"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}文件 $file 重新下载成功。${NC}"
+                # 新增：下载完成后询问用户是否继续运行
+                read -p "下载完成，是否继续运行？(y/n): " continue_run
+                if [[ $continue_run =~ ^[Yy]$ ]]; then
+                    return 0
+                else
+                    return 1
+                fi
             else
                 echo -e "${RED}文件 $file 重新下载失败。${NC}"
                 read -p "按任意键继续选择其他容器..." -n 1 -s
@@ -498,11 +496,24 @@ function download_compose_file() {
             fi
         else
             echo -e "${YELLOW}跳过下载，使用已存在的文件 $file。${NC}"
+            # 新增：使用已存在文件后询问用户是否继续运行
+            read -p "使用已存在文件，是否继续运行？(y/n): " continue_run
+            if [[ $continue_run =~ ^[Yy]$ ]]; then
+                return 0
+            else
+                return 1
+            fi
         fi
     else
         wget -q "$url" -O "$file"
         if [ $? -eq 0 ]; then
             echo -e "${GREEN}文件 $file 下载成功。${NC}"
+            read -p "下载完成，是否继续运行？(y/n): " continue_run
+            if [[ $continue_run =~ ^[Yy]$ ]]; then
+                return 0
+            else
+                return 1
+            fi
         else
             echo -e "${RED}文件 $file 下载失败。${NC}"
             read -p "按任意键继续选择其他容器..." -n 1 -s
@@ -510,7 +521,6 @@ function download_compose_file() {
             return 1
         fi
     fi
-    return 0
 }
 
 function path_replace() {
