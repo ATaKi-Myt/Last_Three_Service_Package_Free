@@ -4,8 +4,8 @@ services:
     container_name: wechat
     privileged: true
     ports:
-      - 7070:5800
-      - 7071:5900
+      - 26005:5800
+      - 26006:5900
     volumes:
       - /volume1/@home/Testroot/Docker/wechat/config:/root/.xwechat
       - /volume1/@home/Testroot/Docker/wechat/files:/root/xwechat_files
