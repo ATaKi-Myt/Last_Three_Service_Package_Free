@@ -4,11 +4,11 @@ services:
     container_name: clouddrive2
     privileged: true
     ports:
-      - 3075:19798
+      - 24015:19798
     volumes:
-      - /vol1/1000/Docker/clouddrive2:/Config
-      - /vol1/1000/Cloud:/CloudNAS:shared
-      - /vol1/1000/Video:/media:shared
+      - /share/CACHEDEV1_DATA/Public/Docker/clouddrive2:/Config
+      - /share/CACHEDEV1_DATA/Public/Cloud:/CloudNAS:shared
+      - /share/CACHEDEV1_DATA/Public/Video:/media:shared
     environment:
       - TZ=Asia/Shanghai
       - CLOUDDRIVE_HOME=/Config
