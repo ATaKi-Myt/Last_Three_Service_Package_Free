@@ -5,8 +5,8 @@ services:
     ports:
       - 30010:10086
     volumes:
-      - cd /share/CACHEDEV1_DATA/Public/Docker/1panel:/opt/1panel
-      - cd /share/CACHEDEV1_DATA/Public/:cd /share/CACHEDEV1_DATA/Public/
+      - /share/CACHEDEV1_DATA/Public/Docker/1panel:/opt/1panel
+      - /share/CACHEDEV1_DATA/Public/:/share/CACHEDEV1_DATA/Public/
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Asia/Shanghai
