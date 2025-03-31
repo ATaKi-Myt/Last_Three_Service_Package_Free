@@ -3,12 +3,12 @@ services:
     image: mysql:8.0
     container_name: mysql
     ports:
-      - 11040:3306
+      - 29000:3306
     volumes:
-      - /vol1/1000/Docker/mysql/data:/var/lib/mysql
+      - /share/CACHEDEV1_DATA/Public/Docker/mysql/data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=123456
-      - MYSQL_DATABASE=database
+      - MYSQL_DATABASE=mydb
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=password
     restart: always
