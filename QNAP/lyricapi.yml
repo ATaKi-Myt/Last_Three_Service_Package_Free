@@ -1,10 +1,10 @@
 services:
   lyricapi:
-    image: hisatri/lyricapi
+    image: hisatri/lyricapi:latest
     container_name: lyricapi
     ports:
-      - 4030:28883
+      - 21010:28883
     volumes:
-      - /vol1/1000/Music:/music
+      - /share/CACHEDEV1_DATA/Public/Music:/music
     restart: always
     network_mode: bridge
