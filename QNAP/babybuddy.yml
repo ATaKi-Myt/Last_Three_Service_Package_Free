@@ -3,9 +3,9 @@ services:
     image: linuxserver/babybuddy:latest
     container_name: babybuddy
     ports:
-      - 8520:8000
+      - 25020:8000
     volumes:
-      - /vol1/1000/Docker/babybuddy:/config
+      - /share/CACHEDEV1_DATA/Public/Docker/babybuddy:/config
     environment:
       - TZ=Asia/Shanghai
     restart: always
