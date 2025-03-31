@@ -3,7 +3,7 @@ services:
     image: pi4k8s/kkfileview:4.4.0
     container_name: kkfileview
     ports:
-    - 7030:8012
+    - 26020:8012
     volumes:
        - /volume1/My/Docker/kkfileview:/opt/kkFileView-4.4.0
     environment:
