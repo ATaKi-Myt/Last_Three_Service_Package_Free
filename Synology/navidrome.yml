@@ -3,7 +3,7 @@ services:
     image: deluan/navidrome:latest
     container_name: navidrome
     ports:
-      - 4000:4533
+      - 21000:4533
     volumes:
       - /volume1/My/Docker/navidrome:/data
       - /volume1/My/Music:/music
