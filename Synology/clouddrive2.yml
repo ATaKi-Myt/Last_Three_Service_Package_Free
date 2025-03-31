@@ -2,6 +2,7 @@ services:
   clouddrive2:
     image: cloudnas/clouddrive2:latest
     container_name: clouddrive2
+    user: "1026:100"
     privileged: true
     ports:
       - 24015:19798
