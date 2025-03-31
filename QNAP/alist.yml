@@ -7,7 +7,7 @@ services:
     volumes:
       - /share/CACHEDEV1_DATA/Public/Docker/alist:/opt/alist/data
     environment:
-      - PUID=1001
+      - PUID=1000
       - PGID=100
       - UMASK=022
       - TZ=Asia/Shanghai
