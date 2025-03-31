@@ -3,9 +3,9 @@ services:
     image: hectorqin/reader:latest
     container_name: reader
     ports:
-      - 5000:8080
+      - 22000:8080
     volumes:
-      - /vol1/1000/Docker/reader/log:/log
-      - /vol1/1000/Docker/reader/storage:/storage
+      - /share/CACHEDEV1_DATA/Public/Docker/reader/log:/log
+      - /share/CACHEDEV1_DATA/Public/Docker/reader/storage:/storage
     restart: always
     network_mode: bridge
