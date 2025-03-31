@@ -4,8 +4,8 @@ services:
     container_name: v2raya
     privileged: true
     ports:
-      - 8020:2017
+      - 27010:2017
     volumes:
-      - /vol1/1000/Docker/v2raya:/etc/v2raya
+      - /share/CACHEDEV1_DATA/Public/Docker/v2raya:/etc/v2raya
     restart: always
     network_mode: bridge
