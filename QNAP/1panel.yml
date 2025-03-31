@@ -3,10 +3,10 @@ services:
     image: koryking/1panel:latest
     container_name: 1panel
     ports:
-      - 11000:10086
+      - 30010:10086
     volumes:
-      - /vol1/1000/Docker/1panel:/opt/1panel
-      - /vol1/1000/:/vol1/1000/
+      - cd /share/CACHEDEV1_DATA/Public/Docker/1panel:/opt/1panel
+      - cd /share/CACHEDEV1_DATA/Public/:cd /share/CACHEDEV1_DATA/Public/
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Asia/Shanghai
