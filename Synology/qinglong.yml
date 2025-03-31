@@ -3,7 +3,7 @@ services:
     image: whyour/qinglong:latest
     container_name: qinglong
     ports:
-      - 11010:5700
+      - 30015:5700
     volumes:
       - /volume1/My/Docker/qinglong:/ql/data
     environment:
