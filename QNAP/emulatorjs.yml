@@ -3,11 +3,11 @@ services:
     image: lscr.io/linuxserver/emulatorjs:latest
     container_name: emulatorjs
     ports:
-      - 10001:3000
+      - 23000:3000
       - 10000:80
     volumes:
-      - /vol1/1000/Docker/emulatorjs/config:/config
-      - /vol1/1000/Docker/emulatorjs/data:/data
+      - /share/CACHEDEV1_DATA/Public/Docker/emulatorjs/config:/config
+      - /share/CACHEDEV1_DATA/Public/Docker/emulatorjs/data:/data
     environment:
       - PUID=1000
       - PGID=1000
