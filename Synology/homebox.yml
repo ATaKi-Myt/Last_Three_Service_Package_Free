@@ -1,0 +1,12 @@
+services:
+  homebox:
+    image: hfhc1309/homebox-zh:latest
+    container_name: homebox
+    ports:
+      - 25015:7745
+    volumes:
+      - /volume1/My/Docker/homebox:/data/
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
