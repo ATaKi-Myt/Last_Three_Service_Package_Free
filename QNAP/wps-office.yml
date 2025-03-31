@@ -3,12 +3,12 @@ services:
     image: linuxserver/wps-office:chinese
     container_name: wps-office
     ports:
-      - 7000:3000
-      - 7001:3001
+      - 26000:3000
+      - 26001:3001
     volumes:
-      - /vol1/1000/Docker/wps-office/config:/config
-      - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
-      - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
+      - /share/CACHEDEV1_DATA/Public/Docker/wps-office/config:/config
+      - /share/CACHEDEV1_DATA/Public/Docker/wps-office/Desktop:/config/Desktop
+      - /share/CACHEDEV1_DATA/Public/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
     environment:
       - PUID=0
       - PGID=0
