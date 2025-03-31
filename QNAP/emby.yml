@@ -4,9 +4,9 @@ services:
     container_name: embyserver
     privileged: true
     ports:
-      - 3015:8096
+      - 20015:8096
     volumes:
-      - /vol1/1000/Docker/emby/config:/config
-      - /vol1/1000/Video:/data
+      - /share/CACHEDEV1_DATA/Public/Docker/emby/config:/config
+      - /share/CACHEDEV1_DATA/Public/Video:/data
     restart: always
     network_mode: bridge
