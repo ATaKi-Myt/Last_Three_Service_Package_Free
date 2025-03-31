@@ -3,11 +3,11 @@ services:
     image: allanpk716/chinesesubfinder:latest
     container_name: chinesesubfinder
     ports:
-      - 3070:19035
+      - 20025:19035
     volumes:
-      - /vol1/1000/Docker/chinesesubfinder/config:/config
-      - /vol1/1000/Docker/chinesesubfinder/cache:/app/cache
-      - /vol1/1000/Video:/media
+      - /share/CACHEDEV1_DATA/Public/Docker/chinesesubfinder/config:/config
+      - /share/CACHEDEV1_DATA/Public/Docker/chinesesubfinder/cache:/app/cache
+      - /share/CACHEDEV1_DATA/Public/Video:/media
     environment:
       - PUID=1000
       - PGID=1001
