@@ -1,16 +1,18 @@
 services:
   nastools:
-    image: syly948/nastools:2.9.1
+    image: hsuyelin/nas-tools:latest
     container_name: nastools
     ports:
-      - 3000:3000 
+      - 20000:3000
     volumes:
       - /volume1/My/Docker/nastools:/config
       - /volume1/My/Video:/downloads
     environment:
-      - PUID=1026
-      - PGID=100
-      - TZ=Asia/Shanghai
-      - UMASK=022
+      - PUID=0
+      - PGID=0
+      - UMASK=000
+      - NASTOOL_AUTO_UPDATE=false
+      - NASTOOL_CN_UPDATE=false
+      - REPO_URL="https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git"
     restart: always
     network_mode: bridge
