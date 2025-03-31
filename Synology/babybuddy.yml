@@ -1,0 +1,12 @@
+services:
+  babybuddy:
+    image: linuxserver/babybuddy:latest
+    container_name: babybuddy
+    ports:
+      - 25020:8000
+    volumes:
+      - /volume1/My/Docker/babybuddy:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
