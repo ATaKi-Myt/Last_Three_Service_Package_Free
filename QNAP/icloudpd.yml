@@ -1,12 +1,12 @@
 services:
   icloudpd:
-    image: docker.ifuck.me/icloudpd/icloudpd:latest
+    image: icloudpd/icloudpd:latest
     container_name: icloudpd
     tty: true
     ports:
-      - 8080:8080
+      - 24020:8080
     volumes:
-      - /vol1/1000/Photos:/data
+      - /share/CACHEDEV1_DATA/Public/Photos:/data
     environment:
       - TZ=Asia/Shanghai
     command: icloudpd --directory /data --username youemail@xx.xx --mfa-provider webui --domain cn --password-provider webui --watch-with-interval 3600
