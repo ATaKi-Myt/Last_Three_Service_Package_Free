@@ -9,8 +9,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/chinesesubfinder/cache:/app/cache
       - /share/CACHEDEV1_DATA/Public/Video:/media
     environment:
-      - PUID=1000
-      - PGID=1001
+      - PUID=1001
+      - PGID=100
       - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
