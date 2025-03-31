@@ -3,7 +3,7 @@ services:
     image: guovern/iptv-api:latest
     container_name: iptv-api
     ports:
-      - 3055:8000
+      - 20020:8000
     volumes:
       - /volume1/My/Docker/iptv-api/config:/iptv-api/config
       - /volume1/My/Docker/iptv-api/output:/iptv-api/output
