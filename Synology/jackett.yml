@@ -3,7 +3,7 @@ services:
     image: linuxserver/jackett:latest
     container_name: jackett
     ports:
-      - 3040:9117
+      - 30030:9117
     volumes:
       - /volume1/My/Docker/jackett/config:/config
       - /volume1/My/Docker/jackett/downloads:/downloads
