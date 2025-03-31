@@ -320,7 +320,7 @@ function handle_sub_menu_input() {
         1)
             echo "正在下载精简版适配插件"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Get_Plugins.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}精简版适配插件下载成功。${NC}"
@@ -333,7 +333,7 @@ function handle_sub_menu_input() {
         2)
             echo "正在下载百度网盘拉取镜像脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Baidu_Pan_Load.sh"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Baidu_Pan_Load.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}百度网盘拉取镜像脚本下载成功。${NC}"
@@ -346,7 +346,7 @@ function handle_sub_menu_input() {
         3)
             echo "正在下载三人行穿透服务一键安装脚本"
             # 拼接下载链接
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh" 
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/npc_load.sh" 
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}三人行穿透服务一键安装脚本下载成功。${NC}"
@@ -358,7 +358,7 @@ function handle_sub_menu_input() {
             ;;
         4)
             echo "正在下载Docker升级服务脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Docker_Update.sh"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Docker_Update.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}Docker升级服务脚本下载成功。${NC}"
