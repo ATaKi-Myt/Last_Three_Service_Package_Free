@@ -8,5 +8,9 @@ services:
       - /volume1/My/Docker/firefox/config:/config:rw
       - /volume1/My/Docker/firefox/fonts:/usr/share/fonts
       - /volume1/My/Downloads:/config/downloads
+    environment:
+      - USER_ID=1026
+      - GROUP_ID=100
+      - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
