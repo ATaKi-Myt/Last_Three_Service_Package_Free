@@ -1,13 +1,11 @@
 services:
-  vertex:
-    image: lswl/vertex:latest
-    container_name: vertex
+  v2raya:
+    image: v2raya/v2raya:latest
+    container_name: v2raya
+    privileged: true
     ports:
-      - 30020:32110
+      - 27010:2017
     volumes:
-      - /share/CACHEDEV1_DATA/Public/Docker/vertex:/vertex
-    environment:
-      - PORT=32110
-      - TZ=Asia/Shanghai
+      - /share/CACHEDEV1_DATA/Public/Docker/v2raya:/etc/v2raya
     restart: always
     network_mode: bridge
