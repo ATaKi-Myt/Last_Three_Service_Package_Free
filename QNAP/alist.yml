@@ -3,9 +3,9 @@ services:
     image: xhofe/alist:latest
     container_name: alist
     ports:
-      - 7050:5244
+      - 24005:5244
     volumes:
-      - /vol1/1000/Docker/alist:/opt/alist/data
+      - /share/CACHEDEV1_DATA/Public/Docker/alist:/opt/alist/data
     environment:
       - PUID=0
       - PGID=0
