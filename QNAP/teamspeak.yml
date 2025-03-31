@@ -1,23 +1,22 @@
 services:
-
   teamspeak:
-    image: teamspeak
+    image: teamspeak:latest
     container_name: teamspeak
     ports:
-      - 10010:9987/udp
-      - 30033:30033
-      - 41144:41144
-      - 10011:10011
+      - 23005:9987/udp
+      - 23006:30033
+      - 23007:41144
+      - 23008:10011
     volumes:
-      - /vol1/1000/Docker/teamspeak:/var/ts3server
+      - /share/CACHEDEV1_DATA/Public/Docker/teamspeak:/var/ts3server
     environment:
-      TS3SERVER_DB_PLUGIN: ts3db_mariadb
-      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
-      TS3SERVER_DB_HOST: mariadb
-      TS3SERVER_DB_USER: root
-      TS3SERVER_DB_PASSWORD: 123456
-      TS3SERVER_DB_NAME: teamspeak
-      TS3SERVER_DB_WAITUNTILREADY: 30
-      TS3SERVER_LICENSE: accept
+      - TS3SERVER_DB_PLUGIN=ts3db_mariadb
+      - TS3SERVER_DB_SQLCREATEPATH=create_mariadb
+      - TS3SERVER_DB_HOST=mariadb
+      - TS3SERVER_DB_USER=root
+      - TS3SERVER_DB_PASSWORD=123456
+      - TS3SERVER_DB_NAME=teamspeak
+      - TS3SERVER_DB_WAITUNTILREADY=30
+      - TS3SERVER_LICENSE=accept
     restart: always
-    network_mode: teamspeak
+    network_mode: bridge
