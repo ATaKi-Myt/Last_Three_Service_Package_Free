@@ -8,8 +8,8 @@ services:
       - /volume1/My/Docker/komga/config:/config
       - /volume1/My/Docker/komga/data:/data
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1026
+      - PGID=100
       - TZ=Asia/Shanghai
     network_mode: bridge
     restart: always
