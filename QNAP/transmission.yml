@@ -3,10 +3,10 @@ services:
     image: linuxserver/transmission:4.0.5
     container_name: transmission
     ports:
-      - 3025:9091
+      - 28005:9091
     volumes:
-      - /vol1/1000/Docker/transmission:/config
-      - /vol1/1000/Video:/downloads
+      - /share/CACHEDEV1_DATA/Public/Docker/transmission:/config
+      - /share/CACHEDEV1_DATA/Public/Video:/downloads
     environment:
       - PUID=0
       - PGID=0
