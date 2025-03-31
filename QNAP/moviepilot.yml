@@ -3,10 +3,10 @@ services:
     image: jxxghp/moviepilot-v2:latest
     container_name: moviepilot
     ports:
-      - 3005:3000
+      - 20005:3000
     volumes:
-      - /vol1/1000/Video:/downloads
-      - /vol1/1000/Docker/moviepilot:/config
+      - /share/CACHEDEV1_DATA/Public/Video:/downloads
+      - /share/CACHEDEV1_DATA/Public/Docker/moviepilot:/config
     environment:
       - NGINX_PORT=3000
       - PORT=3001
