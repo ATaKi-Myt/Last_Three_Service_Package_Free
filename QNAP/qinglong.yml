@@ -3,9 +3,9 @@ services:
     image: whyour/qinglong:latest
     container_name: qinglong
     ports:
-      - 11010:5700
+      - 30015:5700
     volumes:
-      - /vol1/1000/Docker/qinglong:/ql/data
+      - /share/CACHEDEV1_DATA/Public/Docker/qinglong:/ql/data
     environment:
       - QlPort=5700
     restart: always
