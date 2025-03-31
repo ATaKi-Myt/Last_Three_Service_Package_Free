@@ -1,11 +1,11 @@
 services:
-  homebox:
-    image: hfhc1309/homebox-zh:latest
-    container_name: homebox
+  homeassistant:
+    image: homeassistant/home-assistant:latest
+    container_name: homeassistant
     ports:
-      - 25015:7745
+      - 25030:8123
     volumes:
-      - /share/CACHEDEV1_DATA/Public/Docker/homebox:/data/
+      - /share/CACHEDEV1_DATA/Public/Docker/homeassistant:/config
     environment:
       - TZ=Asia/Shanghai
     restart: always
