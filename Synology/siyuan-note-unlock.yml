@@ -10,7 +10,7 @@ services:
     volumes:
       - /volume1/My/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
-      - PUID=1000
+      - PUID=1026
       - PGID=100
       - UMASK=022
       - TZ=Asia/Shanghai
