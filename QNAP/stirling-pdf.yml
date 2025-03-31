@@ -3,13 +3,13 @@ services:
     image: stirlingtools/stirling-pdf:latest
     container_name: pdftool
     ports:
-      - 7020:8080
+      - 26015:8080
     volumes:
-      - /vol1/1000/Docker/pdftool/trainingData:/usr/share/tessdata
-      - /vol1/1000/Docker/pdftool/extraConfigs:/configs
-      - /vol1/1000/Docker/pdftool/customFiles:/customFiles/
-      - /vol1/1000/Docker/pdftool/logs:/logs/
-      - /vol1/1000/Docker/pdftool/pipeline:/pipeline/
+      - /share/CACHEDEV1_DATA/Public/Docker/pdftool/trainingData:/usr/share/tessdata
+      - /share/CACHEDEV1_DATA/Public/Docker/pdftool/extraConfigs:/configs
+      - /share/CACHEDEV1_DATA/Public/Docker/pdftool/customFiles:/customFiles/
+      - /share/CACHEDEV1_DATA/Public/Docker/pdftool/logs:/logs/
+      - /share/CACHEDEV1_DATA/Public/Docker/pdftool/pipeline:/pipeline/
     environment:
       - DOCKER_ENABLE_SECURITY=false
       - LANGS=en_GB
