@@ -3,13 +3,13 @@ services:
     image: mariadb:latest
     container_name: mariadb
     ports:
-      - 3307:3306
+      - 29010:3306
     volumes:
-      - /vol1/1000/Docker/mariadb/data:/var/lib/mysql
+      - /share/CACHEDEV1_DATA/Public/Docker/mariadb/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: teamspeak
+      MYSQL_DATABASE: mydb
       MYSQL_USER: admin
       MYSQL_PASSWORD: 123456
     restart: always
-    network_mode: teamspeak
+    network_mode: bridge
