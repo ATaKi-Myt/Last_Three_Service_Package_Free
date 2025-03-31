@@ -3,12 +3,12 @@ services:
     image: apkdv/siyuan-unlock:latest
     container_name: siyuan-note-unlock
     ports:
-      - 7040:6806
+      - 26035:6806
     command:
       - --workspace=/siyuan/workspace/
       - --accessAuthCode=100
     volumes:
-      - /vol1/1000/Docker/siyuan-note-unlock:/siyuan/workspace
+      - /share/CACHEDEV1_DATA/Public/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
       - PUID=1000
       - PGID=100
