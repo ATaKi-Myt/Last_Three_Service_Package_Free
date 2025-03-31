@@ -3,8 +3,8 @@ services:
     image: jonnyan404/verysync:latest
     container_name: verysync
     ports:
-      - 7010:8886
+      - 26010:8886
     volumes:
-      - /vol1/1000/Synchronous:/data
+      - /share/CACHEDEV1_DATA/Public/Synchronous:/data
     restart: always
     network_mode: bridge
