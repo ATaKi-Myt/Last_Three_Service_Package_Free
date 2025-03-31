@@ -13,6 +13,6 @@ services:
       - UMASK=000
       - NASTOOL_AUTO_UPDATE=false
       - NASTOOL_CN_UPDATE=false
-      - REPO_URL=https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git
+      - REPO_URL="https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git"
     restart: always
     network_mode: bridge
