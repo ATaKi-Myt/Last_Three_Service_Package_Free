@@ -1,9 +1,9 @@
 services:
   frpc:
-    image: snowdreamtech/frpc
+    image: snowdreamtech/frpc:latest
     container_name: frpc
     volumes:
-      - /vol1/1000/Frpc:/etc/frp
+      - /share/CACHEDEV1_DATA/Public/Frpc:/etc/frp
     command: -c /etc/frp/frpc.ini
     restart: always
     network_mode: host
