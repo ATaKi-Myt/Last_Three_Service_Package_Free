@@ -9,7 +9,7 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/emulatorjs/config:/config
       - /share/CACHEDEV1_DATA/Public/Docker/emulatorjs/data:/data
     environment:
-      - PUID=1001
+      - PUID=1000
       - PGID=100
       - TZ=Asia/Shanghai
     restart: always
