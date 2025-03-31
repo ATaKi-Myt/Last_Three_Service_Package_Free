@@ -1,0 +1,11 @@
+services:
+  cloudsaver:
+    image: jiangrui1994/cloudsaver:latest
+    container_name: cloudsaver
+    ports:
+      - 24010:8008
+    volumes:
+      - /volume1/My/Docker/cloudsaver/data:/app/data
+      - /volume1/My/Docker/cloudsaver/config:/app/config
+    restart: always
+    network_mode: bridge
