@@ -8,8 +8,8 @@ services:
       - /volume1/My/Docker/qbittorrent:/config
       - /volume1/My/Video:/downloads
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1026
+      - PGID=100
       - TZ=Asia/Shanghai
       - WEBUI_PORT=28000
     restart: always
