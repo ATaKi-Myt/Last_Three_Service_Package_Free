@@ -3,9 +3,9 @@ services:
     image: xhongc/music_tag_web:latest
     container_name: music-tag-web
     ports:
-      - "4010:8001"
+      - 21005:8001
     volumes:
-      - /vol1/1000/Music:/app/media
-      - /vol1/1000/Docker/music-tag-web:/app/data
+      - /share/CACHEDEV1_DATA/Public/Music:/app/media
+      - /share/CACHEDEV1_DATA/Public/Docker/music-tag-web:/app/data
     restart: always
     network_mode: bridge
