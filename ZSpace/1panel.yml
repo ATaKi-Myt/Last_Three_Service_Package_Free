@@ -3,7 +3,7 @@ services:
     image: koryking/1panel:latest
     container_name: 1panel
     ports:
-      - 11000:10086
+      - 30010:10086
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/1panel:/opt/1panel
       - /tmp/zfsv3/sata11/13051661743/data/:/vol1/1000/
