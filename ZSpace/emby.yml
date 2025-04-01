@@ -4,7 +4,7 @@ services:
     container_name: embyserver
     privileged: true
     ports:
-      - 3015:8096
+      - 20015:8096
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/emby/config:/config
       - /tmp/zfsv3/sata11/13051661743/data/Video:/data
