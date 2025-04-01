@@ -10,7 +10,7 @@ services:
       - /vol1/1000/Docker/emulatorjs/data:/data
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=1001
       - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
