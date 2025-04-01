@@ -3,7 +3,7 @@ services:
     image: jiangrui1994/cloudsaver:latest
     container_name: cloudsaver
     ports:
-      - 3065:8008
+      - 24010:8008
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/cloudsaver/data:/app/data
       - /tmp/zfsv3/sata11/13051661743/data/Docker/cloudsaver/config:/app/config
