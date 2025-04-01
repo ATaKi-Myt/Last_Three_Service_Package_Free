@@ -9,7 +9,7 @@ services:
       - /vol1/1000/Video:/downloads
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=1001
       - TZ=Asia/Shanghai
       - WEBUI_PORT=28000
     restart: always
