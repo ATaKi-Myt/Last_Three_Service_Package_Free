@@ -3,7 +3,7 @@ services:
     image: bellamy/wallos:latest
     container_name: wallos
     ports:
-      - 12000:80
+      - 25010:80
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/wallos/data:/var/www/html/db
       - /tmp/zfsv3/sata11/13051661743/data/Docker/wallos/logos:/var/www/html/images/uploads/logos
