@@ -3,13 +3,13 @@ services:
     image: linuxserver/transmission:4.0.5
     container_name: transmission
     ports:
-      - 3025:9091
+      - 28005:9091
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/transmission:/config
       - /tmp/zfsv3/sata11/13051661743/data/Video:/downloads
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1016
+      - PGID=1017
       - TZ=Asia/Shanghai
       - TRANSMISSION_WEB_HOME=/config/webui/Transmission Theme
       - USER=root
