@@ -8,5 +8,10 @@ services:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/firefox/config:/config:rw
       - /tmp/zfsv3/sata11/13051661743/data/Docker/firefox/fonts:/usr/share/fonts
       - /tmp/zfsv3/sata11/13051661743/data/Downloads:/config/downloads
+    environment:
+      - USER_ID=1016
+      - GROUP_ID=1017
+      - UMASK=022
+      - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
