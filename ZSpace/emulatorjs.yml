@@ -9,8 +9,8 @@ services:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/emulatorjs/config:/config
       - /tmp/zfsv3/sata11/13051661743/data/Docker/emulatorjs/data:/data
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1016
+      - PGID=1017
       - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
