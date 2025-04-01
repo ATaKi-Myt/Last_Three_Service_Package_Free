@@ -3,7 +3,7 @@ services:
     image: gotson/komga:latest
     container_name: komga
     ports:
-      - 22005:25600
+      - 22010:25600
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/komga/config:/config
       - /tmp/zfsv3/sata11/13051661743/data/Docker/komga/data:/data
