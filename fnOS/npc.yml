@@ -4,6 +4,6 @@ services:
     container_name: npc
     volumes:
       - /vol1/1000/Docker/npc:/conf
-    command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp
+    command: -server=127.0.0.1:8024 -vkey=自行填写密钥 -type=tcp
     restart: always
     network_mode: host
