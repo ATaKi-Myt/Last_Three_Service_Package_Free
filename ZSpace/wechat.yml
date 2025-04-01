@@ -13,8 +13,8 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - LANG=zh_CN.UTF-8
-      - USER_ID=0
-      - GROUP_ID=0
+      - USER_ID=1016
+      - GROUP_ID=1017
       - WEB_AUDIO=0
     network_mode: bridge
     restart: always
