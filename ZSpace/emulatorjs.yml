@@ -4,7 +4,7 @@ services:
     container_name: emulatorjs
     ports:
       - 23000:3000
-      - 10000:80
+      - 23001:80
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/emulatorjs/config:/config
       - /tmp/zfsv3/sata11/13051661743/data/Docker/emulatorjs/data:/data
