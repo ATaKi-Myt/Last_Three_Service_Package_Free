@@ -3,7 +3,7 @@ services:
     image: linuxserver/babybuddy:latest
     container_name: babybuddy
     ports:
-      - 8520:8000
+      - 25020:8000
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/babybuddy:/config
     environment:
