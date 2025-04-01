@@ -4,9 +4,9 @@ services:
     container_name: jellyfin
     privileged: true
     devices:
-     - /dev/dri:/dev/dri
+      - /dev/dri:/dev/dri
     ports:
-      - 3010:8096
+      - 20010:8096
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/jellyfin/config:/config
       - /tmp/zfsv3/sata11/13051661743/data/Docker/jellyfin/cache:/cache
