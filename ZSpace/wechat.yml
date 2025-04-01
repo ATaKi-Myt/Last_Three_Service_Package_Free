@@ -4,8 +4,8 @@ services:
     container_name: wechat
     privileged: true
     ports:
-      - 7070:5800
-      - 7071:5900
+      - 26005:5800
+      - 26006:5900
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/wechat/config:/root/.xwechat
       - /tmp/zfsv3/sata11/13051661743/data/Docker/wechat/files:/root/xwechat_files
@@ -13,8 +13,8 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - LANG=zh_CN.UTF-8
-      - USER_ID=0
-      - GROUP_ID=0
+      - USER_ID=1016
+      - GROUP_ID=1017
       - WEB_AUDIO=0
     network_mode: bridge
     restart: always
