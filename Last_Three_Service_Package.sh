@@ -85,7 +85,7 @@ function show_info() {
     echo -e "${BOLD}${CYAN}  ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝${NC}"
     echo ""
     echo -e "${CYAN}    博客导航地址：lastthree.cn  作者微信：M13051661743  脚本版权：三人行    ${NC}"
-    echo -e "${CYAN}    项目地址：https://github.com/ATaKi-Myt/Compose_Shop    ${NC}"
+    echo -e "${CYAN}    项目地址：https://github.com/ATaKi-Myt/Last_Three_Service_Package    ${NC}"
     echo -e "${CYAN}    此版本为群内特供版，脚本完全免费开源，不收取任何付费款项    ${NC}"
     echo ""
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
@@ -244,19 +244,17 @@ function select_system() {
 function show_menu() {
     clear
     show_info
-    # 直接显示中英文对照表
     echo -e "${YELLOW}服务信息：${NC}"
     for i in "${!COMPOSE_FILES[@]}"; do
         printf "%2d. %-20s - %s\n" $((i + 1)) "${COMPOSE_FILES[i]}" "${SERVICE_ALIASES[i]}"
     done
-    # 提示用户输入信息
-    echo -e "${YELLOW}请输入要下载的服务序号（可多个，用空格分隔，输入 0 返回主菜单，输入 f 搜索，输入 d 删除容器，输入 i 查看 UID 和 GID，输入 s 查看其他服务）：${NC}"
+    echo -e "${YELLOW}请输入要下载的服务序号（可多个，用空格分隔），输入 0 返回主菜单，输入 f 搜索，输入 d 删除容器，输入 i 查看 UID 和 GID，输入 s 查看其他服务，输入 vi 进入高级模式：${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 i 或 s: " input
+    read -e -p "请输入序号或 f 或 d 或 i 或 s 或 vi: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -273,6 +271,9 @@ function handle_input() {
             ;;
         i)
             handle_query_uid_gid_input
+            ;;
+        vi)
+            show_yml_files_menu
             ;;
         *)
             handle_number_choices_input "$input"
@@ -319,7 +320,6 @@ function handle_sub_menu_input() {
             ;;
         1)
             echo "正在下载精简版适配插件"
-            # 拼接下载链接
             url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
@@ -332,7 +332,6 @@ function handle_sub_menu_input() {
             ;;
         2)
             echo "正在下载百度网盘拉取镜像脚本"
-            # 拼接下载链接
             url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Baidu_Pan_Load.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
@@ -345,7 +344,6 @@ function handle_sub_menu_input() {
             ;;
         3)
             echo "正在下载三人行穿透服务一键安装脚本"
-            # 拼接下载链接
             url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh" 
             wget -q "$url"
             if [ $? -eq 0 ]; then
@@ -369,7 +367,7 @@ function handle_sub_menu_input() {
             fi
             ;;
         *)
-            echo -e "${RED}无效的选项，请输入 0 - 4 之间的数字。${NC}"  # 修改为0 - 4
+            echo -e "${RED}无效的选项，请输入 0 - 4 之间的数字。${NC}"
             sleep 2
             handle_input
             ;;
@@ -397,7 +395,7 @@ function handle_delete_container_input() {
         fi
     done
     read -p "按任意键继续选择其他操作..." -n 1 -s
-    printf "\033[2K\r"  # 清空输入行内容
+    printf "\033[2K\r"
 }
 
 function handle_query_uid_gid_input() {
@@ -411,7 +409,31 @@ function handle_query_uid_gid_input() {
         echo -e "${RED}用户 $username 不存在。${NC}"
     fi
     read -p "按任意键继续选择其他操作..." -n 1 -s
-    printf "\033[2K\r"  # 清空输入行内容
+    printf "\033[2K\r"
+}
+
+function show_yml_files_menu() {
+    clear
+    show_info
+    echo -e "${YELLOW}当前文件夹下的 .yml 文件列表：${NC}"
+    local yml_files=(*.yml)
+    for i in "${!yml_files[@]}"; do
+        printf "%d. %s\n" $((i + 1)) "${yml_files[$i]}"
+    done
+    read -p "请输入要编辑的文件序号 (0 返回主菜单): " choice
+    if [ "$choice" -eq 0 ]; then
+        continue_loop=true
+        return
+    elif [ "$choice" -ge 1 ] && [ "$choice" -le "${#yml_files[@]}" ]; then
+        local index=$((choice - 1))
+        local file="${yml_files[$index]}"
+        echo -e "${YELLOW}正在使用 vi 编辑 $file...${NC}"
+        vi "$file"
+    else
+        echo -e "${RED}无效的选择，请输入 0 到 ${#yml_files[@]} 之间的数字。${NC}"
+        sleep 2
+        show_yml_files_menu
+    fi
 }
 
 function handle_service_alias_input() {
@@ -480,7 +502,6 @@ function download_compose_file() {
             wget -q "$url" -O "$file"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}文件 $file 重新下载成功。${NC}"
-                # 新增：下载完成后询问用户是否继续运行
                 read -p "下载完成，是否继续运行？(y/n): " continue_run
                 if [[ $continue_run =~ ^[Yy]$ ]]; then
                     return 0
@@ -490,12 +511,11 @@ function download_compose_file() {
             else
                 echo -e "${RED}文件 $file 重新下载失败。${NC}"
                 read -p "按任意键继续选择其他容器..." -n 1 -s
-                printf "\033[2K\r"  # 清空输入行内容
+                printf "\033[2K\r"
                 return 1
             fi
         else
             echo -e "${YELLOW}跳过下载，使用已存在的文件 $file。${NC}"
-            # 新增：使用已存在文件后询问用户是否继续运行
             read -p "使用已存在文件，是否继续运行？(y/n): " continue_run
             if [[ $continue_run =~ ^[Yy]$ ]]; then
                 return 0
@@ -516,7 +536,7 @@ function download_compose_file() {
         else
             echo -e "${RED}文件 $file 下载失败。${NC}"
             read -p "按任意键继续选择其他容器..." -n 1 -s
-            printf "\033[2K\r"  # 清空输入行内容
+            printf "\033[2K\r"
             return 1
         fi
     fi
@@ -530,7 +550,7 @@ function path_replace() {
         "绿联（旧系统）") echo -e "${YELLOW}绿联旧系统路径示例：/mnt/dm-1/.ugreen_nas/*/ dm-1 存储空间1 * 根路径名称${NC}" ;;
         "绿联（新系统）") echo -e "${YELLOW}绿联新系统路径示例：/volume1/@home/*/ volume1 存储空间1 * 根路径名称${NC}" ;;
         "极空间") echo -e "${YELLOW}极空间路径示例：/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称${NC}" ;;
-        "威联通") echo -e "${YELLOW}威联通路径示例：/share/CACHEDEV1_DATA/MyApp/ ${NC}" ;;
+        "威联通") echo -e "${YELLOW}威联通路径示例：/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹 ${NC}" ;;
     esac
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
     read -p "是否要进行路径替换操作？(y/n): " do_replace
@@ -560,8 +580,8 @@ function path_replace() {
                 sed_commands=("s|/tmp/zfsv3/sata11/13051661743/data/|$new_path|g")
                 ;;
             "威联通")
-                echo -e "${YELLOW}/share/CACHEDEV1_DATA/MyApp/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/share/CACHEDEV1_DATA/MyApp/|$new_path|g")
+                echo -e "${YELLOW}/share/CACHEDEV1_DATA/*/ → [新路径] $new_path${NC}"
+                sed_commands=("s|/share/CACHEDEV1_DATA/Public/|$new_path|g")
                 ;;
         esac
         read -p "确认替换？(y/n) " confirm
@@ -635,7 +655,6 @@ function modify_ports() {
                     echo "$new_port_line" >> "$temp_file"
                     ((port_index++))
                 else
-                    # 如果新端口数量不足，保持原端口不变
                     echo "$line" >> "$temp_file"
                 fi
             else
@@ -708,7 +727,7 @@ function pull_image() {
     else
         echo -e "${RED}镜像拉取失败。${NC}"
         read -p "按任意键继续选择其他容器..." -n 1 -s
-        printf "\033[2K\r"  # 清空输入行内容
+        printf "\033[2K\r"
         return 1
     fi
     return 0
@@ -750,7 +769,7 @@ function main() {
             start_container "$file"
         done
         read -p "按任意键继续选择其他容器..." -n 1 -s
-        printf "\033[2K\r"  # 清空输入行内容
+        printf "\033[2K\r"
         continue_loop=true
     done
 }
