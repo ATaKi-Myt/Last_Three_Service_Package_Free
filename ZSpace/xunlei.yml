@@ -9,8 +9,8 @@ services:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/xunlei:/xunlei/data
       - /tmp/zfsv3/sata11/13051661743/data/Downloads:/xunlei/downloads
     environment:
-      - XL_GID=0
-      - XL_UID=0
+      - XL_GID=1016
+      - XL_UID=1017
       - TZ=Asia/Shanghai
       - XL_DASHBOARD_USERNAME=admin
       - XL_DASHBOARD_PASSWORD=admin
