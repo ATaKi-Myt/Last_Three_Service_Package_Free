@@ -4,7 +4,7 @@ services:
     container_name: clouddrive2
     privileged: true
     ports:
-      - 3075:19798
+      - 24015:19798
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/clouddrive2:/Config
       - /tmp/zfsv3/sata11/13051661743/data/Cloud:/CloudNAS:shared
