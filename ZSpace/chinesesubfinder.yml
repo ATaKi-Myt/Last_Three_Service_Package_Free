@@ -3,7 +3,7 @@ services:
     image: allanpk716/chinesesubfinder:latest
     container_name: chinesesubfinder
     ports:
-      - 3070:19035
+      - 20025:19035
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/chinesesubfinder/config:/config
       - /tmp/zfsv3/sata11/13051661743/data/Docker/chinesesubfinder/cache:/app/cache
