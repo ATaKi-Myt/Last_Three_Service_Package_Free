@@ -3,7 +3,7 @@ services:
     image: jonnyan404/verysync:latest
     container_name: verysync
     ports:
-      - 7010:8886
+      - 26010:8886
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Synchronous:/data
     restart: always
