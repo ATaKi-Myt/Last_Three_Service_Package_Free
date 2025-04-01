@@ -3,7 +3,7 @@ services:
     image: hfhc1309/homebox-zh:latest
     container_name: homebox
     ports:
-      - 3100:7745
+      - 25015:7745
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/homebox:/data/
     environment:
