@@ -3,7 +3,7 @@ services:
     image: hectorqin/reader:latest
     container_name: reader
     ports:
-      - 22000:8080
+      - 22005:8080
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/reader/log:/log
       - /tmp/zfsv3/sata11/13051661743/data/Docker/reader/storage:/storage
