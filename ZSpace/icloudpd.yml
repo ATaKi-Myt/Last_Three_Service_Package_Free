@@ -4,7 +4,7 @@ services:
     container_name: icloudpd
     tty: true
     ports:
-      - 8080:8080
+      - 24020:8080
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Photos:/data
     environment:
