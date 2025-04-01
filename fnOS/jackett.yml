@@ -8,8 +8,8 @@ services:
       - /vol1/1000/Docker/jackett/config:/config
       - /vol1/1000/Docker/jackett/downloads:/downloads
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1001
       - TZ=Asia/Shanghai
       - AUTO_UPDATE=false
     restart: always
