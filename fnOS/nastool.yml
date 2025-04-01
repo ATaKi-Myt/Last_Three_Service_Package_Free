@@ -8,9 +8,9 @@ services:
       - /vol1/1000/Docker/nastool:/config
       - /vol1/1000/Video:/downloads
     environment:
-      - PUID=0
-      - PGID=0
-      - UMASK=000
+      - PUID=1000
+      - PGID=1001
+      - UMASK=022
       - NASTOOL_AUTO_UPDATE=false
       - NASTOOL_CN_UPDATE=false
       - REPO_URL="https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git"
