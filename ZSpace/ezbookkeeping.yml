@@ -2,9 +2,8 @@ services:
   ezbookkeeping:
     image: mayswind/ezbookkeeping:latest
     container_name: ezbookkeeping
-    user: "0:0"
     ports:
-      - 8080:8080
+      - 25005:8080
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/ezbookkeeping/storage:/ezbookkeeping/storage
       - /tmp/zfsv3/sata11/13051661743/data/Docker/ezbookkeeping/log:/ezbookkeeping/log
