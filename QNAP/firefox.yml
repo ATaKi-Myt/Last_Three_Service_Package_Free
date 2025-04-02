@@ -8,5 +8,10 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/firefox/config:/config:rw
       - /share/CACHEDEV1_DATA/Public/Docker/firefox/fonts:/usr/share/fonts
       - /share/CACHEDEV1_DATA/Public/Downloads:/config/downloads
+    environment:
+      - USER_ID=1001
+      - GROUP_ID=100
+      - UMASK=022
+      - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
