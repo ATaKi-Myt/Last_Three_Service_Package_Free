@@ -9,7 +9,7 @@ services:
       - /volume1/@home/Testroot/Docker/chinesesubfinder/cache:/app/cache
       - /volume1/@home/Testroot/Video:/media
     environment:
-      - PUID=1000
+      - PUID=1001
       - PGID=10
       - TZ=Asia/Shanghai
     restart: always
