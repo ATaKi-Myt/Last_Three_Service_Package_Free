@@ -9,8 +9,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/xunlei:/xunlei/data
       - /share/CACHEDEV1_DATA/Public/Downloads:/xunlei/downloads
     environment:
-      - XL_GID=0
-      - XL_UID=0
+      - XL_GID=1001
+      - XL_UID=100
       - TZ=Asia/Shanghai
       - XL_DASHBOARD_USERNAME=admin
       - XL_DASHBOARD_PASSWORD=admin
