@@ -8,8 +8,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/jackett/config:/config
       - /share/CACHEDEV1_DATA/Public/Docker/jackett/downloads:/downloads
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1001
+      - PGID=100
       - TZ=Asia/Shanghai
       - AUTO_UPDATE=false
     restart: always
