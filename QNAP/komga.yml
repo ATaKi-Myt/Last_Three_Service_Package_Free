@@ -8,8 +8,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/komga/config:/config
       - /share/CACHEDEV1_DATA/Public/Docker/komga/data:/data
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=100
       - TZ=Asia/Shanghai
     network_mode: bridge
     restart: always
