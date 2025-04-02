@@ -2,7 +2,7 @@ services:
   mariadb:
     image: mariadb:latest
     container_name: mariadb
-    user: "0:0"
+    user: "1026:100"
     ports:
       - 29010:3306
     volumes:
