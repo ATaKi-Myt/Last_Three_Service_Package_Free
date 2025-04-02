@@ -2,6 +2,7 @@ services:
   teamspeak:
     image: teamspeak:latest
     container_name: teamspeak
+    user: "0:0"
     ports:
       - 23005:9987/udp
       - 23006:30033
