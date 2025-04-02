@@ -2,7 +2,6 @@ services:
   mysql:
     image: mysql:8.0
     container_name: mysql
-    user: "1001:10"
     ports:
       - 29000:3306
     volumes:
