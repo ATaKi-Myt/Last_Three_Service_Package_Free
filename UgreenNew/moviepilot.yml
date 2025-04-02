@@ -10,8 +10,8 @@ services:
     environment:
       - NGINX_PORT=3000
       - PORT=3001
-      - PUID=0
-      - PGID=0
+      - PUID=1001
+      - PGID=10
       - UMASK=000
       - TZ=Asia/Shanghai
       - SUPERUSER=admin
