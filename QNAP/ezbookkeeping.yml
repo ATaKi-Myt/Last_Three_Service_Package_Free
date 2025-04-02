@@ -11,7 +11,7 @@ services:
     environment:
       - EBK_SERVER_ENABLE_GZIP=true
       - EBK_DATABASE_TYPE=mysql
-      - EBK_DATABASE_HOST=127.0.0.1:3306
+      - EBK_DATABASE_HOST=127.0.0.1:29000
       - EBK_DATABASE_NAME=ezbookkeeping
       - EBK_DATABASE_USER=root
       - EBK_DATABASE_PASSWD=123456
