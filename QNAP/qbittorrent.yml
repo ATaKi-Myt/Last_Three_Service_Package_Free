@@ -8,8 +8,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/qbittorrent:/config
       - /share/CACHEDEV1_DATA/Public/Video:/downloads
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=100
       - TZ=Asia/Shanghai
       - WEBUI_PORT=28000
     restart: always
