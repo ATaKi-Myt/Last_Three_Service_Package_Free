@@ -8,7 +8,7 @@ services:
       - /volume1/@home/Testroot/Docker/qbittorrent:/config
       - /volume1/@home/Testroot/Video:/downloads
     environment:
-      - PUID=1000
+      - PUID=1001
       - PGID=10
       - TZ=Asia/Shanghai
       - WEBUI_PORT=28000
