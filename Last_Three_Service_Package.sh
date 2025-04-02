@@ -40,6 +40,12 @@ function show_accelerator_menu() {
 function handle_accelerator_selection() {
     show_accelerator_menu
     read -e -p "请输入选项编号 (0 退出): " choice
+    # 检查输入是否为有效的整数
+    if ! [[ $choice =~ ^[0-9]+$ ]]; then
+        echo -e "${RED}${BOLD}输入无效，请输入 0 到 12 之间的数字。${NC}"
+        sleep 1
+        handle_accelerator_selection
+    fi
     if [ "$choice" -eq 0 ]; then
         echo -e "${GREEN}${BOLD}退出脚本，感谢您的使用！${NC}"
         exit 0
@@ -228,6 +234,7 @@ function select_system() {
         for i in "${!SYSTEMS[@]}"; do
             printf "%d. %s\n" $((i + 1)) "${FRIENDLY_SYSTEMS[i]}"
         done
+        echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}" 
         read -p "请输入系统序号: " choice
         if [[ $choice =~ ^[1-6]$ ]]; then
             break
@@ -244,11 +251,18 @@ function select_system() {
 function show_menu() {
     clear
     show_info
-    echo -e "${YELLOW}服务信息：${NC}"
     for i in "${!COMPOSE_FILES[@]}"; do
         printf "%2d. %-20s - %s\n" $((i + 1)) "${COMPOSE_FILES[i]}" "${SERVICE_ALIASES[i]}"
     done
-    echo -e "${YELLOW}请输入要下载的服务序号（可多个，用空格分隔），输入 0 返回主菜单，输入 f 搜索，输入 d 删除容器，输入 i 查看 UID 和 GID，输入 s 查看其他服务，输入 vi 进入高级模式：${NC}"
+    echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
+    echo -e "${YELLOW}请输入要下载的服务序号（可多个，用空格分隔）${NC}"
+    echo -e "${YELLOW}输入 0 退出脚本${NC}"
+    echo -e "${YELLOW}输入 f 搜索${NC}"
+    echo -e "${YELLOW}输入 d 删除容器${NC}"
+    echo -e "${YELLOW}输入 i 查看 UID 和 GID${NC}"
+    echo -e "${YELLOW}输入 s 查看其他服务${NC}"
+    echo -e "${YELLOW}输入 vi 进入高级模式：${NC}"
+    echo -e "${YELLOW}输入 net 进行创建网络${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
