@@ -8,8 +8,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/nastools:/config
       - /share/CACHEDEV1_DATA/Public/Video:/downloads
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1001
+      - PGID=100
       - UMASK=000
       - NASTOOL_AUTO_UPDATE=false
       - NASTOOL_CN_UPDATE=false
