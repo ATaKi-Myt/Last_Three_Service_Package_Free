@@ -2,6 +2,7 @@ services:
   ezbookkeeping:
     image: mayswind/ezbookkeeping:latest
     container_name: ezbookkeeping
+    user: "0:0"
     ports:
       - 25005:8080
     volumes:
