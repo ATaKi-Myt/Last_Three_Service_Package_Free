@@ -10,7 +10,7 @@ services:
       - /volume1/@home/Testroot/Downloads:/xunlei/downloads
     environment:
       - XL_GID=1001
-      - XL_UID=100
+      - XL_UID=10
       - TZ=Asia/Shanghai
       - XL_DASHBOARD_USERNAME=admin
       - XL_DASHBOARD_PASSWORD=admin
