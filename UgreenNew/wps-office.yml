@@ -10,8 +10,8 @@ services:
       - /volume1/@home/Testroot/Docker/wps-office/Desktop:/config/Desktop
       - /volume1/@home/Testroot/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1001
+      - PGID=10
       - TZ=Asia/Shanghai
       - CUSTOM_USER=admin
       - PASSWORD=admin
