@@ -14,8 +14,8 @@ services:
       - EBK_DATABASE_HOST=127.0.0.1:3306
       - EBK_DATABASE_NAME=ezbookkeeping
       - EBK_DATABASE_USER=root
-      - EBK_DATABASE_PASSWD=password
+      - EBK_DATABASE_PASSWD=123456
       - EBK_LOG_MODE=console file
       - EBK_SECURITY_SECRET_KEY=123456
     restart: always
-    network_mode: ezbookkeeping
+    network_mode: bridge
