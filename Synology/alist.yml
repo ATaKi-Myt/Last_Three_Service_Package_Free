@@ -7,8 +7,8 @@ services:
     volumes:
       - /volume1/My/Docker/alist:/opt/alist/data
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1026
+      - PGID=100
       - UMASK=022
       - TZ=Asia/Shanghai
     restart: always
