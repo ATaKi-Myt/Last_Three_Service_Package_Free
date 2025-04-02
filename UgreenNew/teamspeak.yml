@@ -2,7 +2,7 @@ services:
   teamspeak:
     image: teamspeak:latest
     container_name: teamspeak
-    privileged: true
+    user: "1001:10"
     ports:
       - 23005:9987/udp
       - 23006:30033
