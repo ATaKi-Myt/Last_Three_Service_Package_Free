@@ -10,8 +10,8 @@ services:
       - /volume1/My/Docker/qbittorrent/qBittorrent/BT_backup:/qb
       - /volume1/My/Docker/transmission/torrents:/tr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1026
+      - PGID=100
       - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
