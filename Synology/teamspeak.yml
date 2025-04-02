@@ -11,11 +11,11 @@ services:
     volumes:
       - /volume1/My/Docker/teamspeak:/var/ts3server
     environment:
-      - TS3SERVER_DB_PLUGIN=ts3db_mariadb
-      - TS3SERVER_DB_SQLCREATEPATH=create_mariadb
-      - TS3SERVER_DB_HOST=mariadb
-      - TS3SERVER_DB_USER=root
-      - TS3SERVER_DB_PASSWORD=123456
+      - TS3SERVER_DB_PLUGIN=ts3db_postgresql
+      - TS3SERVER_DB_SQLCREATEPATH=create_postgresql
+      - TS3SERVER_DB_HOST=postgres
+      - TS3SERVER_DB_USER=admin
+      - TS3SERVER_DB_PASSWORD=password
       - TS3SERVER_DB_NAME=teamspeak
       - TS3SERVER_DB_WAITUNTILREADY=30
       - TS3SERVER_LICENSE=accept
