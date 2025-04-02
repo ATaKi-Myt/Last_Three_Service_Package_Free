@@ -9,7 +9,7 @@ services:
       - /volume1/@home/Testroot/Docker/firefox/fonts:/usr/share/fonts
       - /volume1/@home/Testroot/Downloads:/config/downloads
     environment:
-      - USER_ID=1000
+      - USER_ID=1001
       - GROUP_ID=10
       - UMASK=022
       - TZ=Asia/Shanghai
