@@ -10,8 +10,8 @@ services:
       - /share/CACHEDEV1_DATA/Public/Docker/wps-office/Desktop:/config/Desktop
       - /share/CACHEDEV1_DATA/Public/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1001
+      - PGID=100
       - TZ=Asia/Shanghai
       - CUSTOM_USER=admin
       - PASSWORD=admin
