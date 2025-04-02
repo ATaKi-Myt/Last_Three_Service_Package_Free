@@ -442,15 +442,22 @@ function show_yml_files_menu() {
 function create_docker_network() {
     echo -e "${YELLOW}当前 Docker 网络列表：${NC}"
     docker network ls
-    read -p "请输入要创建的网络名称: " network_name
-    docker network create --driver bridge "$network_name"
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}网络 $network_name 创建成功。${NC}"
-    else
-        echo -e "${RED}网络 $network_name 创建失败。${NC}"
-    fi
-    read -p "按任意键继续选择其他操作..." -n 1 -s
-    printf "\033[2K\r"
+    while true; do
+        read -p "请输入要创建的网络名称 (输入 0 返回主菜单): " network_name
+        if [ "$network_name" = "0" ]; then
+            echo -e "${YELLOW}返回主菜单。${NC}"
+            break
+        fi
+        docker network create --driver bridge "$network_name"
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}网络 $network_name 创建成功。${NC}"
+        else
+            echo -e "${RED}网络 $network_name 创建失败。${NC}"
+        fi
+        read -p "按任意键继续选择其他操作..." -n 1 -s
+        printf "\033[2K\r"
+        break
+    done
 }
 
 function handle_service_alias_input() {
