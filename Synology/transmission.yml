@@ -8,8 +8,8 @@ services:
       - /volume1/My/Docker/transmission:/config
       - /volume1/My/Video:/downloads
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1026
+      - PGID=100
       - TZ=Asia/Shanghai
       - TRANSMISSION_WEB_HOME=/config/webui/Transmission Theme
       - USER=root
