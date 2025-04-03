@@ -10,8 +10,8 @@ services:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/qbittorrent/qBittorrent/BT_backup:/qb
       - /tmp/zfsv3/sata11/13051661743/data/Docker/transmission/torrents:/tr
     environment:
-      - PUID=1016
-      - PGID=1017
+      - PUID=0
+      - PGID=0
       - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
