@@ -10,8 +10,8 @@ services:
       - /volume1/@home/Testroot/Docker/qbittorrent/qBittorrent/BT_backup:/qb
       - /volume1/@home/Testroot/Docker/transmission/torrents:/tr
     environment:
-      - PUID=1001
-      - PGID=10
+      - PUID=0
+      - PGID=0
       - TZ=Asia/Shanghai
     restart: always
     network_mode: bridge
