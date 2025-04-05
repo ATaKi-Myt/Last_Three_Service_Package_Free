@@ -19,63 +19,63 @@
 
 ## 二、服务包 Docker 集成项目列表
 
-| 序号 | Docker 名称 | 作用 |端口|
-| :---: | :---: | :---: | :---: |
-| 1 |all in one|三人行精简版|/|
-| 2 | 1panel | 服务器面板 |30010|
-| 3 | aipan | 网盘资源索引器 |24000|
-| 4 | alist | 网盘挂载 |24005|
-| 5 | babybuddy | 育儿管理面板 |25020|
-| 6 | cashbook | 记账工具 |25000|
-| 7 | chinesesubfinder | 字幕下载工具 |20025|
-| 8 | clouddrive2 | 网盘挂载 |24015|
-| 9 | cloudsaver | 网盘资源转存工具 |24010|
-| 10 | emby | 媒体服务器 |20015|
-| 11 | emulatorjs | 掌机模拟器 |23000/23001|
-| 12 | ezbookkeeping | 记账工具 |25005|
-| 13 | firefox | 火狐浏览器 |27000|
-| 14 | frpc | frpc 穿透客户端 |/|
-| 15 | homeassistant | 开源智能家居管理面板 |25030|
-| 16 | homebox | 家庭资产管理面板 |25015|
-| 17 | icloudpd | icloud 图片转存工具 |24020|
-| 18 | ip-tool | ip 检测工具箱 |27005|
-| 19 | iptv-api | iptv |20020|
-| 20 | iyuuplus | 转种辅种 |30000|
-| 21 | jackett | 索引器 |30030|
-| 22 | jellyfin | 媒体服务器 |20010|
-| 23 | kkfileview | 多格式文件在线预览 |26020|
-| 24 | komga | 动漫库 |22005|
-| 25 | lyricapi | 音流刮削器 |21010|
-| 26 | mariadb | 数据库 |29010|
-| 27 | mediago | B站资源下载器 |28015|
-| 28 | metatube | 小姐姐刮削服务器 |20030|
-| 29 | moviepilot | 家庭影院 |20005|
-| 20 | music-tag-web | 音乐刮削器 |21005|
-| 31 | mysql | 数据库 |29000|
-| 32 | nastool | 家庭影院 |20000|
-| 33 | navidrome | 音乐服务器 |21000|
-| 34 | newsnow | 各大平台十条热搜 |30025|
-| 35 | npc | npc 穿透客户端 |/|
-| 36 | ollama | 智能体工具 |26025|
-| 37 | open-webui | 可视化智能体对话面板 |26030|
-| 38 | postgres | 数据库 |29005|
-| 39 | qbittorrent | 下载器 |28000|
-| 40 | qinglong | 青龙脚本面板 |30015|
-| 41 | reader | 电子书库 |22000|
-| 42 | siyuan-note-unlock | 免登录版思源笔记 |26035|
-| 43 | stirling-pdf | pdf 工具箱 |26015|
-| 44 | sun-panel | 集成 Docker 状态及美化面板 |30005|
-| 45 | teamspeak | 低占用无广告游戏语音服务器 |23005|
-| 46 | transmission | 下载器 |28005|
-| 47 | v2raya | 代理 |27010|
-| 48 | vertex | 刷流 |30020|
-| 49 | verysync | 微力同步 |26010|
-| 50 | wallos | 订阅服务统计 |25010|
-| 51 | watchtower | 自动检测更新镜像 |/|
-| 52 | wechat | 网页版微信 |26005|
-| 53 | wps-office | 在线文档编辑器 |26000|
-| 54 | xiaoaimusic | 小爱同学面板 |25025|
-| 55 | xunlei | 下载器 |28010|
+| 序号 | Docker 名称 | 作用 |端口| 用户名 | 密码 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1 |all in one|三人行精简版|/|/|/|
+| 2 | 1panel | 服务器面板 |30010|admin|password|
+| 3 | aipan | 网盘资源索引器 |24000|/|/|
+| 4 | alist | 网盘挂载 |24005|admin|运行日志获取|
+| 5 | babybuddy | 育儿管理面板 |25020|admin|password|
+| 6 | cashbook | 记账工具 |25000|自行创建|自行创建|
+| 7 | chinesesubfinder | 字幕下载工具 |20025|自行创建|自行创建|
+| 8 | clouddrive2 | 网盘挂载 |24015|自行创建|自行创建|
+| 9 | cloudsaver | 网盘资源转存工具 |24010|自行创建|自行创建|
+| 10 | emby | 媒体服务器 |20015|自行创建|自行创建|
+| 11 | emulatorjs | 掌机模拟器 |23000/23001|/|/|
+| 12 | ezbookkeeping | 记账工具 |25005|自行创建|自行创建|
+| 13 | firefox | 火狐浏览器 |27000|/|/|
+| 14 | frpc | frpc 穿透客户端 |/|/|/|
+| 15 | homeassistant | 开源智能家居管理面板 |25030|自行创建|自行创建|
+| 16 | homebox | 家庭资产管理面板 |25015|自行创建|自行创建|
+| 17 | icloudpd | icloud 图片转存工具 |24020|/|/|
+| 18 | ip-tool | ip 检测工具箱 |27005|/|/|
+| 19 | iptv-api | iptv |20020|/|/|
+| 20 | iyuuplus | 转种辅种 |30000|自行创建|自行创建|
+| 21 | jackett | 索引器 |30030|/|/|
+| 22 | jellyfin | 媒体服务器 |20010|自行创建|自行创建|
+| 23 | kkfileview | 多格式文件在线预览 |26020|/|/|
+| 24 | komga | 动漫库 |22005|自行创建|自行创建|
+| 25 | lyricapi | 音流刮削器 |21010|/|/|
+| 26 | mariadb | 数据库 |29010|/|/|
+| 27 | mediago | B站资源下载器 |28015|/|/|
+| 28 | metatube | 小姐姐刮削服务器 |20030|/|/|
+| 29 | moviepilot | 家庭影院 |20005|admin|运行日志获取|
+| 20 | music-tag-web | 音乐刮削器 |21005|admin|admin|
+| 31 | mysql | 数据库 |29000|/|/|
+| 32 | nastool | 家庭影院 |20000|admin|password|
+| 33 | navidrome | 音乐服务器 |21000|自行创建|自行创建|
+| 34 | newsnow | 各大平台十条热搜 |30025|/|/|
+| 35 | npc | npc 穿透客户端 |/|/|/|
+| 36 | ollama | 智能体工具 |26025|/|/|
+| 37 | open-webui | 可视化智能体对话面板 |26030|自行创建|自行创建|
+| 38 | postgres | 数据库 |29005|/|/|
+| 39 | qbittorrent | 下载器 |28000|admin|运行日志获取|
+| 40 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
+| 41 | reader | 电子书库 |22000|/|/|
+| 42 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
+| 43 | stirling-pdf | pdf 工具箱 |26015|/|/|
+| 44 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
+| 45 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
+| 46 | transmission | 下载器 |28005|root|root|
+| 47 | v2raya | 代理 |27010|/|/|
+| 48 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 49 | verysync | 微力同步 |26010|/|/|
+| 50 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 51 | watchtower | 自动检测更新镜像 |/|/|/|
+| 52 | wechat | 网页版微信 |26005|/|/|
+| 53 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 54 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 55 | xunlei | 下载器 |28010|admin|admin|
 
 ## 三、服务包目录介绍列表
 
