@@ -129,7 +129,7 @@ wget https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs
 |10| `https://gh-proxy.net/`|
 
 ```bash
-https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh
+wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh
 ```
 
 ## 五、更新日志
