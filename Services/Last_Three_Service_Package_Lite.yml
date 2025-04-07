@@ -6,8 +6,8 @@ services:
     ports:
       - 20005:3000
     volumes:
-      - /vol1/1000/Video:/downloads
-      - /vol1/1000/Docker/moviepilot:/config
+      - /*/Video:/downloads
+      - /*/Docker/moviepilot:/config
     environment:
       - NGINX_PORT=3000
       - PORT=3001
@@ -28,9 +28,9 @@ services:
     ports:
       - 20010:8096
     volumes:
-      - /vol1/1000/Docker/jellyfin/config:/config
-      - /vol1/1000/Docker/jellyfin/cache:/cache
-      - /vol1/1000/Video:/video
+      - /*/Docker/jellyfin/config:/config
+      - /*/Docker/jellyfin/cache:/cache
+      - /*/Video:/video
     restart: always
     network_mode: bridge
 
@@ -40,8 +40,8 @@ services:
     ports:
       - 20020:8000
     volumes:
-      - /vol1/1000/Docker/iptv-api/config:/iptv-api/config
-      - /vol1/1000/Docker/iptv-api/output:/iptv-api/output
+      - /*/Docker/iptv-api/config:/iptv-api/config
+      - /*/Docker/iptv-api/output:/iptv-api/output
     restart: always
     network_mode: bridge
 
@@ -51,9 +51,9 @@ services:
     ports:
       - 20025:19035
     volumes:
-      - /vol1/1000/Docker/chinesesubfinder/config:/config
-      - /vol1/1000/Docker/chinesesubfinder/cache:/app/cache
-      - /vol1/1000/Video:/media
+      - /*/Docker/chinesesubfinder/config:/config
+      - /*/Docker/chinesesubfinder/cache:/app/cache
+      - /*/Video:/media
     environment:
       - PUID=1000
       - PGID=1001
@@ -81,8 +81,8 @@ services:
     ports:
       - 21000:4533
     volumes:
-      - /vol1/1000/Docker/navidrome:/data
-      - /vol1/1000/Music:/music
+      - /*/Docker/navidrome:/data
+      - /*/Music:/music
     restart: always
     network_mode: bridge
 
@@ -92,8 +92,8 @@ services:
     ports:
       - 21005:8001
     volumes:
-      - /vol1/1000/Music:/app/media
-      - /vol1/1000/Docker/music-tag-web:/app/data
+      - /*/Music:/app/media
+      - /*/Docker/music-tag-web:/app/data
     restart: always
     network_mode: bridge
 
@@ -103,8 +103,8 @@ services:
     ports:
       - 22000:8080
     volumes:
-      - /vol1/1000/Docker/reader/log:/log
-      - /vol1/1000/Docker/reader/storage:/storage
+      - /*/Docker/reader/log:/log
+      - /*/Docker/reader/storage:/storage
     restart: always
     network_mode: bridge
 
@@ -114,8 +114,8 @@ services:
     ports:
       - 22005:25600
     volumes:
-      - /vol1/1000/Docker/komga/config:/config
-      - /vol1/1000/Docker/komga/data:/data
+      - /*/Docker/komga/config:/config
+      - /*/Docker/komga/data:/data
     environment:
       - PUID=1000
       - PGID=1001
@@ -140,7 +140,7 @@ services:
     ports:
       - 24005:5244
     volumes:
-      - /vol1/1000/Docker/alist:/opt/alist/data
+      - /*/Docker/alist:/opt/alist/data
     environment:
       - PUID=1000
       - PGID=1001
@@ -155,8 +155,8 @@ services:
     ports:
       - 24010:8008
     volumes:
-      - /vol1/1000/Docker/cloudsaver/data:/app/data
-      - /vol1/1000/Docker/cloudsaver/config:/app/config
+      - /*/Docker/cloudsaver/data:/app/data
+      - /*/Docker/cloudsaver/config:/app/config
     restart: always
     network_mode: bridge
 
@@ -167,9 +167,9 @@ services:
     ports:
       - 24015:19798
     volumes:
-      - /vol1/1000/Docker/clouddrive2:/Config
-      - /vol1/1000/Cloud:/CloudNAS:shared
-      - /vol1/1000/Video:/media:shared
+      - /*/Docker/clouddrive2:/Config
+      - /*/Cloud:/CloudNAS:shared
+      - /*/Video:/media:shared
     environment:
       - TZ=Asia/Shanghai
       - CLOUDDRIVE_HOME=/Config
@@ -182,7 +182,7 @@ services:
     ports:
       - 25030:8123
     volumes:
-      - /vol1/1000/Docker/homeassistant:/config
+      - /*/Docker/homeassistant:/config
     environment:
       - TZ=Asia/Shanghai
     restart: always
@@ -194,7 +194,7 @@ services:
     ports:
       - 26010:8886
     volumes:
-      - /vol1/1000/Synchronous:/data
+      - /*/Synchronous:/data
     restart: always
     network_mode: bridge
 
@@ -204,11 +204,11 @@ services:
     ports:
       - 26015:8080
     volumes:
-      - /vol1/1000/Docker/stirling-pdf/trainingData:/usr/share/tessdata
-      - /vol1/1000/Docker/stirling-pdf/extraConfigs:/configs
-      - /vol1/1000/Docker/stirling-pdf/customFiles:/customFiles/
-      - /vol1/1000/Docker/stirling-pdf/logs:/logs/
-      - /vol1/1000/Docker/stirling-pdf/pipeline:/pipeline/
+      - /*/Docker/stirling-pdf/trainingData:/usr/share/tessdata
+      - /*/Docker/stirling-pdf/extraConfigs:/configs
+      - /*/Docker/stirling-pdf/customFiles:/customFiles/
+      - /*/Docker/stirling-pdf/logs:/logs/
+      - /*/Docker/stirling-pdf/pipeline:/pipeline/
     environment:
       - DOCKER_ENABLE_SECURITY=false
       - LANGS=en_GB
@@ -221,7 +221,7 @@ services:
     ports:
       - 26020:8012
     volumes:
-      - /vol1/1000/Docker/kkfileview:/opt/kkFileView-4.4.0
+      - /*/Docker/kkfileview:/opt/kkFileView-4.4.0
     environment:
       - KK_OFFICE_PREVIEW_TYPE=pdf
       - KK_OFFICE_PREVIEW_SWITCH_DISABLED=true
@@ -240,7 +240,7 @@ services:
       - --workspace=/siyuan/workspace/
       - --accessAuthCode=100
     volumes:
-      - /vol1/1000/Docker/siyuan-note-unlock:/siyuan/workspace
+      - /*/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
       - PUID=1000
       - PGID=1001
@@ -257,9 +257,9 @@ services:
     ports:
       - 27000:5800
     volumes:
-      - /vol1/1000/Docker/firefox/config:/config:rw
-      - /vol1/1000/Docker/firefox/fonts:/usr/share/fonts
-      - /vol1/1000/Downloads:/config/downloads
+      - /*/Docker/firefox/config:/config:rw
+      - /*/Docker/firefox/fonts:/usr/share/fonts
+      - /*/Downloads:/config/downloads
     environment:
       - USER_ID=1000
       - GROUP_ID=1001
@@ -282,8 +282,8 @@ services:
     ports:
       - 28000:28000
     volumes:
-      - /vol1/1000/Docker/qbittorrent:/config
-      - /vol1/1000/Video:/downloads
+      - /*/Docker/qbittorrent:/config
+      - /*/Video:/downloads
     environment:
       - PUID=1000
       - PGID=1001
@@ -298,8 +298,8 @@ services:
     ports:
       - 28005:9091
     volumes:
-      - /vol1/1000/Docker/transmission:/config
-      - /vol1/1000/Video:/downloads
+      - /*/Docker/transmission:/config
+      - /*/Video:/downloads
     environment:
       - PUID=1000
       - PGID=1001
@@ -317,8 +317,8 @@ services:
     ports:
       - 28010:2345
     volumes:
-      - /vol1/1000/Docker/xunlei:/xunlei/data
-      - /vol1/1000/Downloads:/xunlei/downloads
+      - /*/Docker/xunlei:/xunlei/data
+      - /*/Downloads:/xunlei/downloads
     environment:
       - XL_GID=0
       - XL_UID=0
@@ -334,7 +334,7 @@ services:
     ports:
       - 28015:8899
     volumes:
-      - /vol1/1000/Downloads:/root/mediago
+      - /*/Downloads:/root/mediago
     restart: always
     network_mode: bridge
 
@@ -344,10 +344,10 @@ services:
     ports:
       - 30000:8780
     volumes:
-      - /vol1/1000/Docker/iyuuplus/iyuu:/iyuu
-      - /vol1/1000/Docker/iyuuplus/data:/data
-      - /vol1/1000/Docker/qbittorrent/qBittorrent/BT_backup:/qb
-      - /vol1/1000/Docker/transmission/torrents:/tr
+      - /*/Docker/iyuuplus/iyuu:/iyuu
+      - /*/Docker/iyuuplus/data:/data
+      - /*/Docker/qbittorrent/qBittorrent/BT_backup:/qb
+      - /*/Docker/transmission/torrents:/tr
     environment:
       - PUID=0
       - PGID=0
@@ -361,7 +361,7 @@ services:
     ports:
       - 30005:3002
     volumes:
-      - /vol1/1000/Docker/sun-panel:/app/conf
+      - /*/Docker/sun-panel:/app/conf
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     network_mode: bridge
@@ -372,8 +372,8 @@ services:
     ports:
       - 30010:10086
     volumes:
-      - /vol1/1000/Docker/1panel:/opt/1panel
-      - /vol1/1000/:/vol1/1000/
+      - /*/Docker/1panel:/opt/1panel
+      - /*/:/*/
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Asia/Shanghai
@@ -391,7 +391,7 @@ services:
     ports:
       - 30015:5700
     volumes:
-      - /vol1/1000/Docker/qinglong:/ql/data
+      - /*/Docker/qinglong:/ql/data
     environment:
       - QlPort=5700
     restart: always
