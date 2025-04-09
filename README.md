@@ -158,6 +158,46 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 * 增加所有系统的精简版内容
 * 增加所有系统的 `all in one` 内容
 
+### Last_Three_Service_Package.sh v1.0.1 版本更新日志：
+
+#### 一、脚本逻辑
+* 新增其他服务内的：三人行精简版服务一键安装脚本
+* 精简版服务内容如下（集成 emby jellyfin nastool moviepilot 按需删除无用容器）：
+
+| 包含容器 |
+| :---: |
+|nastool|
+|reader|
+|iptv-api|
+|firefox|
+|qbittorrent|
+|cloudsaver|
+|xunlei|
+|ip-tool|
+|homeassistant|
+|1panel|
+|mediago|
+|music-tag-web|
+|stirling-pdf|
+|iyuuplus|
+|qinglong|
+|chinesesubfinder|
+|aipan|
+|siyuan-note-unlock|
+|jellyfin|
+|kkfileview|
+|metatube|
+|komga|
+|verysync|
+|alist|
+|moviepilot|
+|sun-panel|
+|navidrome|
+|watchtower|
+|clouddrive2|
+|embyserver|
+|transmission|
+
 ## 六、作者信息
 
 ### 哔哩哔哩主页：***[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)***
