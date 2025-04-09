@@ -1,5 +1,23 @@
 services:
 
+  nastool:
+    image: hsuyelin/nas-tools:latest
+    container_name: nastool
+    ports:
+      - 20000:3000
+    volumes:
+      - /*/Docker/nastool:/config
+      - /*/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - UMASK=022
+      - NASTOOL_AUTO_UPDATE=false
+      - NASTOOL_CN_UPDATE=false
+      - REPO_URL=https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git
+    restart: always
+    network_mode: bridge
+
   moviepilot:
     image: jxxghp/moviepilot-v2:latest
     container_name: moviepilot
@@ -31,6 +49,18 @@ services:
       - /*/Docker/jellyfin/config:/config
       - /*/Docker/jellyfin/cache:/cache
       - /*/Video:/video
+    restart: always
+    network_mode: bridge
+
+  emby:
+    image: amilys/embyserver:latest
+    container_name: embyserver
+    privileged: true
+    ports:
+      - 20015:8096
+    volumes:
+      - /*/1000/Docker/emby/config:/config
+      - /*/Video:/data
     restart: always
     network_mode: bridge
 
