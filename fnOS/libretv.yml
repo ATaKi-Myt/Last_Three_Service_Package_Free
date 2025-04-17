@@ -1,0 +1,8 @@
+services:
+  libretv:
+    image: bestzwei/libretv:latest
+    container_name: libretv
+    ports:
+      - 8899:80
+    restart: always
+    network_mode: bridge
