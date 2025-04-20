@@ -5,6 +5,6 @@ services:
     ports:
       - 30035:80
     volumes:
-      - /vol1/1000/Docker/qiandao/:/usr/src/app/config
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/qiandao/:/usr/src/app/config
     restart: always
     network_mode: bridge
