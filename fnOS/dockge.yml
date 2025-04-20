@@ -5,7 +5,7 @@ services:
     ports:
       - 30040:5001
     volumes:
-      - /vol1/1000/Docker/data:/app/data
+      - /vol1/1000/Docker/dockge/data:/app/data
       - /vol1/1000/Docker/dockge:/home/stacks
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
