@@ -1,0 +1,12 @@
+services:
+  dockge:
+    image: louislam/dockge:1
+    container_name: qiandao
+    ports:
+      - 30040:5001
+    volumes:
+      - /volume1/My/Docker/dockge/data:/app/data
+      - /volume1/My/Docker/dockge:/home/stacks
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge
