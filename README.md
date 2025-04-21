@@ -204,6 +204,20 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 |embyserver|
 |transmission|
 
+### Last_Three_Service_Package.sh v1.0.X 版本更新日志：
+#### 一、脚本逻辑
+* 暂无更新
+#### 二、脚本内容
+| 更新容器 |
+| :---: |
+|dockge|
+|libretv|
+|lucly|
+|qiandao|
+|synctv|
+#### 三、后续优化
+* 适配 TrueNAS
+
 ## 六、作者信息
 
 ### 哔哩哔哩主页：***[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)***
