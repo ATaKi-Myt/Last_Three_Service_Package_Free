@@ -212,7 +212,7 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 | :---: |
 |dockge|
 |libretv|
-|lucly|
+|lucky|
 |qiandao|
 |synctv|
 #### 三、后续优化
