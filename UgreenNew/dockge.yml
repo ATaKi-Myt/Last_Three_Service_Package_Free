@@ -1,7 +1,7 @@
 services:
   dockge:
     image: louislam/dockge:1
-    container_name: qiandao
+    container_name: dockge
     ports:
       - 30040:5001
     volumes:
