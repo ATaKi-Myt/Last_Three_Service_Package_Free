@@ -16,6 +16,7 @@
 |4|绿联新|UgreenNew|是|
 |5|极空间|ZSpace|是|
 |6|威联通|QNAP|是|
+|7|TrueNas|TrueNas|否|
 
 ## 二、服务包 Docker 集成项目列表
 
