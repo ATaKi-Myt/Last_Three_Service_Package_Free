@@ -224,8 +224,8 @@ SERVICE_ALIASES=(
     "小爱音响"
     "下载器"
 )
-SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP")
-FRIENDLY_SYSTEMS=("飞牛系统" "群晖系统" "绿联（旧系统）" "绿联（新系统）" "极空间" "威联通")
+SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP" "TrueNAS")
+FRIENDLY_SYSTEMS=("飞牛系统" "群晖系统" "绿联（旧系统）" "绿联（新系统）" "极空间" "威联通" "TrueNas")
 
 function check_root_user() {
     if [ "$EUID" -ne 0 ]; then
@@ -242,7 +242,7 @@ function select_system() {
     while true; do
         clear
         show_info
-        echo -e "${YELLOW}请选择系统（输入 1 - 6 之间的序号）：${NC}"
+        echo -e "${YELLOW}请选择系统（输入 1 - 7 之间的序号）：${NC}"
         for i in "${!SYSTEMS[@]}"; do
             printf "%d. %s\n" $((i + 1)) "${FRIENDLY_SYSTEMS[i]}"
         done
@@ -251,7 +251,7 @@ function select_system() {
         if [[ $choice =~ ^[1-6]$ ]]; then
             break
         else
-            echo -e "${RED}无效的系统选择，请输入 1 - 6 之间的序号。${NC}"
+            echo -e "${RED}无效的系统选择，请输入 1 - 7 之间的序号。${NC}"
             sleep 2
         fi
     done
@@ -701,6 +701,7 @@ function path_replace() {
         "绿联（新系统）") echo -e "${YELLOW}绿联新系统路径示例：/volume1/@home/*/ volume1 存储空间1 * 根路径名称${NC}" ;;
         "极空间") echo -e "${YELLOW}极空间路径示例：/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称${NC}" ;;
         "威联通") echo -e "${YELLOW}威联通路径示例：/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹 ${NC}" ;;
+        "TrueNas") echo -e "${YELLOW}新 TrueNAS 路径示例：/mnt/test/ test 存储池名称 ${NC}" ;;
     esac
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
     read -p "是否要进行路径替换操作？(y/n): " do_replace
@@ -726,12 +727,16 @@ function path_replace() {
                 sed_commands=("s|/volume1/@home/Testroot/|$new_path|g")
                 ;;
             "极空间")
-                echo -e "${YELLOW}/tmp/zfsv3/sata11/*/data/ → [新路径] $new_path${NC}"
+                echo -e "${YELLOW}/tmp/zfsv3/sata11/13051661743/data/ → [新路径] $new_path${NC}"
                 sed_commands=("s|/tmp/zfsv3/sata11/13051661743/data/|$new_path|g")
                 ;;
             "威联通")
-                echo -e "${YELLOW}/share/CACHEDEV1_DATA/*/ → [新路径] $new_path${NC}"
+                echo -e "${YELLOW}/share/CACHEDEV1_DATA/Public/ → [新路径] $new_path${NC}"
                 sed_commands=("s|/share/CACHEDEV1_DATA/Public/|$new_path|g")
+                ;;
+            "TrueNas")
+                echo -e "${YELLOW}/mnt/test/ → [新路径] $new_path${NC}"
+                sed_commands=("s|/mnt/test/|$new_path|g")
                 ;;
         esac
         read -p "确认替换？(y/n) " confirm
