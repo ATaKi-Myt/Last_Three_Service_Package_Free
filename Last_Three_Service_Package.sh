@@ -30,7 +30,7 @@ ACCELERATOR_OPTIONS=(
 function show_accelerator_menu() {
     clear
     show_info
-    echo -e "${YELLOW}${BOLD}请选择加速链接方式：${NC}"
+    echo -e "${YELLOW}${BOLD}请选择加速链接方式：（本脚本加速方式源于网络，并非本人持有，一切解释权归链接作者）${NC}"
     for i in "${!ACCELERATOR_OPTIONS[@]}"; do
         printf "  ${YELLOW}%-2d. %-15s${NC}\n" $((i + 1)) "${ACCELERATOR_OPTIONS[$i]}"
     done
