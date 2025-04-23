@@ -60,7 +60,7 @@ function handle_accelerator_selection() {
     elif [ "$choice" -eq 5 ]; then
         ACCELERATOR="https://github.proxy.class3.fun/"
     elif [ "$choice" -eq 6 ]; then
-        ACCELERATOR="https://ghfile.geekertao.top"
+        ACCELERATOR="https://ghfile.geekertao.top/"
     elif [ "$choice" -eq 7 ]; then
         ACCELERATOR="https://github.proxy.class3.fun/"
     elif [ "$choice" -eq 8 ]; then
@@ -411,6 +411,16 @@ function handle_sub_menu_input() {
             ;;
         6)
             echo "正在下载三人行服务包更新脚本"
+            # 检测当前目录是否存在 Update.sh 文件
+            if [ -f "Update.sh" ]; then
+                read -p "Update.sh 文件已存在，是否重新下载？(y/n): " re_download
+                if [[ ! $re_download =~ ^[Yy]$ ]]; then
+                    echo -e "${YELLOW}跳过下载，使用已存在的文件 Update.sh。${NC}"
+                    chmod +x Update.sh
+                    ./Update.sh
+                    break
+                fi
+            fi
             url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Update.sh"
             wget -q "$url"
             if [ $? -eq 0 ]; then
