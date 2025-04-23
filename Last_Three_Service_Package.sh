@@ -271,16 +271,17 @@ function show_menu() {
     echo -e "${YELLOW}输入 0 退出脚本${NC}"
     echo -e "${YELLOW}输入 f 搜索${NC}"
     echo -e "${YELLOW}输入 d 删除容器${NC}"
-    echo -e "${YELLOW}输入 i 查看 UID 和 GID${NC}"
-    echo -e "${YELLOW}输入 s 查看其他服务${NC}"
-    echo -e "${YELLOW}输入 vi 进入高级模式：${NC}"
-    echo -e "${YELLOW}输入 net 进行创建网络${NC}"
+    echo -e "${YELLOW}输入 u 查看 UID 和 GID${NC}"
+    echo -e "${YELLOW}输入 os 查看其他服务${NC}"
+    echo -e "${YELLOW}输入 vi 进入vi编辑器模式：${NC}"
+    echo -e "${YELLOW}输入 net 进行创建容器网络${NC}"
+    echo -e "${YELLOW}输入 log 进行容器日志查看${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 i 或 s 或 vi 或 net: " input
+    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 vi 或 net 或 log: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -289,17 +290,20 @@ function handle_input() {
         f)
             handle_search_input
             ;;
-        s)
+        os)
             handle_sub_menu_input
             ;;
         d)
             handle_delete_container_input
             ;;
-        i)
+        u)
             handle_query_uid_gid_input
             ;;
         vi)
             show_yml_files_menu
+            ;;
+        log)
+            handle_log_input
             ;;
         net)
             create_docker_network
@@ -486,6 +490,13 @@ function show_yml_files_menu() {
         printf "%d. %s\n" $((i + 1)) "${yml_files[$i]}"
     done
     read -p "请输入要编辑的文件序号 (0 返回主菜单): " choice
+    # 检查输入是否为有效的整数
+    if ! [[ $choice =~ ^[0-9]+$ ]]; then
+        echo -e "${RED}无效的输入，请输入 0 到 ${#yml_files[@]} 之间的数字。${NC}"
+        sleep 2
+        show_yml_files_menu
+        return
+    fi
     if [ "$choice" -eq 0 ]; then
         continue_loop=true
         return
@@ -576,6 +587,59 @@ function handle_number_choices_input() {
         fi
     done
     continue_loop=false
+}
+
+function handle_log_input() {
+    echo -e "${YELLOW}正在获取当前运行的 Docker 容器列表...${NC}"
+    local running_containers=($(docker ps --format "{{.Names}}" | sort))
+    if [ ${#running_containers[@]} -eq 0 ]; then
+        echo -e "${YELLOW}没有找到正在运行的 Docker 容器。${NC}"
+        return
+    fi
+
+    echo -e "${YELLOW}当前运行的 Docker 容器列表：${NC}"
+    for i in "${!running_containers[@]}"; do
+        printf "%d. %s\n" $((i + 1)) "${running_containers[$i]}"
+    done
+
+    local original_sigint_handler=$(trap -p SIGINT | cut -d\' -f2)
+    trap '' SIGINT
+
+    local docker_pid
+
+    cleanup() {
+        if [ -n "$docker_pid" ]; then
+            kill -TERM "$docker_pid" 2>/dev/null
+            wait "$docker_pid" 2>/dev/null
+        fi
+    }
+
+    while true; do
+        read -p "请输入要查看日志的容器序号 (0 返回主菜单): " choice
+        if [ "$choice" -eq 0 ]; then
+            break
+        elif [[ $choice =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le ${#running_containers[@]} ]; then
+            local index=$((choice - 1))
+            local container_name="${running_containers[$index]}"
+            echo -e "${YELLOW}正在查看容器 $container_name 的日志...${NC}"
+            echo -e "${YELLOW}按 Ctrl + C 停止查看日志并返回。${NC}"
+            docker logs -f "$container_name" &
+            docker_pid=$!
+
+            trap 'cleanup; echo -e "\n${YELLOW}已停止查看日志。${NC}"; break' SIGINT
+
+            wait "$docker_pid" 2>/dev/null
+            trap '' SIGINT  
+        else
+            echo -e "${RED}无效的输入，请输入 0 到 ${#running_containers[@]} 之间的数字。${NC}"
+        fi
+    done
+
+    if [ -n "$original_sigint_handler" ]; then
+        trap "$original_sigint_handler" SIGINT
+    else
+        trap - SIGINT
+    fi
 }
 
 function download_compose_file() {
