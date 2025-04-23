@@ -71,17 +71,18 @@
 | 47 | stirling-pdf | pdf 工具箱 |26015|/|/|
 | 48 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
 | 49 | synctv | 多人在线共享影院 |20040|root|root|
-| 50 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
-| 51 | transmission | 下载器 |28005|root|root|
-| 52 | v2raya | 代理 |27010|/|/|
-| 53 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 54 | verysync | 微力同步 |26010|/|/|
-| 55 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 56 | watchtower | 自动检测更新镜像 |/|/|/|
-| 57 | wechat | 网页版微信 |26005|/|/|
-| 58 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 59 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 60 | xunlei | 下载器 |28010|admin|admin|
+| 50 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
+| 51 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
+| 52 | transmission | 下载器 |28005|root|root|
+| 53 | v2raya | 代理 |27010|/|/|
+| 54 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 55 | verysync | 微力同步 |26010|/|/|
+| 56 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 57 | watchtower | 自动检测更新镜像 |/|/|/|
+| 58 | wechat | 网页版微信 |26005|/|/|
+| 59 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 60 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 61 | xunlei | 下载器 |28010|admin|admin|
 
 ## 三、服务包目录介绍列表
 
