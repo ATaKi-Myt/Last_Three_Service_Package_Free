@@ -1,0 +1,10 @@
+services:
+  synctv:
+    image: synctvorg/synctv:latest
+    container_name: synctv
+    ports:
+      - 20040:8080
+    volumes:
+      - /mnt/test/Docker/synctv:/root/.synctv
+    restart: always
+    network_mode: bridge

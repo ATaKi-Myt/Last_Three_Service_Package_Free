@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    ports:
+      - 29005:5432
+    volumes:
+      - /mnt/test/Docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    restart: always
+    network_mode: bridge

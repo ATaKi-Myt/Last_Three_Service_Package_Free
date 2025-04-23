@@ -1,0 +1,8 @@
+services:
+  lucky:
+    image: gdy666/lucky:latest
+    container_name: lucky
+    volumes:
+      - /mnt/test/Docker/lucky:/goodluck
+    restart: always
+    network_mode: host

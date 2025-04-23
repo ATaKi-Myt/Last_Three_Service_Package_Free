@@ -1,0 +1,17 @@
+services:
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:latest
+    container_name: stirling-pdf
+    ports:
+      - 26015:8080
+    volumes:
+      - /mnt/test/Docker/stirling-pdf/trainingData:/usr/share/tessdata
+      - /mnt/test/Docker/stirling-pdf/extraConfigs:/configs
+      - /mnt/test/Docker/stirling-pdf/customFiles:/customFiles/
+      - /mnt/test/Docker/stirling-pdf/logs:/logs/
+      - /mnt/test/Docker/stirling-pdf/pipeline:/pipeline/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - LANGS=en_GB
+    restart: always
+    network_mode: bridge

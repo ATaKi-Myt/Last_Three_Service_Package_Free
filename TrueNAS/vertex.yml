@@ -1,0 +1,13 @@
+services:
+  vertex:
+    image: lswl/vertex:latest
+    container_name: vertex
+    ports:
+      - 30020:32110
+    volumes:
+      - /mnt/test/Docker/vertex:/vertex
+    environment:
+      - PORT=32110
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge

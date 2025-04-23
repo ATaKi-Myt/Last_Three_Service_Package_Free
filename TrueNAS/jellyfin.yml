@@ -1,0 +1,15 @@
+services:
+  jellyfin:
+    image: nyanmisaka/jellyfin:latest
+    container_name: jellyfin
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - 20010:8096
+    volumes:
+      - /mnt/test/Docker/jellyfin/config:/config
+      - /mnt/test/Docker/jellyfin/cache:/cache
+      - /mnt/test/Video:/video
+    restart: always
+    network_mode: bridge
