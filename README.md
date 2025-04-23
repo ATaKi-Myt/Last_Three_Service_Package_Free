@@ -224,11 +224,11 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 * 主菜单加入，输入 log，查看当前运行容器的容器日志
 * 服务菜单加入，服务包更新脚本
 * 已适配 TrueNAS
-二、脚本内容
+#### 二、脚本内容
 | 更新容器 |
 | :---: |
 |taoSync|
-三、后续优化
+#### 三、后续优化
 * 暂无更新
 
 ## 六、作者信息
