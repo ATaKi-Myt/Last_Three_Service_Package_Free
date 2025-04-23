@@ -46,6 +46,10 @@ if [ $? -eq 0 ]; then
     echo "Last_Three_Service_Package.sh 脚本下载成功。"
     echo "更新完成，请重新运行 bash Last_Three_Service_Package.sh 指令。"
     sleep 5
+    # 获取父进程 ID
+    PARENT_PID=$PPID
+    # 向父进程发送 SIGTERM 信号
+    kill -TERM $PARENT_PID
     exit 0
 else
     echo "Last_Three_Service_Package.sh 脚本下载失败。"
