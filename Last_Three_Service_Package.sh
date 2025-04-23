@@ -18,7 +18,7 @@ ACCELERATOR_OPTIONS=(
     "使用脚本自带加速链接: https://github.moeyy.xyz/"
     "使用脚本自带加速链接: https://github.tbedu.top/"
     "使用脚本自带加速链接: https://github.proxy.class3.fun/"
-    "使用脚本自带加速链接: https://ghfile.geekertao.top"
+    "使用脚本自带加速链接: https://ghfile.geekertao.top/"
     "使用脚本自带加速链接: https://github.proxy.class3.fun/"
     "使用脚本自带加速链接: https://github-proxy.lixxing.top/"
     "使用脚本自带加速链接: https://ghf.无名氏.top/"
@@ -340,6 +340,7 @@ function handle_sub_menu_input() {
     echo "3. 三人行穿透服务一键安装脚本下载"
     echo "4. Docker升级服务脚本下载"
     echo "5. 三人行精简版服务一键安装脚本下载"
+    echo "6. 三人行服务包更新脚本下载"
     read -p "请输入选项编号 (0 返回主菜单): " sub_choice
     case $sub_choice in
         0)
@@ -406,8 +407,20 @@ function handle_sub_menu_input() {
                 echo -e "${RED}三人行精简版服务一键安装脚本下载失败。${NC}"
             fi
             ;;
+        6)
+            echo "正在下载三人行服务包更新脚本"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Update.sh"
+            wget -q "$url"
+            if [ $? -eq 0 ]; then
+                echo -e "${GREEN}三人行服务包更新脚本下载成功。${NC}"
+                chmod +x Update.sh
+                ./Update.sh
+            else
+                echo -e "${RED}三人行服务包更新脚本下载失败。${NC}"
+            fi
+            ;;
         *)
-            echo -e "${RED}无效的选项，请输入 0 - 5 之间的数字。${NC}"
+            echo -e "${RED}无效的选项，请输入 0 - 6 之间的数字。${NC}"
             sleep 2
             handle_input
             ;;
