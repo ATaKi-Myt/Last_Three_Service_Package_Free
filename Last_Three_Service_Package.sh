@@ -248,7 +248,7 @@ function select_system() {
         done
         echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}" 
         read -p "请输入系统序号: " choice
-        if [[ $choice =~ ^[1-6]$ ]]; then
+        if [[ $choice =~ ^[1-7]$ ]]; then
             break
         else
             echo -e "${RED}无效的系统选择，请输入 1 - 7 之间的序号。${NC}"
