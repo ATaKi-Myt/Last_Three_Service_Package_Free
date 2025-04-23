@@ -1,5 +1,9 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
 ACCELERATOR_OPTIONS=(
     "不加速（建议墙外用户使用）"
     "使用脚本自带加速链接: https://gitproxy.click/"
@@ -38,19 +42,19 @@ url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Servic
 
 if [ -f "Last_Three_Service_Package.sh" ]; then
     rm "Last_Three_Service_Package.sh"
-    echo "已删除原有的 Last_Three_Service_Package.sh 脚本。"
+    echo -e "${GREEN}已删除原有的 Last_Three_Service_Package.sh 脚本。${NC}"
+else
+    echo -e "${GREEN}当前目录不存在 Last_Three_Service_Package.sh 脚本，将直接下载。${NC}"
 fi
 
 wget "$url"
 if [ $? -eq 0 ]; then
-    echo "Last_Three_Service_Package.sh 脚本下载成功。"
-    echo "更新完成，请重新运行 bash Last_Three_Service_Package.sh 指令。"
+    echo -e "${GREEN}Last_Three_Service_Package.sh 脚本下载成功。${NC}"
+    echo -e "${GREEN}更新完成，请重新运行 bash Last_Three_Service_Package.sh 指令。${NC}"
     sleep 5
-    # 获取父进程 ID
     PARENT_PID=$PPID
-    # 向父进程发送 SIGTERM 信号
     kill -TERM $PARENT_PID
     exit 0
 else
-    echo "Last_Three_Service_Package.sh 脚本下载失败。"
+    echo -e "${RED}Last_Three_Service_Package.sh 脚本下载失败。${NC}"
 fi
