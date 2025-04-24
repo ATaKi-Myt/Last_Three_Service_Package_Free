@@ -1,0 +1,9 @@
+services:
+  zerotier:
+    image: zerotier/zerotier:latest
+    container_name: zerotier
+    privileged: true
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/zerotier:/var/lib/zerotier-one
+    restart: always
+    network_mode: host
