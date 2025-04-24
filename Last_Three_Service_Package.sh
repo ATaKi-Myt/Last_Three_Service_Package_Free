@@ -160,6 +160,7 @@ COMPOSE_FILES=(
     "wps-office"
     "xiaoaimusic"
     "xunlei"
+    "zerotier"
 )
 SERVICE_ALIASES=(
     "三人行精简版集成"
@@ -223,6 +224,7 @@ SERVICE_ALIASES=(
     "网页版WPS"
     "小爱音响"
     "下载器"
+    "异地组网工具"
 )
 SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP" "TrueNAS")
 FRIENDLY_SYSTEMS=("飞牛系统" "群晖系统" "绿联（旧系统）" "绿联（新系统）" "极空间" "威联通" "TrueNas")
