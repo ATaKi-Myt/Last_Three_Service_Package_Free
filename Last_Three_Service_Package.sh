@@ -298,13 +298,15 @@ function show_menu() {
         main_prompt+="，$extra_prompt"
     fi
     echo -e "${YELLOW}$main_prompt${NC}"
-    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID OS - 其他服务 BI - 编辑 NET - 建网络 LOG - 查日志${NC}"
+    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID OS - 其他服务 BI - 编辑 NET - 建网络 LOG - 查日志 S - 保存永久路径${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
+SAVED_PATH_FILE=".saved_path"
+
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 bi 或 net 或 log 或 p 或 n: " input
+    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 bi 或 net 或 log 或 p 或 n 或 s: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -340,6 +342,12 @@ function handle_input() {
             if [ $(( (current_page) * PAGE_SIZE )) -lt ${#COMPOSE_FILES[@]} ]; then
                 current_page=$((current_page + 1))
             fi
+            ;;
+        s)
+            read -e -p "请输入要保存的路径: " saved_path
+            echo "$saved_path" > "$SAVED_PATH_FILE"
+            echo -e "${GREEN}路径保存成功。${NC}"
+            sleep 2
             ;;
         *)
             handle_number_choices_input "$input"
@@ -772,7 +780,17 @@ function path_replace() {
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
     read -e -p "是否要进行路径替换操作？(y/n): " do_replace
     if [[ $do_replace =~ ^[Yy]$ ]]; then
-        read -e -p "请输入替换后的新路径: " new_path
+        # 修改提示信息，将 load 改为 l
+        read -e -p "请输入替换后的新路径（输入 l 使用保存的路径）: " new_path
+        if [[ $new_path == "l" ]]; then
+            if [ -f "$SAVED_PATH_FILE" ]; then
+                new_path=$(cat "$SAVED_PATH_FILE")
+                echo -e "${YELLOW}已加载保存的路径: $new_path${NC}"
+            else
+                echo -e "${RED}未找到保存的路径，请先保存路径。${NC}"
+                return
+            fi
+        fi
         echo -e "\n${YELLOW}即将在所有 compose.yml 文件中执行替换:${NC}"
         local sed_commands=()
         case $friendly_selected in
