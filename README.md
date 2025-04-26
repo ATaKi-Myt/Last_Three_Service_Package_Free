@@ -235,6 +235,24 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 #### 三、后续优化
 * 暂无更新
 
+### Last_Three_Service_Package.sh v1.1.0 版本更新日志：
+#### 一、脚本逻辑
+* 服务菜单，增加更改 Sun-Panel 的 Json 配置文件 IP 服务
+* 插件目录更新，Sun-Panel 的最新配置文件
+* 优化了所有输入选项，均可清除内容功能
+* 主菜单逻辑更改，将内容以分页形式展示，每页展示 20 个内容，用户输入 p 和 n 执行上一页和下一页展示
+* 主菜单逻辑更改，将输入 vi 编辑，改为 bi 编辑，并且加入了 nano 编辑器，用户可以自行选则 vi 和 nano 编辑器
+* 主菜单逻辑更改，增加输入 s 保存脚本永久路径，永久路径作用于用户需要更改路径时候，可输入 l 来进行读取并更改
+#### 二、脚本内容
+| 更新容器 |
+| :---: |
+|zerotier|
+|tailscale|
+|alist-strm|
+|vscode|
+#### 三、后续优化
+* 暂无更新
+
 ## 六、作者信息
 
 ### 哔哩哔哩主页：***[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)***
