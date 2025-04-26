@@ -1,0 +1,13 @@
+services:
+  alist-strm:
+    image: itefuir/alist-strm:latest
+    container_name: alist-strm
+    stdin_open: true
+    tty: true
+    ports:
+      - 30050:5000
+    volumes:
+      - /vol1/1000/Docker/alist-strm/config:/config
+      - /vol1/1000/Video:/Video
+    restart: always
+    network_mode: bridge
