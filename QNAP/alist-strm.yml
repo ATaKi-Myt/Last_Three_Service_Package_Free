@@ -1,0 +1,13 @@
+services:
+  alist-strm:
+    image: itefuir/alist-strm:latest
+    container_name: alist-strm
+    stdin_open: true
+    tty: true
+    ports:
+      - 30050:5000
+    volumes:
+      - /share/CACHEDEV1_DATA/Public/Docker/alist-strm/config:/config
+      - /share/CACHEDEV1_DATA/Public/Video:/Video
+    restart: always
+    network_mode: bridge
