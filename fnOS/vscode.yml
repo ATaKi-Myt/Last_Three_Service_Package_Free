@@ -5,7 +5,7 @@ services:
     ports:
       - 30055:8443
     volumes:
-      - /volume1/docker/code-server:/config
+      - /vol1/1000/Docker/vscode:/config
     environment:
       - TZ=Asia/Shanghai
       - PASSWORD=password
