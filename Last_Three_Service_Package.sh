@@ -351,6 +351,7 @@ function handle_sub_menu_input() {
     echo "4. Docker升级服务脚本下载"
     echo "5. 三人行精简版服务一键安装脚本下载"
     echo "6. 三人行服务包更新脚本下载"
+    echo "7. 三人行 Sun-Panel 配置文件更改 IP 脚本下载"
     read -p "请输入选项编号 (0 返回主菜单): " sub_choice
     case $sub_choice in
         0)
@@ -437,6 +438,18 @@ function handle_sub_menu_input() {
                 ./Update.sh
             else
                 echo -e "${RED}三人行服务包更新脚本下载失败。${NC}"
+            fi
+            ;;
+        7)
+            echo "正在下载三人行 Sun-Panel 配置文件更改 IP 脚本"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Change_Sun_Panel_IP.sh"
+            wget -q "$url"
+            if [ $? -eq 0 ]; then
+                echo -e "${GREEN}三人行 Sun-Panel 配置文件更改 IP 脚本下载成功。${NC}"
+                chmod +x Change_Sun_Panel_IP.sh
+                ./Change_Sun_Panel_IP.sh
+            else
+                echo -e "${RED}三人行 Sun-Panel 配置文件更改 IP 脚本下载失败。${NC}"
             fi
             ;;
         *)
