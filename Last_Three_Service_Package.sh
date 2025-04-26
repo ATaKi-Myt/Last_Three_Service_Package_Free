@@ -298,13 +298,13 @@ function show_menu() {
         main_prompt+="，$extra_prompt"
     fi
     echo -e "${YELLOW}$main_prompt${NC}"
-    echo -e "${CYAN}其他操作：0-退出 F-搜索 D-删除容器 U-查 UID/GID OS-其他服务 VI-vi编辑 NET-建网络 LOG-查日志${NC}"
+    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID OS - 其他服务 BI - 编辑 NET - 建网络 LOG - 查日志${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 vi 或 net 或 log 或 p 或 n: " input
+    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 bi 或 net 或 log 或 p 或 n: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -322,7 +322,7 @@ function handle_input() {
         u)
             handle_query_uid_gid_input
             ;;
-        vi)
+        bi)
             show_yml_files_menu
             ;;
         log)
@@ -547,8 +547,23 @@ function show_yml_files_menu() {
     elif [ "$choice" -ge 1 ] && [ "$choice" -le "${#yml_files[@]}" ]; then
         local index=$((choice - 1))
         local file="${yml_files[$index]}"
-        echo -e "${YELLOW}正在使用 vi 编辑 $file...${NC}"
-        vi "$file"
+        echo -e "${YELLOW}请选择编辑器：1 - vi，2 - nano${NC}"
+        read -e -p "请输入选项编号: " editor_choice
+        case $editor_choice in
+            1)
+                echo -e "${YELLOW}正在使用 vi 编辑 $file...${NC}"
+                vi "$file"
+                ;;
+            2)
+                echo -e "${YELLOW}正在使用 nano 编辑 $file...${NC}"
+                nano "$file"
+                ;;
+            *)
+                echo -e "${RED}无效的选择，请输入 1 或 2。${NC}"
+                sleep 2
+                show_yml_files_menu
+                ;;
+        esac
     else
         echo -e "${RED}无效的选择，请输入 0 到 ${#yml_files[@]} 之间的数字。${NC}"
         sleep 2
