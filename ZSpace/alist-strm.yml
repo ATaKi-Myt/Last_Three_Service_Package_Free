@@ -1,0 +1,13 @@
+services:
+  alist-strm:
+    image: itefuir/alist-strm:latest
+    container_name: alist-strm
+    stdin_open: true
+    tty: true
+    ports:
+      - 30050:5000
+    volumes:
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/alist-strm/config:/config
+      - /tmp/zfsv3/sata11/13051661743/data/Video:/Video
+    restart: always
+    network_mode: bridge
