@@ -1,0 +1,13 @@
+services:
+  vscode:
+    image: linuxserver/code-server:latest
+    container_name: vscode
+    ports:
+      - 30055:8443
+    volumes:
+      - /mnt/test/Docker/vscode:/config
+    environment:
+      - TZ=Asia/Shanghai
+      - PASSWORD=password
+    restart: always
+    network_mode: bridge
