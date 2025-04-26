@@ -79,13 +79,14 @@
 | 55 | v2raya | 代理 |27010|/|/|
 | 56 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
 | 57 | verysync | 微力同步 |26010|/|/|
-| 58 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 59 | watchtower | 自动检测更新镜像 |/|/|/|
-| 60 | wechat | 网页版微信 |26005|/|/|
-| 61 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 62 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 63 | xunlei | 下载器 |28010|admin|admin|
-| 64 | zerotier | 异地组网工具 |/|/|/|
+| 58 | vscode | 代码编辑器 |30055|/|password|
+| 59 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 60 | watchtower | 自动检测更新镜像 |/|/|/|
+| 61 | wechat | 网页版微信 |26005|/|/|
+| 62 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 63 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 64 | xunlei | 下载器 |28010|admin|admin|
+| 65 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
