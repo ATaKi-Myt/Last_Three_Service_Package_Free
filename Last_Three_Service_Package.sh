@@ -72,7 +72,7 @@ function handle_accelerator_selection() {
     elif [ "$choice" -eq 11 ]; then
         ACCELERATOR="https://gh-proxy.net/"
     elif [ "$choice" -eq 12 ]; then
-        read -p "请输入加速链接: " ACCELERATOR
+        read -e -p "请输入加速链接: " ACCELERATOR
     else
         echo -e "${RED}${BOLD}输入无效，请输入 0 到 12 之间的数字。${NC}"
         sleep 1
@@ -255,7 +255,7 @@ function select_system() {
             printf "%d. %s\n" $((i + 1)) "${FRIENDLY_SYSTEMS[i]}"
         done
         echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}" 
-        read -p "请输入系统序号: " choice
+        read -e -p "请输入系统序号: " choice
         if [[ $choice =~ ^[1-7]$ ]]; then
             break
         else
@@ -328,7 +328,7 @@ function handle_search_input() {
     for idx in "${!COMPOSE_FILES[@]}"; do
         file_name="${COMPOSE_FILES[$idx]}"
         if [[ $file_name == *"$search_name"* ]]; then
-            read -p "找到匹配的容器: $file_name，是否为该容器？(y/n): " confirm
+            read -e -p "找到匹配的容器: $file_name，是否为该容器？(y/n): " confirm
             if [[ $confirm =~ ^[Yy]$ ]]; then
                 choice=$((idx + 1))
                 choices=("$choice")
@@ -356,7 +356,7 @@ function handle_sub_menu_input() {
     echo "5. 三人行精简版服务一键安装脚本下载"
     echo "6. 三人行服务包更新脚本下载"
     echo "7. 三人行 Sun-Panel 配置文件更改 IP 脚本下载"
-    read -p "请输入选项编号 (0 返回主菜单): " sub_choice
+    read -e -p "请输入选项编号 (0 返回主菜单): " sub_choice
     case $sub_choice in
         0)
             continue_loop=true
@@ -426,7 +426,7 @@ function handle_sub_menu_input() {
             echo "正在下载三人行服务包更新脚本"
             # 检测当前目录是否存在 Update.sh 文件
             if [ -f "Update.sh" ]; then
-                read -p "Update.sh 文件已存在，是否重新下载？(y/n): " re_download
+                read -e -p "Update.sh 文件已存在，是否重新下载？(y/n): " re_download
                 if [[ ! $re_download =~ ^[Yy]$ ]]; then
                     echo -e "${YELLOW}跳过下载，使用已存在的文件 Update.sh。${NC}"
                     chmod +x Update.sh
@@ -484,12 +484,12 @@ function handle_delete_container_input() {
             echo -e "${RED}容器 $container 删除失败。${NC}"
         fi
     done
-    read -p "按任意键继续选择其他操作..." -n 1 -s
+    read -e -p "按任意键继续选择其他操作..." -n 1 -s
     printf "\033[2K\r"
 }
 
 function handle_query_uid_gid_input() {
-    read -p "请输入要查询的用户名: " username
+    read -e -p "请输入要查询的用户名: " username
     local user_info=$(id "$username" 2>/dev/null)
     if [ $? -eq 0 ]; then
         local uid=$(echo "$user_info" | sed 's/.*uid=\([0-9]*\).*/\1/')
@@ -498,7 +498,7 @@ function handle_query_uid_gid_input() {
     else
         echo -e "${RED}用户 $username 不存在。${NC}"
     fi
-    read -p "按任意键继续选择其他操作..." -n 1 -s
+    read -e -p "按任意键继续选择其他操作..." -n 1 -s
     printf "\033[2K\r"
 }
 
@@ -510,7 +510,7 @@ function show_yml_files_menu() {
     for i in "${!yml_files[@]}"; do
         printf "%d. %s\n" $((i + 1)) "${yml_files[$i]}"
     done
-    read -p "请输入要编辑的文件序号 (0 返回主菜单): " choice
+    read -e -p "请输入要编辑的文件序号 (0 返回主菜单): " choice
     # 检查输入是否为有效的整数
     if ! [[ $choice =~ ^[0-9]+$ ]]; then
         echo -e "${RED}无效的输入，请输入 0 到 ${#yml_files[@]} 之间的数字。${NC}"
@@ -537,7 +537,7 @@ function create_docker_network() {
     echo -e "${YELLOW}当前 Docker 网络列表：${NC}"
     docker network ls
     while true; do
-        read -p "请输入要创建的网络名称 (输入 0 返回主菜单): " network_name
+        read -e -p "请输入要创建的网络名称 (输入 0 返回主菜单): " network_name
         if [ "$network_name" = "0" ]; then
             echo -e "${YELLOW}返回主菜单。${NC}"
             break
@@ -548,7 +548,7 @@ function create_docker_network() {
         else
             echo -e "${RED}网络 $network_name 创建失败。${NC}"
         fi
-        read -p "按任意键继续选择其他操作..." -n 1 -s
+        read -e -p "按任意键继续选择其他操作..." -n 1 -s
         printf "\033[2K\r"
         break
     done
@@ -561,7 +561,7 @@ function handle_service_alias_input() {
     for i in "${!COMPOSE_FILES[@]}"; do
         printf "%2d. %-20s - %s\n" $((i + 1)) "${COMPOSE_FILES[i]}" "${SERVICE_ALIASES[i]}"
     done
-    read -p "请输入要下载的服务序号（可多个，用空格分隔，输入 0 返回主菜单）: " input_choices
+    read -e -p "请输入要下载的服务序号（可多个，用空格分隔，输入 0 返回主菜单）: " input_choices
     if [[ "$input_choices" == "0" ]]; then
         continue_loop=true
         return
@@ -636,7 +636,7 @@ function handle_log_input() {
     }
 
     while true; do
-        read -p "请输入要查看日志的容器序号 (0 返回主菜单): " choice
+        read -e -p "请输入要查看日志的容器序号 (0 返回主菜单): " choice
         if [ "$choice" -eq 0 ]; then
             break
         elif [[ $choice =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le ${#running_containers[@]} ]; then
@@ -668,12 +668,12 @@ function download_compose_file() {
     local file="${COMPOSE_FILES[$idx]}.yml"
     local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/${selected_system}/${file}"
     if [ -f "$file" ]; then
-        read -p "文件 $file 已存在，是否重新下载？(y/n): " re_download
+        read -e -p "文件 $file 已存在，是否重新下载？(y/n): " re_download
         if [[ $re_download =~ ^[Yy]$ ]]; then
             wget -q "$url" -O "$file"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}文件 $file 重新下载成功。${NC}"
-                read -p "下载完成，是否继续运行？(y/n): " continue_run
+                read -e -p "下载完成，是否继续运行？(y/n): " continue_run
                 if [[ $continue_run =~ ^[Yy]$ ]]; then
                     return 0
                 else
@@ -681,13 +681,13 @@ function download_compose_file() {
                 fi
             else
                 echo -e "${RED}文件 $file 重新下载失败。${NC}"
-                read -p "按任意键继续选择其他容器..." -n 1 -s
+                read -e -p "按任意键继续选择其他容器..." -n 1 -s
                 printf "\033[2K\r"
                 return 1
             fi
         else
             echo -e "${YELLOW}跳过下载，使用已存在的文件 $file。${NC}"
-            read -p "使用已存在文件，是否继续运行？(y/n): " continue_run
+            read -e -p "使用已存在文件，是否继续运行？(y/n): " continue_run
             if [[ $continue_run =~ ^[Yy]$ ]]; then
                 return 0
             else
@@ -698,7 +698,7 @@ function download_compose_file() {
         wget -q "$url" -O "$file"
         if [ $? -eq 0 ]; then
             echo -e "${GREEN}文件 $file 下载成功。${NC}"
-            read -p "下载完成，是否继续运行？(y/n): " continue_run
+            read -e -p "下载完成，是否继续运行？(y/n): " continue_run
             if [[ $continue_run =~ ^[Yy]$ ]]; then
                 return 0
             else
@@ -706,7 +706,7 @@ function download_compose_file() {
             fi
         else
             echo -e "${RED}文件 $file 下载失败。${NC}"
-            read -p "按任意键继续选择其他容器..." -n 1 -s
+            read -e -p "按任意键继续选择其他容器..." -n 1 -s
             printf "\033[2K\r"
             return 1
         fi
@@ -725,9 +725,9 @@ function path_replace() {
         "TrueNas") echo -e "${YELLOW}新 TrueNAS 路径示例：/mnt/test/ test 存储池名称 ${NC}" ;;
     esac
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
-    read -p "是否要进行路径替换操作？(y/n): " do_replace
+    read -e -p "是否要进行路径替换操作？(y/n): " do_replace
     if [[ $do_replace =~ ^[Yy]$ ]]; then
-        read -p "请输入替换后的新路径: " new_path
+        read -e -p "请输入替换后的新路径: " new_path
         echo -e "\n${YELLOW}即将在所有 compose.yml 文件中执行替换:${NC}"
         local sed_commands=()
         case $friendly_selected in
@@ -760,7 +760,7 @@ function path_replace() {
                 sed_commands=("s|/mnt/test/|$new_path|g")
                 ;;
         esac
-        read -p "确认替换？(y/n) " confirm
+        read -e -p "确认替换？(y/n) " confirm
         if [[ $confirm =~ ^[Yy]$ ]]; then
             for cmd in "${sed_commands[@]}"; do
                 sed -i "$cmd" "$file"
@@ -774,7 +774,7 @@ function path_replace() {
 
 function modify_ports() {
     local file=$1
-    read -p "是否要修改端口？(y/n): " do_port_change
+    read -e -p "是否要修改端口？(y/n): " do_port_change
     if [[ $do_port_change =~ ^[Yy]$ ]]; then
         local port_count=0
         local in_ports=false
@@ -798,7 +798,7 @@ function modify_ports() {
         for port in "${existing_ports[@]}"; do
             echo -e "${YELLOW}- $port${NC}"
         done
-        read -p "请输入新的主机端口（共 $port_count 个，用空格分隔）: " new_host_ports
+        read -e -p "请输入新的主机端口（共 $port_count 个，用空格分隔）: " new_host_ports
         local IFS=' '
         local -a new_ports_array=($new_host_ports)
         if [ ${#new_ports_array[@]} -ne $port_count ]; then
@@ -902,7 +902,7 @@ function pull_image() {
         echo -e "${GREEN}镜像拉取成功。${NC}"
     else
         echo -e "${RED}镜像拉取失败。${NC}"
-        read -p "按任意键继续选择其他容器..." -n 1 -s
+        read -e -p "按任意键继续选择其他容器..." -n 1 -s
         printf "\033[2K\r"
         return 1
     fi
@@ -944,7 +944,7 @@ function main() {
             fi
             start_container "$file"
         done
-        read -p "按任意键继续选择其他容器..." -n 1 -s
+        read -e -p "按任意键继续选择其他容器..." -n 1 -s
         printf "\033[2K\r"
         continue_loop=true
     done
