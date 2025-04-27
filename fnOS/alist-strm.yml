@@ -7,7 +7,7 @@ services:
     ports:
       - 30050:5000
     volumes:
-      - /vol1/1000/Docker/alist-strm/config:/config
+      - /vol1/1000/Docker/alist-strm:/config
       - /vol1/1000/Video:/Video
     restart: always
     network_mode: bridge
