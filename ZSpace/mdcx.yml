@@ -6,10 +6,10 @@ services:
       - 20045:5800
       - 20046:5900
     volumes:
-      - /vol1/1000/Docker/mdcx/config:/config
-      - /vol1/1000/Docker/mdcx/mdcx-config:/mdcx-config
-      - /vol1/1000/Docker/mdcx/logs:/app/log
-      - /vol1/1000/Video:/data
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/mdcx/config:/config
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/mdcx/mdcx-config:/mdcx-config
+      - /tmp/zfsv3/sata11/13051661743/data/Docker/mdcx/logs:/app/log
+      - /tmp/zfsv3/sata11/13051661743/data/Video:/data
     environment:
       - USER_ID=1016
       - GROUP_ID=1017
