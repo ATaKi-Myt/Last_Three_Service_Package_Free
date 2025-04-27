@@ -6,10 +6,10 @@ services:
       - 20045:5800
       - 20046:5900
     volumes:
-      - /vol1/1000/Docker/mdcx/config:/config
-      - /vol1/1000/Docker/mdcx/mdcx-config:/mdcx-config
-      - /vol1/1000/Docker/mdcx/logs:/app/log
-      - /vol1/1000/Video:/data
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/mdcx/config:/config
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/mdcx/mdcx-config:/mdcx-config
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/mdcx/logs:/app/log
+      - /mnt/dm-1/.ugreen_nas/509155/Video:/data
     environment:
       - USER_ID=0
       - GROUP_ID=0
