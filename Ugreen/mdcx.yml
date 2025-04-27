@@ -1,0 +1,18 @@
+services:
+  mdcx:
+    image: stainless403/mdcx-builtin-gui-base:latest
+    container_name: mdcx
+    ports:
+      - 20045:5800
+      - 20046:5900
+    volumes:
+      - /vol1/1000/Docker/mdcx/config:/config
+      - /vol1/1000/Docker/mdcx/mdcx-config:/mdcx-config
+      - /vol1/1000/Docker/mdcx/logs:/app/log
+      - /vol1/1000/Video:/data
+    environment:
+      - USER_ID=0
+      - GROUP_ID=0
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
