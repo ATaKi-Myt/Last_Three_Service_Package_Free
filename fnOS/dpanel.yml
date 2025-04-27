@@ -1,0 +1,13 @@
+services:
+  dpanel:
+    image: dpanel/dpanel:latest
+    container_name: dpanel
+    ports:
+      - 30060:8080
+    volumes:
+      - /vol1/1000/Docker/dpanel:/dpanel
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - APP_NAME=dpanel
+    restart: always
+    network_mode: bridge
