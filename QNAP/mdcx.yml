@@ -1,0 +1,18 @@
+services:
+  mdcx:
+    image: stainless403/mdcx-builtin-gui-base:latest
+    container_name: mdcx
+    ports:
+      - 20045:5800
+      - 20046:5900
+    volumes:
+      - /share/CACHEDEV1_DATA/Public/Docker/mdcx/config:/config
+      - /share/CACHEDEV1_DATA/Public/Docker/mdcx/mdcx-config:/mdcx-config
+      - /share/CACHEDEV1_DATA/Public/Docker/mdcx/logs:/app/log
+      - /share/CACHEDEV1_DATA/Public/Video:/data
+    environment:
+      - USER_ID=1001
+      - GROUP_ID=100
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
