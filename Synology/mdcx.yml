@@ -6,10 +6,10 @@ services:
       - 20045:5800
       - 20046:5900
     volumes:
-      - /vol1/1000/Docker/mdcx/config:/config
-      - /vol1/1000/Docker/mdcx/mdcx-config:/mdcx-config
-      - /vol1/1000/Docker/mdcx/logs:/app/log
-      - /vol1/1000/Video:/data
+      - /volume1/My/Docker/mdcx/config:/config
+      - /volume1/My/Docker/mdcx/mdcx-config:/mdcx-config
+      - /volume1/My/Docker/mdcx/logs:/app/log
+      - /volume1/My/Video:/data
     environment:
       - USER_ID=1026
       - GROUP_ID=100
