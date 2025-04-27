@@ -7,7 +7,7 @@ services:
     ports:
       - 30050:5000
     volumes:
-      - /mnt/dm-1/.ugreen_nas/509155/Docker/alist-strm/config:/config
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/alist-strm:/config
       - /mnt/dm-1/.ugreen_nas/509155/Video:/Video
     restart: always
     network_mode: bridge
