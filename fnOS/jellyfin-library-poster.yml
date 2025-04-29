@@ -1,0 +1,12 @@
+services:
+  jellyfin-library-poster:
+    image: evanqu/jellyfin-library-poster:latest
+    container_name: jellyfin-library-poster
+    volumes:
+      - /vol1/1000/Docker/jellyfin-library-poster/config:/app/config
+      - /vol1/1000/Docker/jellyfin-library-poster/poster:/app/poster
+      - /vol1/1000/Docker/jellyfin-library-poster/output:/app/output
+      - /vol1/1000/Docker/jellyfin-library-poster/logs:/app/logs
+      - /vol1/1000/Docker/jellyfin-library-poster/myfont:/app/myfont
+    restart: always
+    network_mode: bridge
