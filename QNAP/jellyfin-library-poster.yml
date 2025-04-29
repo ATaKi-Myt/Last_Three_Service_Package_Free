@@ -1,0 +1,12 @@
+services:
+  jellyfin-library-poster:
+    image: evanqu/jellyfin-library-poster:latest
+    container_name: jellyfin-library-poster
+    volumes:
+      - /share/CACHEDEV1_DATA/Public/Docker/jellyfin-library-poster/config:/app/config
+      - /share/CACHEDEV1_DATA/Public/Docker/jellyfin-library-poster/poster:/app/poster
+      - /share/CACHEDEV1_DATA/Public/Docker/jellyfin-library-poster/output:/app/output
+      - /share/CACHEDEV1_DATA/Public/Docker/jellyfin-library-poster/logs:/app/logs
+      - /share/CACHEDEV1_DATA/Public/Docker/jellyfin-library-poster/myfont:/app/myfont
+    restart: always
+    network_mode: bridge
