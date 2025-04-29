@@ -47,49 +47,50 @@
 | 23 | istoreos | 软路由 |/|/|/|
 | 24 | iyuuplus | 转种辅种 |30000|自行创建|自行创建|
 | 25 | jackett | 索引器 |30030|/|/|
-| 26 | jellyfin | 媒体服务器 |20010|自行创建|自行创建|
-| 27 | kkfileview | 多格式文件在线预览 |26020|/|/|
-| 28 | komga | 动漫库 |22005|自行创建|自行创建|
-| 29 | libretv | 电视剧在线观看 |20035|/|/|
-| 30 | lucky | 网络转发 |16601|666|666|
-| 31 | lyricapi | 音流刮削器 |21010|/|/|
-| 32 | mariadb | 数据库 |29010|/|/|
-| 33 | mdcx | 小姐姐刮削服务器 |20045/20046|/|/|
-| 34 | mediago | B站资源下载器 |28015|/|/|
-| 35 | metatube | 小姐姐刮削服务器 |20030|/|/|
-| 36 | moviepilot | 家庭影院 |20005|admin|运行日志获取|
-| 37 | music-tag-web | 音乐刮削器 |21005|admin|admin|
-| 38 | mysql | 数据库 |29000|/|/|
-| 39 | nastool | 家庭影院 |20000|admin|password|
-| 40 | navidrome | 音乐服务器 |21000|自行创建|自行创建|
-| 41 | newsnow | 各大平台十条热搜 |30025|/|/|
-| 42 | npc | npc 穿透客户端 |/|/|/|
-| 43 | ollama | 智能体工具 |26025|/|/|
-| 44 | open-webui | 可视化智能体对话面板 |26030|自行创建|自行创建|
-| 45 | postgres | 数据库 |29005|/|/|
-| 46 | qbittorrent | 下载器 |28000|admin|运行日志获取|
-| 47 | qiandao | 每日签到 |30035|自行创建|自行创建|
-| 48 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
-| 49 | reader | 电子书库 |22000|/|/|
-| 50 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
-| 51 | stirling-pdf | pdf 工具箱 |26015|/|/|
-| 52 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
-| 53 | synctv | 多人在线共享影院 |20040|root|root|
-| 54 | tailscale | 异地组网工具 |/|/|/|
-| 55 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
-| 56 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
-| 57 | transmission | 下载器 |28005|root|root|
-| 58 | v2raya | 代理 |27010|/|/|
-| 59 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 60 | verysync | 微力同步 |26010|/|/|
-| 61 | vscode | 代码编辑器 |30055|/|password|
-| 62 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 63 | watchtower | 自动检测更新镜像 |/|/|/|
-| 64 | wechat | 网页版微信 |26005|/|/|
-| 65 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 66 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 67 | xunlei | 下载器 |28010|admin|admin|
-| 68 | zerotier | 异地组网工具 |/|/|/|
+| 26 | jellyfin-library-poster | 媒体服务器自动生成海报 |/|/|/|
+| 27 | jellyfin | 媒体服务器 |20010|自行创建|自行创建|
+| 28 | kkfileview | 多格式文件在线预览 |26020|/|/|
+| 29 | komga | 动漫库 |22005|自行创建|自行创建|
+| 30 | libretv | 电视剧在线观看 |20035|/|/|
+| 31 | lucky | 网络转发 |16601|666|666|
+| 32 | lyricapi | 音流刮削器 |21010|/|/|
+| 33 | mariadb | 数据库 |29010|/|/|
+| 34 | mdcx | 小姐姐刮削服务器 |20045/20046|/|/|
+| 35 | mediago | B站资源下载器 |28015|/|/|
+| 36 | metatube | 小姐姐刮削服务器 |20030|/|/|
+| 37 | moviepilot | 家庭影院 |20005|admin|运行日志获取|
+| 38 | music-tag-web | 音乐刮削器 |21005|admin|admin|
+| 39 | mysql | 数据库 |29000|/|/|
+| 40 | nastool | 家庭影院 |20000|admin|password|
+| 41 | navidrome | 音乐服务器 |21000|自行创建|自行创建|
+| 42 | newsnow | 各大平台十条热搜 |30025|/|/|
+| 43 | npc | npc 穿透客户端 |/|/|/|
+| 44 | ollama | 智能体工具 |26025|/|/|
+| 45 | open-webui | 可视化智能体对话面板 |26030|自行创建|自行创建|
+| 46 | postgres | 数据库 |29005|/|/|
+| 47 | qbittorrent | 下载器 |28000|admin|运行日志获取|
+| 48 | qiandao | 每日签到 |30035|自行创建|自行创建|
+| 49 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
+| 50 | reader | 电子书库 |22000|/|/|
+| 51 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
+| 52 | stirling-pdf | pdf 工具箱 |26015|/|/|
+| 53 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
+| 54 | synctv | 多人在线共享影院 |20040|root|root|
+| 55 | tailscale | 异地组网工具 |/|/|/|
+| 56 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
+| 57 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
+| 58 | transmission | 下载器 |28005|root|root|
+| 59 | v2raya | 代理 |27010|/|/|
+| 60 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 61 | verysync | 微力同步 |26010|/|/|
+| 62 | vscode | 代码编辑器 |30055|/|password|
+| 63 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 64 | watchtower | 自动检测更新镜像 |/|/|/|
+| 65 | wechat | 网页版微信 |26005|/|/|
+| 66 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 67 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 68 | xunlei | 下载器 |28010|admin|admin|
+| 69 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
