@@ -1,0 +1,18 @@
+services:
+  rustdesk-server:
+    image: rustdesk/rustdesk-server-s6:latest
+    container_name: rustdesk-server
+    ports:
+      - 21115:21115
+      - 21116:21116
+      - 21116:21116/udp
+      - 21117:21117
+      - 21118:21118
+      - 21119:21119
+    environment:
+      - RELAY=域名:端口
+      - ENCRYPTED_ONLY=1
+    volumes:
+      - /vol1/1000/Docker/rustdesk:/data
+    restart: always
+    network_mode: bridge
