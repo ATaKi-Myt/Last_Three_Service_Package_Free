@@ -72,25 +72,26 @@
 | 48 | qiandao | 每日签到 |30035|自行创建|自行创建|
 | 49 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
 | 50 | reader | 电子书库 |22000|/|/|
-| 51 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
-| 52 | stirling-pdf | pdf 工具箱 |26015|/|/|
-| 53 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
-| 54 | synctv | 多人在线共享影院 |20040|root|root|
-| 55 | tailscale | 异地组网工具 |/|/|/|
-| 56 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
-| 57 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
-| 58 | transmission | 下载器 |28005|root|root|
-| 59 | v2raya | 代理 |27010|/|/|
-| 60 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 61 | verysync | 微力同步 |26010|/|/|
-| 62 | vscode | 代码编辑器 |30055|/|password|
-| 63 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 64 | watchtower | 自动检测更新镜像 |/|/|/|
-| 65 | wechat | 网页版微信 |26005|/|/|
-| 66 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 67 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 68 | xunlei | 下载器 |28010|admin|admin|
-| 69 | zerotier | 异地组网工具 |/|/|/|
+| 51 | rustdesk-server | 远程桌面 |30066/30067|/|/|
+| 52 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
+| 53 | stirling-pdf | pdf 工具箱 |26015|/|/|
+| 54 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
+| 55 | synctv | 多人在线共享影院 |20040|root|root|
+| 56 | tailscale | 异地组网工具 |/|/|/|
+| 57 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
+| 58 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
+| 59 | transmission | 下载器 |28005|root|root|
+| 60 | v2raya | 代理 |27010|/|/|
+| 61 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 62 | verysync | 微力同步 |26010|/|/|
+| 63 | vscode | 代码编辑器 |30055|/|password|
+| 64 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 65 | watchtower | 自动检测更新镜像 |/|/|/|
+| 66 | wechat | 网页版微信 |26005|/|/|
+| 67 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 68 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 69 | xunlei | 下载器 |28010|admin|admin|
+| 70 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
