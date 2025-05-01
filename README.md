@@ -81,17 +81,18 @@
 | 57 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
 | 58 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
 | 59 | transmission | 下载器 |28005|root|root|
-| 60 | v2raya | 代理 |27010|/|/|
-| 61 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 62 | verysync | 微力同步 |26010|/|/|
-| 63 | vscode | 代码编辑器 |30055|/|password|
-| 64 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 65 | watchtower | 自动检测更新镜像 |/|/|/|
-| 66 | wechat | 网页版微信 |26005|/|/|
-| 67 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 68 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 69 | xunlei | 下载器 |28010|admin|admin|
-| 70 | zerotier | 异地组网工具 |/|/|/|
+| 60 | upsnap | 局域网络唤醒设备 |30070|/|/|
+| 61 | v2raya | 代理 |27010|/|/|
+| 62 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 63 | verysync | 微力同步 |26010|/|/|
+| 64 | vscode | 代码编辑器 |30055|/|password|
+| 65 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 66 | watchtower | 自动检测更新镜像 |/|/|/|
+| 67 | wechat | 网页版微信 |26005|/|/|
+| 68 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 69 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 70 | xunlei | 下载器 |28010|admin|admin|
+| 71 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
