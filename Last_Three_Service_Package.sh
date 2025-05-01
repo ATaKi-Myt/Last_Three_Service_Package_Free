@@ -401,6 +401,7 @@ function handle_sub_menu_input() {
     echo "5. 三人行精简版服务一键安装脚本下载"
     echo "6. 三人行服务包更新脚本下载"
     echo "7. 三人行 Sun-Panel 配置文件更改 IP 脚本下载"
+    echo "8. 三人行 jellyfin-library-poster 创建 Json 文件脚本下载"
     read -e -p "请输入选项编号 (0 返回主菜单): " sub_choice
     case $sub_choice in
         0)
@@ -498,6 +499,18 @@ function handle_sub_menu_input() {
                 ./Change_Sun_Panel_IP.sh
             else
                 echo -e "${RED}三人行 Sun-Panel 配置文件更改 IP 脚本下载失败。${NC}"
+            fi
+            ;;
+        8)
+            echo "正在下载三人行 jellyfin-library-poster 创建 Json 文件脚本"
+            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Create_Json.sh"
+            wget -q "$url"
+            if [ $? -eq 0 ]; then
+                echo -e "${GREEN}三人行 jellyfin-library-poster 创建 Json 文件脚本下载成功。${NC}"
+                chmod +x Create_Json.sh
+                ./Create_Json.sh
+            else
+                echo -e "${RED}三人行 jellyfin-library-poster 创建 Json 文件脚本下载失败。${NC}"
             fi
             ;;
         *)
