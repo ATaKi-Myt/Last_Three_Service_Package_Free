@@ -7,7 +7,5 @@ services:
     volumes:
       - /share/CACHEDEV1_DATA/Public/Docker/dpanel:/dpanel
       - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - APP_NAME=dpanel
     restart: always
     network_mode: bridge
