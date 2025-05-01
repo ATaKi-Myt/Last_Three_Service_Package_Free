@@ -1,0 +1,19 @@
+services:
+  upsnap:
+    image: ghcr.io/seriousm4x/upsnap:3.0.3
+    container_name: upsnap
+    command: ["./upsnap", "serve", "--http", "0.0.0.0:30070"]
+    volumes:
+      - /vol1/1000/Docker/upsnap:/app/pb_data
+    environment:
+      - TZ=Asia/Shanghai
+      - UPSNAP_INTERVAL=@every 10s
+      - UPSNAP_SCAN_RANGE=127.0.0.0/24
+      - UPSNAP_WEBSITE_TITLE=网络唤醒
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:30070/api/health || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    restart: always
+    network_mode: host
