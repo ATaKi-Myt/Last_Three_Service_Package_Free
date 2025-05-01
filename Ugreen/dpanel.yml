@@ -7,7 +7,5 @@ services:
     volumes:
       - /mnt/dm-1/.ugreen_nas/509155/Docker/dpanel:/dpanel
       - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - APP_NAME=dpanel
     restart: always
     network_mode: bridge
