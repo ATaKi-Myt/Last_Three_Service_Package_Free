@@ -7,7 +7,5 @@ services:
     volumes:
       - /tmp/zfsv3/sata11/13051661743/data/Docker/dpanel:/dpanel
       - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - APP_NAME=dpanel
     restart: always
     network_mode: bridge
