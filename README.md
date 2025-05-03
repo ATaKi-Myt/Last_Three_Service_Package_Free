@@ -17,6 +17,7 @@
 |5|极空间|ZSpace|是|
 |6|威联通|QNAP|是|
 |7|TrueNas|TrueNas|是|
+|7|ZimaOS|ZimaOS|是|
 
 ## 二、服务包 Docker 集成项目列表
 
