@@ -40,7 +40,6 @@ function show_accelerator_menu() {
 function handle_accelerator_selection() {
     show_accelerator_menu
     read -e -p "请输入选项编号 (0 退出): " choice
-    # 检查输入是否为有效的整数
     if ! [[ $choice =~ ^[0-9]+$ ]]; then
         echo -e "${RED}${BOLD}输入无效，请输入 0 到 12 之间的数字。${NC}"
         sleep 1
@@ -244,8 +243,8 @@ SERVICE_ALIASES=(
     "下载器"
     "异地组网工具"
 )
-SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP" "TrueNAS")
-FRIENDLY_SYSTEMS=("飞牛系统" "群晖系统" "绿联（旧系统）" "绿联（新系统）" "极空间" "威联通" "TrueNas")
+SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP" "TrueNAS" "ZimaOS")
+FRIENDLY_SYSTEMS=("飞牛系统" "群晖系统" "绿联（旧系统）" "绿联（新系统）" "极空间" "威联通" "TrueNas" "ZimaOS")
 
 function check_root_user() {
     if [ "$EUID" -ne 0 ]; then
@@ -262,16 +261,16 @@ function select_system() {
     while true; do
         clear
         show_info
-        echo -e "${YELLOW}请选择系统（输入 1 - 7 之间的序号）：${NC}"
+        echo -e "${YELLOW}请选择系统（输入 1 - 8 之间的序号）：${NC}"
         for i in "${!SYSTEMS[@]}"; do
             printf "%d. %s\n" $((i + 1)) "${FRIENDLY_SYSTEMS[i]}"
         done
         echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}" 
         read -e -p "请输入系统序号: " choice
-        if [[ $choice =~ ^[1-7]$ ]]; then
+        if [[ $choice =~ ^[1-8]$ ]]; then
             break
         else
-            echo -e "${RED}无效的系统选择，请输入 1 - 7 之间的序号。${NC}"
+            echo -e "${RED}无效的系统选择，请输入 1 - 8 之间的序号。${NC}"
             sleep 2
         fi
     done
@@ -310,7 +309,8 @@ function show_menu() {
         main_prompt+="，$extra_prompt"
     fi
     echo -e "${YELLOW}$main_prompt${NC}"
-    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID OS - 其他服务 BI - 编辑 NET - 建网络 LOG - 查日志 S - 保存永久路径${NC}"
+    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID OS - 其他服务${NC}"
+    echo -e "${CYAN}BI - 编辑 NET - 建网络 LOG - 查日志 S - 保存永久路径 CDD - 编辑镜像源${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
@@ -318,7 +318,7 @@ SAVED_PATH_FILE=".saved_path"
 
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 bi 或 net 或 log 或 p 或 n 或 s: " input
+    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 bi 或 net 或 log 或 p 或 n 或 s 或 cdd: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -360,6 +360,9 @@ function handle_input() {
             echo "$saved_path" > "$SAVED_PATH_FILE"
             echo -e "${GREEN}路径保存成功。${NC}"
             sleep 2
+            ;;
+        cdd)
+            handle_daemon_json_edit
             ;;
         *)
             handle_number_choices_input "$input"
@@ -625,6 +628,31 @@ function create_docker_network() {
     done
 }
 
+function handle_daemon_json_edit() {
+    echo -e "${YELLOW}正在查找 /etc/docker/daemon.json 文件，请稍后...${NC}"
+    local daemon_json_path=$(find / -name "daemon.json" -path "/etc/docker/*" 2>/dev/null | head -n 1)
+    if [ -n "$daemon_json_path" ]; then
+        echo -e "${YELLOW}找到 daemon.json 文件，路径为: $daemon_json_path${NC}"
+        echo -e "${YELLOW}请选择编辑器：1 - vi，2 - nano${NC}"
+        read -e -p "请输入选项编号: " editor_choice
+        case $editor_choice in
+            1)
+                echo -e "${YELLOW}正在使用 vi 编辑 $daemon_json_path...${NC}"
+                vi "$daemon_json_path"
+                ;;
+            2)
+                echo -e "${YELLOW}正在使用 nano 编辑 $daemon_json_path...${NC}"
+                nano "$daemon_json_path"
+                ;;
+            *)
+                echo -e "${RED}无效的选择，请输入 1 或 2。${NC}"
+                ;;
+        esac
+    else
+        echo -e "${RED}未找到 /etc/docker/daemon.json 文件。${NC}"
+    fi
+}
+
 function handle_service_alias_input() {
     clear
     show_info
@@ -801,11 +829,11 @@ function path_replace() {
         "极空间") echo -e "${YELLOW}极空间路径示例：/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称${NC}" ;;
         "威联通") echo -e "${YELLOW}威联通路径示例：/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹 ${NC}" ;;
         "TrueNas") echo -e "${YELLOW}新 TrueNAS 路径示例：/mnt/test/ test 存储池名称 ${NC}" ;;
+        "ZimaOS") echo -e "${YELLOW}ZimaOS 路径示例：/var/lib/casaos_data/.media/SSD-Storage/ SSD-Storage 存储池名称 ${NC}" ;;
     esac
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
     read -e -p "是否要进行路径替换操作？(y/n): " do_replace
     if [[ $do_replace =~ ^[Yy]$ ]]; then
-        # 修改提示信息，将 load 改为 l
         read -e -p "请输入替换后的新路径（输入 l 使用保存的路径）: " new_path
         if [[ $new_path == "l" ]]; then
             if [ -f "$SAVED_PATH_FILE" ]; then
@@ -846,6 +874,10 @@ function path_replace() {
             "TrueNas")
                 echo -e "${YELLOW}/mnt/test/ → [新路径] $new_path${NC}"
                 sed_commands=("s|/mnt/test/|$new_path|g")
+                ;;
+            "ZimaOS")
+                echo -e "${YELLOW}/var/lib/casaos_data/.media/SSD-Storage/ → [新路径] $new_path${NC}"
+                sed_commands=("s|/var/lib/casaos_data/.media/SSD-Storage/|$new_path|g")
                 ;;
         esac
         read -e -p "确认替换？(y/n) " confirm
