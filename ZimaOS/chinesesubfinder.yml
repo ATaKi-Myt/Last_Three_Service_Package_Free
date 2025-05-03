@@ -1,0 +1,16 @@
+services:
+  chinesesubfinder:
+    image: allanpk716/chinesesubfinder:latest
+    container_name: chinesesubfinder
+    ports:
+      - 20025:19035
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/chinesesubfinder/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/chinesesubfinder/cache:/app/cache
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/media
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge

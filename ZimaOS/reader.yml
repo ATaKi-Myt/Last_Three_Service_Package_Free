@@ -1,0 +1,11 @@
+services:
+  reader:
+    image: hectorqin/reader:latest
+    container_name: reader
+    ports:
+      - 22000:8080
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/reader/log:/log
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/reader/storage:/storage
+    restart: always
+    network_mode: bridge

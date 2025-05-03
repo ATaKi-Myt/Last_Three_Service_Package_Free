@@ -1,0 +1,12 @@
+services:
+  dockge:
+    image: louislam/dockge:1
+    container_name: dockge
+    ports:
+      - 30040:5001
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/dockge/data:/app/data
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/dockge:/home/stacks
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge

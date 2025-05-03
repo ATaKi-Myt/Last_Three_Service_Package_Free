@@ -1,0 +1,12 @@
+services:
+  emby:
+    image: amilys/embyserver:latest
+    container_name: embyserver
+    privileged: true
+    ports:
+      - 20015:8096
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/emby/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/data
+    restart: always
+    network_mode: bridge

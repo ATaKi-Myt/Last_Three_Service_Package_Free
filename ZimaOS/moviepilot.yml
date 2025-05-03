@@ -1,0 +1,19 @@
+services:
+  moviepilot:
+    image: jxxghp/moviepilot-v2:latest
+    container_name: moviepilot
+    ports:
+      - 20005:3000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/downloads
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/moviepilot:/config
+    environment:
+      - NGINX_PORT=3000
+      - PORT=3001
+      - PUID=1000
+      - PGID=1001
+      - UMASK=000
+      - TZ=Asia/Shanghai
+      - SUPERUSER=admin
+    restart: always
+    network_mode: bridge

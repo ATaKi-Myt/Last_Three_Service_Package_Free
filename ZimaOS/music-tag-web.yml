@@ -1,0 +1,11 @@
+services:
+  music-tag-web:
+    image: xhongc/music_tag_web:latest
+    container_name: music-tag-web
+    ports:
+      - 21005:8001
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Music:/app/media
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/music-tag-web:/app/data
+    restart: always
+    network_mode: bridge

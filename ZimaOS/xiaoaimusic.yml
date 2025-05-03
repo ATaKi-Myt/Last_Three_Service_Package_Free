@@ -1,0 +1,13 @@
+services:
+  xiaoaimusic:
+    image: hanxi/xiaomusic:latest
+    container_name: xiaoaimusic
+    ports:
+      - 25025:8090
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/xiaoaimusic:/app/conf
+      - /var/lib/casaos_data/.media/SSD-Storage/Music:/app/music
+    environment:
+      - XIAOMUSIC_PUBLIC_PORT=8090
+    restart: always
+    network_mode: bridge

@@ -1,0 +1,12 @@
+services:
+  jellyfin-library-poster:
+    image: evanqu/jellyfin-library-poster:latest
+    container_name: jellyfin-library-poster
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin-library-poster/config:/app/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin-library-poster/poster:/app/poster
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin-library-poster/output:/app/output
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin-library-poster/logs:/app/logs
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin-library-poster/myfont:/app/myfont
+    restart: always
+    network_mode: bridge

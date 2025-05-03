@@ -1,0 +1,11 @@
+services:
+  sun-panel:
+    image: hslr/sun-panel:latest
+    container_name: sun-panel
+    ports:
+      - 30005:3002
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/sun-panel:/app/conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge

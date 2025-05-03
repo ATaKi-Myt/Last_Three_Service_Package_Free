@@ -1,0 +1,16 @@
+services:
+  clouddrive2:
+    image: cloudnas/clouddrive2:latest
+    container_name: clouddrive2
+    privileged: true
+    ports:
+      - 24015:19798
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/clouddrive2:/Config
+      - /var/lib/casaos_data/.media/SSD-Storage/Cloud:/CloudNAS:shared
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/media:shared
+    environment:
+      - TZ=Asia/Shanghai
+      - CLOUDDRIVE_HOME=/Config
+    restart: always
+    network_mode: bridge

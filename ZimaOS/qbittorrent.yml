@@ -1,0 +1,16 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    ports:
+      - 28000:28000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/qbittorrent:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=28000
+    restart: always
+    network_mode: bridge

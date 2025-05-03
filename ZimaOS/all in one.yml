@@ -1,0 +1,793 @@
+services:
+
+# 影视
+
+  nastool:
+    image: hsuyelin/nas-tools:latest
+    container_name: nastool
+    ports:
+      - 20000:3000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/nastool:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - UMASK=022
+      - NASTOOL_AUTO_UPDATE=false
+      - NASTOOL_CN_UPDATE=false
+      - REPO_URL=https://ghproxy.com/https://github.com/hsuyelin/nas-tools.git
+    restart: always
+    network_mode: bridge
+
+  moviepilot:
+    image: jxxghp/moviepilot-v2:latest
+    container_name: moviepilot
+    ports:
+      - 20005:3000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/downloads
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/moviepilot:/config
+    environment:
+      - NGINX_PORT=3000
+      - PORT=3001
+      - PUID=1000
+      - PGID=1001
+      - UMASK=000
+      - TZ=Asia/Shanghai
+      - SUPERUSER=admin
+    restart: always
+    network_mode: bridge
+
+  jellyfin:
+    image: nyanmisaka/jellyfin:latest
+    container_name: jellyfin
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - 20010:8096
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jellyfin/cache:/cache
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/video
+    restart: always
+    network_mode: bridge
+
+  emby:
+    image: amilys/embyserver:latest
+    container_name: embyserver
+    privileged: true
+    ports:
+      - 20015:8096
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/emby/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/data
+    restart: always
+    network_mode: bridge
+
+  iptv-api:
+    image: guovern/iptv-api:latest
+    container_name: iptv-api
+    ports:
+      - 20020:8000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/iptv-api/config:/iptv-api/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/iptv-api/output:/iptv-api/output
+    restart: always
+    network_mode: bridge
+
+  chinesesubfinder:
+    image: allanpk716/chinesesubfinder:latest
+    container_name: chinesesubfinder
+    ports:
+      - 20025:19035
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/chinesesubfinder/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/chinesesubfinder/cache:/app/cache
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/media
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  metatube:
+    image: ghcr.io/metatube-community/metatube-server:latest
+    container_name: metatube
+    ports:
+      - 20030:8080
+    environment:
+      - PORT=8080
+      - DB_MAX_IDLE_CONNS=0
+      - DB_MAX_OPEN_CONNS=0
+      - DB_PREPARED_STMT=0
+      - DB_AUTO_MIGRATE=0
+    restart: always
+    network_mode: bridge
+
+# 音乐
+
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    ports:
+      - 21000:4533
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/navidrome:/data
+      - /var/lib/casaos_data/.media/SSD-Storage/Music:/music
+    restart: always
+    network_mode: bridge
+
+  music-tag-web:
+    image: xhongc/music_tag_web:latest
+    container_name: music-tag-web
+    ports:
+      - 21005:8001
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Music:/app/media
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/music-tag-web:/app/data
+    restart: always
+    network_mode: bridge
+
+  lyricapi:
+    image: hisatri/lyricapi:latest
+    container_name: lyricapi
+    ports:
+      - 21010:28883
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Music:/music
+    restart: always
+    network_mode: bridge
+
+# 书籍
+
+  reader:
+    image: hectorqin/reader:latest
+    container_name: reader
+    ports:
+      - 22000:8080
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/reader/log:/log
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/reader/storage:/storage
+    restart: always
+    network_mode: bridge
+
+  komga:
+    image: gotson/komga:latest
+    container_name: komga
+    ports:
+      - 22005:25600
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/komga/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/komga/data:/data
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    network_mode: bridge
+    restart: always
+
+# 娱乐
+
+  emulatorjs:
+    image: lscr.io/linuxserver/emulatorjs:latest
+    container_name: emulatorjs
+    ports:
+      - 23000:3000
+      - 23001:80
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/emulatorjs/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/emulatorjs/data:/data
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+  
+  teamspeak:
+    image: teamspeak:latest
+    container_name: teamspeak
+    ports:
+      - 23005:9987/udp
+      - 23006:30033
+      - 23007:41144
+      - 23008:10011
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/teamspeak:/var/ts3server
+    environment:
+      - TS3SERVER_DB_PLUGIN=ts3db_mariadb
+      - TS3SERVER_DB_SQLCREATEPATH=create_mariadb
+      - TS3SERVER_DB_HOST=mariadb
+      - TS3SERVER_DB_USER=root
+      - TS3SERVER_DB_PASSWORD=123456
+      - TS3SERVER_DB_NAME=teamspeak
+      - TS3SERVER_DB_WAITUNTILREADY=30
+      - TS3SERVER_LICENSE=accept
+    restart: always
+    network_mode: bridge
+
+# 网盘资源
+
+  aipan:
+    image: unilei/aipan-netdisk-search-simple:latest
+    container_name: aipan
+    ports:
+      - 24000:3000
+    environment:
+      - NUXT_HOST="0.0.0.0"
+      - NUXT_PORT=3000
+    restart: always
+    network_mode: bridge
+
+  alist:
+    image: xhofe/alist:latest
+    container_name: alist
+    ports:
+      - 24005:5244
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/alist:/opt/alist/data
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - UMASK=022
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  cloudsaver:
+    image: jiangrui1994/cloudsaver:latest
+    container_name: cloudsaver
+    ports:
+      - 24010:8008
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/cloudsaver/data:/app/data
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/cloudsaver/config:/app/config
+    restart: always
+    network_mode: bridge
+
+  clouddrive2:
+    image: cloudnas/clouddrive2:latest
+    container_name: clouddrive2
+    privileged: true
+    ports:
+      - 24015:19798
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/clouddrive2:/Config
+      - /var/lib/casaos_data/.media/SSD-Storage/Cloud:/CloudNAS:shared
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/media:shared
+    environment:
+      - TZ=Asia/Shanghai
+      - CLOUDDRIVE_HOME=/Config
+    restart: always
+    network_mode: bridge
+
+  icloudpd:
+    image: icloudpd/icloudpd:latest
+    container_name: icloudpd
+    tty: true
+    ports:
+      - 24020:8080
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Photos:/data
+    environment:
+      - TZ=Asia/Shanghai
+    command: icloudpd --directory /data --username youemail@xx.xx --mfa-provider webui --domain cn --password-provider webui --watch-with-interval 3600
+    restart: always
+    network_mode: bridge
+
+# 家庭
+
+  cashbook:
+    container_name: cashbook
+    image: dingdangdog/cashbook:latest
+    ports:
+      - 25000:9090
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/cashbook/data:/app/data
+    environment:
+      - DATABASE_URL=postgresql://admin:password@127.0.0.1:29005/cashbook?schema=public
+      - NUXT_DATA_PATH=/app/data
+      - NUXT_APP_URL=https://127.0.0.1:29005
+      - NUXT_AUTH_ORIGIN=https://127.0.0.1:29005/api/auth
+      - NUXT_AUTH_SECRET=auth_secret
+      - NUXT_ADMIN_USERNAME=admin
+      - NUXT_ADMIN_PASSWORD=749f09bade8aca755660eeb17792da880218d4fbdc4e25fbec279d7fe9f65d70
+    restart: always
+    network_mode: bridge
+
+  ezbookkeeping:
+    image: mayswind/ezbookkeeping:latest
+    container_name: ezbookkeeping
+    ports:
+      - 25005:8080
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/ezbookkeeping/storage:/ezbookkeeping/storage
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/ezbookkeeping/log:/ezbookkeeping/log
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - EBK_SERVER_ENABLE_GZIP=true
+      - EBK_DATABASE_TYPE=mysql
+      - EBK_DATABASE_HOST=127.0.0.1:29000
+      - EBK_DATABASE_NAME=ezbookkeeping
+      - EBK_DATABASE_USER=root
+      - EBK_DATABASE_PASSWD=123456
+      - EBK_LOG_MODE=console file
+      - EBK_SECURITY_SECRET_KEY=123456
+    restart: always
+    network_mode: bridge
+
+  wallos:
+    image: bellamy/wallos:latest
+    container_name: wallos
+    ports:
+      - 25010:80
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wallos/data:/var/www/html/db
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wallos/logos:/var/www/html/images/uploads/logos
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  homebox:
+    image: hfhc1309/homebox-zh:latest
+    container_name: homebox
+    ports:
+      - 25015:7745
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/homebox:/data/
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  babybuddy:
+    image: linuxserver/babybuddy:latest
+    container_name: babybuddy
+    ports:
+      - 25020:8000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/babybuddy:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  xiaoaimusic:
+    image: hanxi/xiaomusic:latest
+    container_name: xiaoaimusic
+    ports:
+      - 25025:8090
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/xiaoaimusic:/app/conf
+      - /var/lib/casaos_data/.media/SSD-Storage/Music:/app/music
+    environment:
+      - XIAOMUSIC_PUBLIC_PORT=8090
+    restart: always
+    network_mode: bridge
+
+  homeassistant:
+    image: homeassistant/home-assistant:latest
+    container_name: homeassistant
+    ports:
+      - 25030:8123
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/homeassistant:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+# 办公
+
+  wps-office:
+    image: linuxserver/wps-office:chinese
+    container_name: wps-office
+    ports:
+      - 26000:3000
+      - 26001:3001
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wps-office/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wps-office/Desktop:/config/Desktop
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - CUSTOM_USER=admin
+      - PASSWORD=admin
+    restart: always
+    network_mode: bridge
+
+  wechat:
+    image: ricwang/docker-wechat:latest
+    container_name: wechat
+    privileged: true
+    ports:
+      - 26005:5800
+      - 26006:5900
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wechat/config:/root/.xwechat
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wechat/files:/root/xwechat_files
+      - /var/lib/casaos_data/.media/SSD-Storage/Downloads:/root/downloads
+    environment:
+      - TZ=Asia/Shanghai
+      - LANG=zh_CN.UTF-8
+      - USER_ID=0
+      - GROUP_ID=0
+      - WEB_AUDIO=0
+    network_mode: bridge
+    restart: always
+
+  verysync:
+    image: jonnyan404/verysync:latest
+    container_name: verysync
+    ports:
+      - 26010:8886
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Synchronous:/data
+    restart: always
+    network_mode: bridge
+
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:latest
+    container_name: stirling-pdf
+    ports:
+      - 26015:8080
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/stirling-pdf/trainingData:/usr/share/tessdata
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/stirling-pdf/extraConfigs:/configs
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/stirling-pdf/customFiles:/customFiles/
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/stirling-pdf/logs:/logs/
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/stirling-pdf/pipeline:/pipeline/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - LANGS=en_GB
+    restart: always
+    network_mode: bridge
+
+  kkfileview:
+    image: pi4k8s/kkfileview:4.4.0
+    container_name: kkfileview
+    ports:
+      - 26020:8012
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/kkfileview:/opt/kkFileView-4.4.0
+    environment:
+      - KK_OFFICE_PREVIEW_TYPE=pdf
+      - KK_OFFICE_PREVIEW_SWITCH_DISABLED=true
+      - KK_PDF_DOWNLOAD_DISABLE=true
+      - KK_FILE_UPLOAD_ENABLED=false
+      - KK_CONTEXT_PATH=/
+    restart: always
+    network_mode: bridge
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - 26025:11434
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/ollama:/root/.ollama
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/ollama/models:/data/models
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge  
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:latest
+    container_name: open-webui
+    ports:
+      - 26030:8080
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/open-webui:/app/backend/data
+    environment:
+      - ENABLE_OPENAI_API=False
+      - OFFLINE_MODE=True
+      - OLLAMA_BASE_URL=http://127.0.0.1:26025
+      - USE_OLLAMA_DOCKER=False
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge  
+
+  siyuan-note-unlock:
+    image: apkdv/siyuan-unlock:latest
+    container_name: siyuan-note-unlock
+    ports:
+      - 26035:6806
+    command:
+      - --workspace=/siyuan/workspace/
+      - --accessAuthCode=100
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/siyuan-note-unlock:/siyuan/workspace
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - UMASK=022
+      - TZ=Asia/Shanghai
+      - LANG=zh_CN.UTF-8
+      - LC_ALL=zh_CN.UTF-8
+    restart: always
+    network_mode: bridge
+
+# 网络
+
+  firefox:
+    image: jlesage/firefox:latest
+    container_name: firefox
+    ports:
+      - 27000:5800
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/firefox/config:/config:rw
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/firefox/fonts:/usr/share/fonts
+      - /var/lib/casaos_data/.media/SSD-Storage/Downloads:/config/downloads
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1001
+      - UMASK=022
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  ip-tool:
+    image: jason5ng32/myip:latest
+    container_name: ip-tool
+    ports:
+      - 27005:18966
+    restart: always
+    network_mode: bridge
+
+  v2raya:
+    image: v2raya/v2raya:latest
+    container_name: v2raya
+    privileged: true
+    ports:
+      - 27010:2017
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/v2raya:/etc/v2raya
+    restart: always
+    network_mode: bridge
+
+  frpc:
+    image: snowdreamtech/frpc:latest
+    container_name: frpc
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Frpc:/etc/frp
+    command: -c /etc/frp/frpc.ini
+    restart: always
+    network_mode: host
+
+  npc:
+    image: yisier1/npc:latest
+    container_name: npc
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/npc:/conf
+    command: -server=127.0.0.1:8024 -vkey=自行填写密钥 -type=tcp
+    restart: always
+    network_mode: host  
+
+# 下载器
+
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    ports:
+      - 28000:28000
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/qbittorrent:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=28000
+    restart: always
+    network_mode: bridge
+
+  transmission:
+    image: linuxserver/transmission:4.0.5
+    container_name: transmission
+    ports:
+      - 28005:9091
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/transmission:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - TRANSMISSION_WEB_HOME=/config/webui/Transmission Theme
+      - USER=root
+      - PASS=root
+    restart: always
+    network_mode: bridge
+
+  xunlei:
+    image: cnk3x/xunlei:latest
+    container_name: xunlei
+    privileged: true
+    ports:
+      - 28010:2345
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/xunlei:/xunlei/data
+      - /var/lib/casaos_data/.media/SSD-Storage/Downloads:/xunlei/downloads
+    environment:
+      - XL_GID=0
+      - XL_UID=0
+      - TZ=Asia/Shanghai
+      - XL_DASHBOARD_USERNAME=admin
+      - XL_DASHBOARD_PASSWORD=admin
+    restart: always
+    network_mode: bridge
+
+  mediago:
+    image: registry.cn-beijing.aliyuncs.com/caorushizi/mediago:latest
+    container_name: mediago
+    ports:
+      - 28015:8899
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Downloads:/root/mediago
+    restart: always
+    network_mode: bridge
+
+# 数据库
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - 29000:3306
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=password
+    restart: always
+    network_mode: bridge
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    ports:
+      - 29005:5432
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    restart: always
+    network_mode: bridge
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - 29010:3306
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/mariadb/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    restart: always
+    network_mode: bridge
+
+# 工具
+
+  iyuuplus:
+    image: iyuucn/iyuuplus:latest
+    container_name: iyuuplus
+    ports:
+      - 30000:8780
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/iyuuplus/iyuu:/iyuu
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/iyuuplus/data:/data
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/qbittorrent/qBittorrent/BT_backup:/qb
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/transmission/torrents:/tr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  sun-panel:
+    image: hslr/sun-panel:latest
+    container_name: sun-panel
+    ports:
+      - 30005:3002
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/sun-panel:/app/conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge
+
+  1panel:
+    image: koryking/1panel:latest
+    container_name: 1panel
+    ports:
+      - 30010:10086
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/1panel:/opt/1panel
+      - /var/lib/casaos_data/.media/SSD-Storage/:/var/lib/casaos_data/.media/SSD-Storage/
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Asia/Shanghai
+      - PANEL_BASE_DIR=/opt/1panel
+      - PANEL_PORT=10086
+      - PANEL_ENTRANCE=123456
+      - PANEL_USERNAME=admin
+      - PANEL_PASSWORD=password
+    network_mode: bridge
+    restart: always
+
+  qinglong:
+    image: whyour/qinglong:latest
+    container_name: qinglong
+    ports:
+      - 30015:5700
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/qinglong:/ql/data
+    environment:
+      - QlPort=5700
+    restart: always
+    network_mode: bridge
+
+  vertex:
+    image: lswl/vertex:latest
+    container_name: vertex
+    ports:
+      - 30020:32110
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/vertex:/vertex
+    environment:
+      - PORT=32110
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
+
+  newsnow:
+    image: ghcr.io/ourongxing/newsnow:latest
+    container_name: newsnow
+    ports:
+      - 30025:4444
+    environment:
+      - INIT_TABLE=true
+      - ENABLE_CACHE=true
+    network_mode: bridge
+    restart: always
+
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    ports:
+      - 30030:9117
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jackett/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/jackett/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=false
+    restart: always
+    network_mode: bridge
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_RUN_ONCE=true
+      - TZ=Asia/Shanghai
+    restart: always
+    command: --schedule "0 0 20 * * 0" --cleanup

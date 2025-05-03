@@ -1,0 +1,13 @@
+services:
+  wallos:
+    image: bellamy/wallos:latest
+    container_name: wallos
+    ports:
+      - 25010:80
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wallos/data:/var/www/html/db
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/wallos/logos:/var/www/html/images/uploads/logos
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge

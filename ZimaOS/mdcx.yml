@@ -1,0 +1,18 @@
+services:
+  mdcx:
+    image: stainless403/mdcx-builtin-gui-base:latest
+    container_name: mdcx
+    ports:
+      - 20045:5800
+      - 20046:5900
+    volumes:
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/mdcx/config:/config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/mdcx/mdcx-config:/mdcx-config
+      - /var/lib/casaos_data/.media/SSD-Storage/Docker/mdcx/logs:/app/log
+      - /var/lib/casaos_data/.media/SSD-Storage/Video:/data
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
