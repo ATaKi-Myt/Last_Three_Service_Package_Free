@@ -1,0 +1,11 @@
+services:
+  music-tag-web:
+    image: xhongc/music_tag_web:latest
+    container_name: music-tag-web
+    ports:
+      - 21005:8001
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Music:/app/media
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/music-tag-web:/app/data
+    restart: always
+    network_mode: bridge

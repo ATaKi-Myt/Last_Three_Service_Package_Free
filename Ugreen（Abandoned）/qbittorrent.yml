@@ -1,0 +1,16 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:4.6.6
+    container_name: qbittorrent
+    ports:
+      - 28000:28000
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/qbittorrent:/config
+      - /mnt/dm-1/.ugreen_nas/509155/Video:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=28000
+    restart: always
+    network_mode: bridge

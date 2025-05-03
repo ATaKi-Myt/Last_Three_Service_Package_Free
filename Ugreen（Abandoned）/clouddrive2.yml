@@ -1,0 +1,16 @@
+services:
+  clouddrive2:
+    image: cloudnas/clouddrive2:latest
+    container_name: clouddrive2
+    privileged: true
+    ports:
+      - 24015:19798
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/clouddrive2:/Config
+      - /mnt/dm-1/.ugreen_nas/509155/Cloud:/CloudNAS:shared
+      - /mnt/dm-1/.ugreen_nas/509155/Video:/media:shared
+    environment:
+      - TZ=Asia/Shanghai
+      - CLOUDDRIVE_HOME=/Config
+    restart: always
+    network_mode: bridge

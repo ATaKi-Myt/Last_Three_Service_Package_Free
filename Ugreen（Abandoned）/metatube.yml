@@ -1,0 +1,14 @@
+services:
+  metatube:
+    image: ghcr.io/metatube-community/metatube-server:latest
+    container_name: metatube
+    ports:
+      - 20030:8080
+    environment:
+      - PORT=8080
+      - DB_MAX_IDLE_CONNS=0
+      - DB_MAX_OPEN_CONNS=0
+      - DB_PREPARED_STMT=0
+      - DB_AUTO_MIGRATE=0
+    restart: always
+    network_mode: bridge

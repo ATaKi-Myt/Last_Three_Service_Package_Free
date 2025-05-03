@@ -1,0 +1,18 @@
+services:
+  xunlei:
+    image: cnk3x/xunlei:latest
+    container_name: xunlei
+    privileged: true
+    ports:
+      - 28010:2345
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/xunlei:/xunlei/data
+      - /mnt/dm-1/.ugreen_nas/509155/Downloads:/xunlei/downloads
+    environment:
+      - XL_GID=0
+      - XL_UID=0
+      - TZ=Asia/Shanghai
+      - XL_DASHBOARD_USERNAME=admin
+      - XL_DASHBOARD_PASSWORD=admin
+    restart: always
+    network_mode: bridge

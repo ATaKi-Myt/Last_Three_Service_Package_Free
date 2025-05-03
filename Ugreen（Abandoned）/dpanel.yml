@@ -1,0 +1,11 @@
+services:
+  dpanel:
+    image: dpanel/dpanel:latest
+    container_name: dpanel
+    ports:
+      - 30060:8080
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/dpanel:/dpanel
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge

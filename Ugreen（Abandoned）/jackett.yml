@@ -1,0 +1,16 @@
+services:
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    ports:
+      - 30030:9117
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/jackett/config:/config
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/jackett/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=false
+    restart: always
+    network_mode: bridge

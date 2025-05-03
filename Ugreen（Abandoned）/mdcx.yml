@@ -1,0 +1,18 @@
+services:
+  mdcx:
+    image: stainless403/mdcx-builtin-gui-base:latest
+    container_name: mdcx
+    ports:
+      - 20045:5800
+      - 20046:5900
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/mdcx/config:/config
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/mdcx/mdcx-config:/mdcx-config
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/mdcx/logs:/app/log
+      - /mnt/dm-1/.ugreen_nas/509155/Video:/data
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1001
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge

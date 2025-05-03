@@ -1,0 +1,11 @@
+services:
+  v2raya:
+    image: v2raya/v2raya:latest
+    container_name: v2raya
+    privileged: true
+    ports:
+      - 27010:2017
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/v2raya:/etc/v2raya
+    restart: always
+    network_mode: bridge

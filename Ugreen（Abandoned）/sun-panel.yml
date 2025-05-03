@@ -1,0 +1,11 @@
+services:
+  sun-panel:
+    image: hslr/sun-panel:latest
+    container_name: sun-panel
+    ports:
+      - 30005:3002
+    volumes:
+      - /mnt/dm-1/.ugreen_nas/509155/Docker/sun-panel:/app/conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge
