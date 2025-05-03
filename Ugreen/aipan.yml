@@ -1,8 +1,0 @@
-services:
-  aipan:
-    image: fooololo/aipan-netdisk-search:latest
-    container_name: aipan
-    ports:
-      - 3045:3000
-    restart: always
-    network_mode: bridge
