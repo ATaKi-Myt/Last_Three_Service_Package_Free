@@ -1,0 +1,17 @@
+services:
+  halo:
+    image: registry.fit2cloud.com/halo/halo:2.20.19
+    container_name: halo
+    ports:
+      - 30075:8090
+    volumes:
+      - /volume1/My/Docker/halo:/root/.halo2
+    environment:
+      - JVM_OPTS=-Xmx256m -Xms256m
+    command:
+      - --spring.r2dbc.url=r2dbc:pool:mysql://127.0.0.1:29000/halo
+      - --spring.r2dbc.username=admin
+      - --spring.r2dbc.password=password
+      - --spring.sql.init.platform=mysql
+    restart: always
+    network_mode: bridge
