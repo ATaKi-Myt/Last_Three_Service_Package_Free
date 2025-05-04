@@ -115,6 +115,7 @@ COMPOSE_FILES=(
     "ezbookkeeping"
     "firefox"
     "frpc"
+    "halo"
     "homeassistant"
     "homebox"
     "icloudpd"
@@ -168,6 +169,7 @@ COMPOSE_FILES=(
     "wps-office"
     "xiaoaimusic"
     "xunlei"
+    "yesplaymusic"
     "zerotier"
 )
 SERVICE_ALIASES=(
@@ -188,6 +190,7 @@ SERVICE_ALIASES=(
     "记账工具"
     "火狐浏览器"
     "穿透工具"
+    "博客网站"
     "智能家具管理面板"
     "家庭资产管理面板"
     "苹果云照片转存器"
@@ -241,6 +244,7 @@ SERVICE_ALIASES=(
     "网页版WPS"
     "小爱音响"
     "下载器"
+    "音乐播放器"
     "异地组网工具"
 )
 SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP" "TrueNAS" "ZimaOS")
