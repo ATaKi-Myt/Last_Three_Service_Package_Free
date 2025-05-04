@@ -5,7 +5,7 @@ services:
     ports:
       - 30075:8090
     volumes:
-      - /mnt/dm-1/.ugreen_nas/509155/Docker/halo:/root/.halo2
+      - /volume1/@home/Testroot/Docker/halo:/root/.halo2
     environment:
       - JVM_OPTS=-Xmx256m -Xms256m
     command:
