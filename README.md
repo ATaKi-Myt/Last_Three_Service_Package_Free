@@ -94,7 +94,7 @@
 | 69 | wps-office | 在线文档编辑器 |26000|admin|admin|
 | 70 | xiaoaimusic | 小爱同学面板 |25025|/|/|
 | 71 | xunlei | 下载器 |28010|admin|admin|
-| 72 | yesplaymusic | 音乐播放器 |20015|/|/|
+| 72 | yesplaymusic | 音乐播放器 |21015|/|/|
 | 73 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
