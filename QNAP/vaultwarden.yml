@@ -5,7 +5,7 @@ services:
     ports:
       - 30080:80
     volumes:
-      - /volume1/My/Docker/vaultwarden:/data
+      - /share/CACHEDEV1_DATA/Public/Docker/vaultwarden:/data
     environment:
       - DOMAIN=https://vaultwarden.example.com
       - SIGNUPS_ALLOWED=true
