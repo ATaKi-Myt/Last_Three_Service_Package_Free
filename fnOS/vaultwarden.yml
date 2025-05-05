@@ -1,0 +1,13 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    ports:
+      - 30080:80
+    volumes:
+      - /vol1/1000/Docker/vaultwarden:/data
+    environment:
+      - DOMAIN=https://vaultwarden.example.com
+      - SIGNUPS_ALLOWED=true
+    restart: always
+    network_mode: bridge
