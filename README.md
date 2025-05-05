@@ -4,20 +4,27 @@
 
 ### 1、概述
 
+#### 1.1、项目介绍
+
 历时两个项目的结合，从原先的懒人包脚本和Compose商店中提取结合得到此项目的脚本，经过大家的一致反馈，而且圈粉无数，致力于为小白和重装系统的人群提供更优质的服务与帮助，故重新开源了此脚本，欢迎大家持续关注三人行，并提出各种适配问题，作者也会竭尽全力的为大伙努力改进！！！
+
+#### 1.2、项目被迫分支
+
+由于博客公开后被大量攻击，无法投入太多金钱去免费进行维护，故推出了 Free 和 Pro 两个分支供大家进行下载，自 v1.1.1 版本以后 Free 版本依旧开源（有所删减），Pro 版本闭源发放安装包安装！！！
 
 ### 2、支持系统
 
-|序号|系统名称|系统英文名称|是否适配|
-| :---: | :---: | :---: | :---: |
-|1|飞牛|fnOS|是|
-|2|黑群晖|Synology|是|
-|3|绿联旧（废弃）|Ugreen|是|
-|4|绿联新|UgreenNew|是|
-|5|极空间|ZSpace|是|
-|6|威联通|QNAP|是|
-|7|TrueNas|TrueNas|是|
-|8|ZimaOS|ZimaOS|是|
+|序号|系统名称|系统英文名称|是否适配|适配版本|
+| :---: | :---: | :---: | :---: | :---: |
+|1|飞牛|fnOS|是|Free|
+|2|黑群晖|Synology|是|Free|
+|3|绿联旧（废弃）|Ugreen|是|Free|
+|4|绿联新|UgreenNew|是|Free|
+|5|极空间|ZSpace|是|Free|
+|6|威联通|QNAP|是|Free|
+|7|TrueNas|TrueNas|是|Free|
+|8|ZimaOS|ZimaOS|是|Free|
+|9|CasaOS|CasaOS|否|Free|
 
 ## 二、服务包 Docker 集成项目列表
 
@@ -85,17 +92,18 @@
 | 60 | transmission | 下载器 |28005|root|root|
 | 61 | upsnap | 局域网络唤醒设备 |30070|/|/|
 | 62 | v2raya | 代理 |27010|/|/|
-| 63 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 64 | verysync | 微力同步 |26010|/|/|
-| 65 | vscode | 代码编辑器 |30055|/|password|
-| 66 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 67 | watchtower | 自动检测更新镜像 |/|/|/|
-| 68 | wechat | 网页版微信 |26005|/|/|
-| 69 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 70 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 71 | xunlei | 下载器 |28010|admin|admin|
-| 72 | yesplaymusic | 音乐播放器 |21015|/|/|
-| 73 | zerotier | 异地组网工具 |/|/|/|
+| 63 | vaultwarden | 密码管理服务器 |30080|自行创建|自行创建|
+| 64 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 65 | verysync | 微力同步 |26010|/|/|
+| 66 | vscode | 代码编辑器 |30055|/|password|
+| 67 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 68 | watchtower | 自动检测更新镜像 |/|/|/|
+| 69 | wechat | 网页版微信 |26005|/|/|
+| 70 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 71 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 72 | xunlei | 下载器 |28010|admin|admin|
+| 73 | yesplaymusic | 音乐播放器 |21015|/|/|
+| 74 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
@@ -262,11 +270,32 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 #### 三、后续优化
 * 暂无更新
 
+### Last_Three_Service_Package.sh v1.1.1 版本更新日志：
+#### 一、脚本逻辑
+* 服务菜单，增加 jellyfin-library-poster 的 Json 配置文件下载
+* 主菜单，增加 CDD 更改 Nas 镜像源文件操作
+* 适配 ZimaOS 系统
+#### 二、脚本内容
+| 更新容器 |端口|
+| :---: | :---: |
+|mdcx|20045/20046|
+|dpanel|30060|
+|istoreos|/|
+|jellyfin-library-poster|/|
+|rustdesk|21116/21117|
+|upsnap|30070|
+|yesplaymusic|21015|
+|Halo|30075|
+|vaultwarden|30080|
+#### 三、后续优化
+* 后续适配 CasaOS 系统
+* 开发双版本、Free 和 Pro 版本
+
 ## 六、作者信息
 
 ### 哔哩哔哩主页：***[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)***
 
-### 作者博客：***[三人行博客](https://lastthree.cn)***
+### 作者博客：***[三人行博客](https://lastthree.cn) (暂停维护)***
 
 ### 作者微信：***M13051661743***
 
