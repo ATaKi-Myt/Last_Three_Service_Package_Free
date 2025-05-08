@@ -82,28 +82,29 @@
 | 50 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
 | 51 | reader | 电子书库 |22000|/|/|
 | 52 | rustdesk-server | 远程桌面 |30066/30067|/|/|
-| 53 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
-| 54 | stirling-pdf | pdf 工具箱 |26015|/|/|
-| 55 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
-| 56 | synctv | 多人在线共享影院 |20040|root|root|
-| 57 | tailscale | 异地组网工具 |/|/|/|
-| 58 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
-| 59 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
-| 60 | transmission | 下载器 |28005|root|root|
-| 61 | upsnap | 局域网络唤醒设备 |30070|/|/|
-| 62 | v2raya | 代理 |27010|/|/|
-| 63 | vaultwarden | 密码管理服务器 |30080|自行创建|自行创建|
-| 64 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 65 | verysync | 微力同步 |26010|/|/|
-| 66 | vscode | 代码编辑器 |30055|/|password|
-| 67 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 68 | watchtower | 自动检测更新镜像 |/|/|/|
-| 69 | wechat | 网页版微信 |26005|/|/|
-| 70 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 71 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 72 | xunlei | 下载器 |28010|admin|admin|
-| 73 | yesplaymusic | 音乐播放器 |21015|/|/|
-| 74 | zerotier | 异地组网工具 |/|/|/|
+| 53 | safeline | 雷池WAF |27015|/|/|
+| 54 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
+| 55 | stirling-pdf | pdf 工具箱 |26015|/|/|
+| 56 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
+| 57 | synctv | 多人在线共享影院 |20040|root|root|
+| 58 | tailscale | 异地组网工具 |/|/|/|
+| 59 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
+| 60 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
+| 61 | transmission | 下载器 |28005|root|root|
+| 62 | upsnap | 局域网络唤醒设备 |30070|/|/|
+| 63 | v2raya | 代理 |27010|/|/|
+| 64 | vaultwarden | 密码管理服务器 |30080|自行创建|自行创建|
+| 65 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 66 | verysync | 微力同步 |26010|/|/|
+| 67 | vscode | 代码编辑器 |30055|/|password|
+| 68 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 69 | watchtower | 自动检测更新镜像 |/|/|/|
+| 70 | wechat | 网页版微信 |26005|/|/|
+| 71 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 72 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 73 | xunlei | 下载器 |28010|admin|admin|
+| 74 | yesplaymusic | 音乐播放器 |21015|/|/|
+| 75 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
