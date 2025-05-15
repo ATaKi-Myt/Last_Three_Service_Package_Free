@@ -138,6 +138,7 @@ COMPOSE_FILES=(
     "mediago"
     "metatube"
     "moviepilot"
+    "mtphotos"
     "music-tag-web"
     "mysql"
     "nastool"
