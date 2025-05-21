@@ -181,8 +181,16 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 * 进入 **root** 权限，输入`sudo -i` 并输入 **root** **密码**，进入 root 权限
 * 以 **飞牛存储空间 1 示例** ，复制如下命令运行即可，**如需改变存储位置** 请将 /vol1/1000/ 更改为 /vol*/1000/ *为数字，代表存储空间 *
 
+#### 4.1、外网用户
+
 ```bash
 mkdir -p /vol1/1000/Compose && wget -q https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && cd /vol1/1000/Compose && bash Last_Three_Service_Package.sh
+```
+
+#### 4.2、大陆用户
+
+```bash
+mkdir -p /vol1/1000/Compose && wget -q https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && cd /vol1/1000/Compose && bash Last_Three_Service_Package.sh
 ```
 
 ## 五、更新日志
