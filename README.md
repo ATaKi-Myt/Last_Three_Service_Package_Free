@@ -36,78 +36,79 @@
 | 4 | alist-strm | Strm流文件生成器 |30050|自行创建|自行创建|
 | 5 | alist | 网盘挂载 |24005|admin|运行日志获取|
 | 6 | babybuddy | 育儿管理面板 |25020|admin|password|
-| 7 | cashbook | 记账工具 |25000|自行创建|自行创建|
-| 8 | chinesesubfinder | 字幕下载工具 |20025|自行创建|自行创建|
-| 9 | clouddrive2 | 网盘挂载 |24015|自行创建|自行创建|
-| 10 | cloudsaver | 网盘资源转存工具 |24010|自行创建|自行创建|
-| 11 | dockge | Docker可视化工具 |30040|自行创建|自行创建|
-| 12 | dpanel | Docker监控工具 |30060|自行创建|自行创建|
-| 13 | emby | 媒体服务器 |20015|自行创建|自行创建|
-| 14 | emulatorjs | 掌机模拟器 |23000/23001|/|/|
-| 15 | ezbookkeeping | 记账工具 |25005|自行创建|自行创建|
-| 16 | firefox | 火狐浏览器 |27000|/|/|
-| 17 | frpc | frpc 穿透客户端 |/|/|/|
-| 18 | halo | 博客网站 |30075|自行创建|自行创建|
-| 19 | homeassistant | 开源智能家居管理面板 |25030|自行创建|自行创建|
-| 20 | homebox | 家庭资产管理面板 |25015|自行创建|自行创建|
-| 21 | icloudpd | icloud 图片转存工具 |24020|/|/|
-| 22 | immich | AI 相册 |25035|自行创建|自行创建|
-| 23 | ip-tool | ip 检测工具箱 |27005|/|/|
-| 24 | iptv-api | iptv |20020|/|/|
-| 25 | istoreos | 软路由 |/|/|/|
-| 26 | iyuuplus | 转种辅种 |30000|自行创建|自行创建|
-| 27 | jackett | 索引器 |30030|/|/|
-| 28 | jellyfin-library-poster | 媒体服务器自动生成海报 |/|/|/|
-| 29 | jellyfin | 媒体服务器 |20010|自行创建|自行创建|
-| 30 | kkfileview | 多格式文件在线预览 |26020|/|/|
-| 31 | komga | 动漫库 |22005|自行创建|自行创建|
-| 32 | libretv | 电视剧在线观看 |20035|/|/|
-| 33 | lsky-pro | 私人图床 |26040|自行创建|自行创建|
-| 34 | lucky | 网络转发 |16601|666|666|
-| 35 | lyricapi | 音流刮削器 |21010|/|/|
-| 36 | mariadb | 数据库 |29010|/|/|
-| 37 | mdcx | 小姐姐刮削服务器 |20045/20046|/|/|
-| 38 | mediago | B站资源下载器 |28015|/|/|
-| 39 | metatube | 小姐姐刮削服务器 |20030|/|/|
-| 40 | moviepilot | 家庭影院 |20005|admin|运行日志获取|
-| 41 | mtphotos | AI 相册 |25040|自行创建|自行创建|
-| 42 | music-tag-web | 音乐刮削器 |21005|admin|admin|
-| 43 | mysql | 数据库 |29000|/|/|
-| 44 | nastool | 家庭影院 |20000|admin|password|
-| 45 | navidrome | 音乐服务器 |21000|自行创建|自行创建|
-| 46 | newsnow | 各大平台十条热搜 |30025|/|/|
-| 47 | npc | npc 穿透客户端 |/|/|/|
-| 48 | ollama | 智能体工具 |26025|/|/|
-| 49 | open-webui | 可视化智能体对话面板 |26030|自行创建|自行创建|
-| 50 | postgres | 数据库 |29005|/|/|
-| 51 | qbittorrent | 下载器 |28000|admin|运行日志获取|
-| 52 | qiandao | 每日签到 |30035|自行创建|自行创建|
-| 53 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
-| 54 | reader | 电子书库 |22000|/|/|
-| 55 | rustdesk-server | 远程桌面 |30066/30067|/|/|
-| 56 | safeline | 雷池WAF |27015|/|/|
-| 57 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
-| 58 | stirling-pdf | pdf 工具箱 |26015|/|/|
-| 59 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
-| 60 | synctv | 多人在线共享影院 |20040|root|root|
-| 61 | tailscale | 异地组网工具 |/|/|/|
-| 62 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
-| 63 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
-| 64 | transmission | 下载器 |28005|root|root|
-| 65 | upsnap | 局域网络唤醒设备 |30070|/|/|
-| 66 | v2raya | 代理 |27010|/|/|
-| 67 | vaultwarden | 密码管理服务器 |30080|自行创建|自行创建|
-| 68 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 69 | verysync | 微力同步 |26010|/|/|
-| 70 | vscode | 代码编辑器 |30055|/|password|
-| 71 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 72 | watchtower | 自动检测更新镜像 |/|/|/|
-| 73 | wechat | 网页版微信 |26005|/|/|
-| 74 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 75 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 76 | xunlei | 下载器 |28010|admin|admin|
-| 77 | yesplaymusic | 音乐播放器 |21015|/|/|
-| 78 | zerotier | 异地组网工具 |/|/|/|
+| 7 | bitmagnet | 种子爬取器 |30085|自行创建|自行创建|
+| 8 | cashbook | 记账工具 |25000|自行创建|自行创建|
+| 9 | chinesesubfinder | 字幕下载工具 |20025|自行创建|自行创建|
+| 10 | clouddrive2 | 网盘挂载 |24015|自行创建|自行创建|
+| 11 | cloudsaver | 网盘资源转存工具 |24010|自行创建|自行创建|
+| 12 | dockge | Docker可视化工具 |30040|自行创建|自行创建|
+| 13 | dpanel | Docker监控工具 |30060|自行创建|自行创建|
+| 14 | emby | 媒体服务器 |20015|自行创建|自行创建|
+| 15 | emulatorjs | 掌机模拟器 |23000/23001|/|/|
+| 16 | ezbookkeeping | 记账工具 |25005|自行创建|自行创建|
+| 17 | firefox | 火狐浏览器 |27000|/|/|
+| 18 | frpc | frpc 穿透客户端 |/|/|/|
+| 19 | halo | 博客网站 |30075|自行创建|自行创建|
+| 20 | homeassistant | 开源智能家居管理面板 |25030|自行创建|自行创建|
+| 21 | homebox | 家庭资产管理面板 |25015|自行创建|自行创建|
+| 22 | icloudpd | icloud 图片转存工具 |24020|/|/|
+| 23 | immich | AI 相册 |25035|自行创建|自行创建|
+| 24 | ip-tool | ip 检测工具箱 |27005|/|/|
+| 25 | iptv-api | iptv |20020|/|/|
+| 26 | istoreos | 软路由 |/|/|/|
+| 27 | iyuuplus | 转种辅种 |30000|自行创建|自行创建|
+| 28 | jackett | 索引器 |30030|/|/|
+| 29 | jellyfin-library-poster | 媒体服务器自动生成海报 |/|/|/|
+| 30 | jellyfin | 媒体服务器 |20010|自行创建|自行创建|
+| 31 | kkfileview | 多格式文件在线预览 |26020|/|/|
+| 32 | komga | 动漫库 |22005|自行创建|自行创建|
+| 33 | libretv | 电视剧在线观看 |20035|/|/|
+| 34 | lsky-pro | 私人图床 |26040|自行创建|自行创建|
+| 35 | lucky | 网络转发 |16601|666|666|
+| 36 | lyricapi | 音流刮削器 |21010|/|/|
+| 37 | mariadb | 数据库 |29010|/|/|
+| 38 | mdcx | 小姐姐刮削服务器 |20045/20046|/|/|
+| 39 | mediago | B站资源下载器 |28015|/|/|
+| 40 | metatube | 小姐姐刮削服务器 |20030|/|/|
+| 41 | moviepilot | 家庭影院 |20005|admin|运行日志获取|
+| 42 | mtphotos | AI 相册 |25040|自行创建|自行创建|
+| 43 | music-tag-web | 音乐刮削器 |21005|admin|admin|
+| 44 | mysql | 数据库 |29000|/|/|
+| 45 | nastool | 家庭影院 |20000|admin|password|
+| 46 | navidrome | 音乐服务器 |21000|自行创建|自行创建|
+| 47 | newsnow | 各大平台十条热搜 |30025|/|/|
+| 48 | npc | npc 穿透客户端 |/|/|/|
+| 49 | ollama | 智能体工具 |26025|/|/|
+| 50 | open-webui | 可视化智能体对话面板 |26030|自行创建|自行创建|
+| 51 | postgres | 数据库 |29005|/|/|
+| 52 | qbittorrent | 下载器 |28000|admin|运行日志获取|
+| 53 | qiandao | 每日签到 |30035|自行创建|自行创建|
+| 54 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
+| 55 | reader | 电子书库 |22000|/|/|
+| 56 | rustdesk-server | 远程桌面 |30066/30067|/|/|
+| 57 | safeline | 雷池WAF |27015|/|/|
+| 58 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
+| 59 | stirling-pdf | pdf 工具箱 |26015|/|/|
+| 60 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
+| 61 | synctv | 多人在线共享影院 |20040|root|root|
+| 62 | tailscale | 异地组网工具 |/|/|/|
+| 63 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
+| 64 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
+| 65 | transmission | 下载器 |28005|root|root|
+| 66 | upsnap | 局域网络唤醒设备 |30070|/|/|
+| 67 | v2raya | 代理 |27010|/|/|
+| 68 | vaultwarden | 密码管理服务器 |30080|自行创建|自行创建|
+| 69 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
+| 70 | verysync | 微力同步 |26010|/|/|
+| 71 | vscode | 代码编辑器 |30055|/|password|
+| 72 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
+| 73 | watchtower | 自动检测更新镜像 |/|/|/|
+| 74 | wechat | 网页版微信 |26005|/|/|
+| 75 | wps-office | 在线文档编辑器 |26000|admin|admin|
+| 76 | xiaoaimusic | 小爱同学面板 |25025|/|/|
+| 77 | xunlei | 下载器 |28010|admin|admin|
+| 78 | yesplaymusic | 音乐播放器 |21015|/|/|
+| 79 | zerotier | 异地组网工具 |/|/|/|
 
 ## 三、服务包目录介绍列表
 
@@ -122,14 +123,21 @@
 
 ## 四、如何使用服务包
 
+### 一、各系统根目录示例
+
 | 系统 | 根目录 |
 | :---: | :---: |
 |飞牛| `/vol1/*/ * vol1 存储空间1 * 用户ID`|
-|黑群晖| `/volume1/*/ volume1 存储空间1 * 根路径名称`|
-|绿联旧| `/mnt/dm-1/.ugreen_nas/*/ dm-1 存储空间1 * 根路径名称`|
-|绿联新| `/volume1/@home/*/ volume1 存储空间1 * 根路径名称`|
-|极空间| `/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称`|
-|威联通| `/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹`|
+|黑群晖| `/volume1/*/ volume1 存储空间1 * 根路径名称` |
+|绿联旧| `/mnt/dm-1/.ugreen_nas/*/ dm-1 存储空间1 * 根路径名称` |
+|绿联新| `/volume1/@home/*/ volume1 存储空间1 * 根路径名称` |
+|极空间| `/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称` |
+|威联通| `/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹` |
+|TrueNas| `/mnt/test/ test 存储池名称` |
+|ZimaOS| `/var/lib/casaos_data/.media/SSD-Storage/ SSD-Storage 存储池名称` |
+|CasaOS| `暂无` |
+
+### 二、外网用户使用示例
 
 * 打开 **FinalShell** 软件
 * 进入 **root** 权限，输入`sudo -i` 并输入 **root** **密码**，进入 root 权限
@@ -147,6 +155,8 @@ wget https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs
 * 选择完成等待 `Docker pull` 和 `Docker run` 完成即可使用 `Docker` 服务了
 * 如果出现拉取 443 表示拉取种，522 这种一般替换加速源即可，在 `https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh` 前加入下方加速链接拉取即可
 
+### 三、大陆网用户使用示例
+
 | 序号 | 加速链接 |
 | :---: | :---: |
 |1| `https://gitproxy.click/`|
@@ -162,6 +172,16 @@ wget https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs
 
 ```bash
 wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh
+```
+
+### 四、傻瓜式用户
+
+* 打开 **FinalShell** 软件
+* 进入 **root** 权限，输入`sudo -i` 并输入 **root** **密码**，进入 root 权限
+* 以 **飞牛存储空间 1 示例** ，复制如下命令运行即可，**如需改变存储位置** 请将 /vol1/1000/ 更改为 /vol*/1000/ *为数字，代表存储空间 *
+
+```bash
+mkdir -p /vol1/1000/Compose && wget -q https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && bash /vol1/1000/Compose/Last_Three_Service_Package.sh
 ```
 
 ## 五、更新日志
