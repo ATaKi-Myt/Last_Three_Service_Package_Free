@@ -3,16 +3,16 @@ services:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
     container_name: bitmagnet
     ports:
-      - 30090:3333
-      - 30091:3334/tcp
-      - 30091:3334/udp
+      - 30085:3333
+      - 30086:3334/tcp
+      - 30087:3334/udp
     restart: always
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=bitmagnet
-      - TMDB_API_KEY=846bba4db8f61e718e923c613dafffc2  # TMDB API密钥
+      - TMDB_API_KEY=youer api key
     volumes:
       - /share/CACHEDEV1_DATA/Public/Docker/bitmagnet/config:/root/.config/bitmagnet
     command:
