@@ -118,8 +118,9 @@
 | 2 | Docker | 用于存放容器的文件夹 |
 | 3 | Downloads | 用于迅雷远程下载文件夹 |
 | 4 | Music | 用于存放音乐的 |
-| 5 | Synchronous | 用于同步文件夹的 |
-| 6 | Video | 用于存放影视的文件夹，包含硬链接文件夹 |
+| 5 | Photos | 用于存放照片的 |
+| 6 | Synchronous | 用于同步文件夹的 |
+| 7 | Video | 用于存放影视的文件夹，包含硬链接文件夹 |
 
 ## 四、如何使用服务包
 
@@ -181,7 +182,7 @@ wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Thr
 * 以 **飞牛存储空间 1 示例** ，复制如下命令运行即可，**如需改变存储位置** 请将 /vol1/1000/ 更改为 /vol*/1000/ *为数字，代表存储空间 *
 
 ```bash
-mkdir -p /vol1/1000/Compose && wget -q https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && bash /vol1/1000/Compose/Last_Three_Service_Package.sh
+mkdir -p /vol1/1000/Compose && wget -q https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && cd /vol1/1000/Compose && bash Last_Three_Service_Package.sh
 ```
 
 ## 五、更新日志
