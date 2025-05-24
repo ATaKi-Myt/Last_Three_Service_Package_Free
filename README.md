@@ -17,14 +17,14 @@
 |序号|系统名称|系统英文名称|是否适配|适配版本|
 | :---: | :---: | :---: | :---: | :---: |
 |1|飞牛|fnOS|是|Free|
-|2|黑群晖|Synology|是|Free|
-|3|绿联旧（废弃）|Ugreen|是|Free|
-|4|绿联新|UgreenNew|是|Free|
-|5|极空间|ZSpace|是|Free|
-|6|威联通|QNAP|是|Free|
-|7|TrueNas|TrueNas|是|Free|
-|8|ZimaOS|ZimaOS|是|Free|
-|9|CasaOS|CasaOS|否|Free|
+|2|黑群晖|Synology|是|Pro|
+|3|绿联旧（废弃）|Ugreen|是|Pro|
+|4|绿联新|UgreenNew|是|Pro|
+|5|极空间|ZSpace|是|Pro|
+|6|威联通|QNAP|是|Pro|
+|7|TrueNas|TrueNas|是|Pro|
+|8|ZimaOS|ZimaOS|是|Pro|
+|9|CasaOS|CasaOS|否|Pro|
 
 ## 二、服务包 Docker 集成项目列表
 
