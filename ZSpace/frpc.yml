@@ -1,9 +1,0 @@
-services:
-  frpc:
-    image: snowdreamtech/frpc:latest
-    container_name: frpc
-    volumes:
-      - /tmp/zfsv3/sata11/13051661743/data/Frpc:/etc/frp
-    command: -c /etc/frp/frpc.ini
-    restart: always
-    network_mode: host
