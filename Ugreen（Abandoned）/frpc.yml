@@ -1,9 +1,0 @@
-services:
-  frpc:
-    image: snowdreamtech/frpc:latest
-    container_name: frpc
-    volumes:
-      - /mnt/dm-1/.ugreen_nas/509155/Frpc:/etc/frp
-    command: -c /etc/frp/frpc.ini
-    restart: always
-    network_mode: host

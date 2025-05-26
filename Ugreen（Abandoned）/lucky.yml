@@ -1,8 +1,0 @@
-services:
-  lucky:
-    image: gdy666/lucky:latest
-    container_name: lucky
-    volumes:
-      - /mnt/dm-1/.ugreen_nas/509155/Docker/lucky:/goodluck
-    restart: always
-    network_mode: host
