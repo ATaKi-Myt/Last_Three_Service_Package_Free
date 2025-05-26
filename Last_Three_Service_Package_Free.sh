@@ -218,7 +218,7 @@ SERVICE_ALIASES=(
     "流媒体下载器"
     "小姐姐刮削服务器"
     "影视管理面板"
-	"AI相册"
+    "AI相册"
     "音乐刮削器"
     "数据库"
     "影视管理面板"
@@ -257,8 +257,9 @@ SERVICE_ALIASES=(
     "音乐播放器"
     "异地组网工具"
 )
-SYSTEMS=("fnOS" "Synology" "Ugreen" "UgreenNew" "ZSpace" "QNAP" "TrueNAS" "ZimaOS")
-FRIENDLY_SYSTEMS=("飞牛系统" "群晖系统" "绿联（旧系统）" "绿联（新系统）" "极空间" "威联通" "TrueNas" "ZimaOS")
+
+SYSTEMS=("fnOS")
+FRIENDLY_SYSTEMS=("飞牛系统")
 
 function check_root_user() {
     if [ "$EUID" -ne 0 ]; then
@@ -271,26 +272,8 @@ EOF
 }
 
 function select_system() {
-    local choice
-    while true; do
-        clear
-        show_info
-        echo -e "${YELLOW}请选择系统（输入 1 - 8 之间的序号）：${NC}"
-        for i in "${!SYSTEMS[@]}"; do
-            printf "%d. %s\n" $((i + 1)) "${FRIENDLY_SYSTEMS[i]}"
-        done
-        echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}" 
-        read -e -p "请输入系统序号: " choice
-        if [[ $choice =~ ^[1-8]$ ]]; then
-            break
-        else
-            echo -e "${RED}无效的系统选择，请输入 1 - 8 之间的序号。${NC}"
-            sleep 2
-        fi
-    done
-    local index=$((choice - 1))
-    selected_system="${SYSTEMS[index]}"
-    friendly_selected="${FRIENDLY_SYSTEMS[index]}"
+    selected_system="${SYSTEMS[0]}"
+    friendly_selected="${FRIENDLY_SYSTEMS[0]}"
 }
 
 PAGE_SIZE=20
@@ -323,8 +306,7 @@ function show_menu() {
         main_prompt+="，$extra_prompt"
     fi
     echo -e "${YELLOW}$main_prompt${NC}"
-    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID OS - 其他服务${NC}"
-    echo -e "${CYAN}BI - 编辑 NET - 建网络 LOG - 查日志 S - 保存永久路径 CDD - 编辑镜像源${NC}"
+    echo -e "${CYAN}其他操作：0 - 退出 F - 搜索 D - 删除容器 U - 查UID/GID NET - 建网络${NC}"
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
@@ -332,7 +314,7 @@ SAVED_PATH_FILE=".saved_path"
 
 function handle_input() {
     local input
-    read -e -p "请输入序号或 f 或 d 或 u 或 os 或 bi 或 net 或 log 或 p 或 n 或 s 或 cdd: " input
+    read -e -p "请输入序号或 f 或 d 或 u 或 net 或 p 或 n: " input
     case $input in
         0)
             echo -e "${YELLOW}退出脚本。${NC}"
@@ -341,20 +323,11 @@ function handle_input() {
         f)
             handle_search_input
             ;;
-        os)
-            handle_sub_menu_input
-            ;;
         d)
             handle_delete_container_input
             ;;
         u)
             handle_query_uid_gid_input
-            ;;
-        bi)
-            show_yml_files_menu
-            ;;
-        log)
-            handle_log_input
             ;;
         net)
             create_docker_network
@@ -368,15 +341,6 @@ function handle_input() {
             if [ $(( (current_page) * PAGE_SIZE )) -lt ${#COMPOSE_FILES[@]} ]; then
                 current_page=$((current_page + 1))
             fi
-            ;;
-        s)
-            read -e -p "请输入要保存的路径: " saved_path
-            echo "$saved_path" > "$SAVED_PATH_FILE"
-            echo -e "${GREEN}路径保存成功。${NC}"
-            sleep 2
-            ;;
-        cdd)
-            handle_daemon_json_edit
             ;;
         *)
             handle_number_choices_input "$input"
@@ -405,137 +369,6 @@ function handle_search_input() {
         echo -e "${RED}未找到匹配的镜像，返回选择页面。${NC}"
         sleep 2
     fi
-}
-
-function handle_sub_menu_input() {
-    clear
-    show_info
-    echo -e "${YELLOW}其他服务菜单：${NC}"
-    echo "1. 精简版适配插件下载"
-    echo "2. 百度网盘拉取镜像脚本下载"
-    echo "3. 三人行穿透服务一键安装脚本下载"
-    echo "4. Docker升级服务脚本下载"
-    echo "5. 三人行精简版服务一键安装脚本下载"
-    echo "6. 三人行服务包更新脚本下载"
-    echo "7. 三人行 Sun-Panel 配置文件更改 IP 脚本下载"
-    echo "8. 三人行 jellyfin-library-poster 创建 Json 文件脚本下载"
-    read -e -p "请输入选项编号 (0 返回主菜单): " sub_choice
-    case $sub_choice in
-        0)
-            continue_loop=true
-            return
-            ;;
-        1)
-            echo "正在下载精简版适配插件"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Get_Plugins.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}精简版适配插件下载成功。${NC}"
-                chmod +x Get_Plugins.sh
-                ./Get_Plugins.sh
-            else
-                echo -e "${RED}精简版适配插件下载失败。${NC}"
-            fi
-            ;;
-        2)
-            echo "正在下载百度网盘拉取镜像脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Baidu_Pan_Load.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}百度网盘拉取镜像脚本下载成功。${NC}"
-                chmod +x Baidu_Pan_Load.sh
-                ./Baidu_Pan_Load.sh
-            else
-                echo -e "${RED}百度网盘拉取镜像脚本下载失败。${NC}"
-            fi
-            ;;
-        3)
-            echo "正在下载三人行穿透服务一键安装脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/npc_load.sh" 
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}三人行穿透服务一键安装脚本下载成功。${NC}"
-                chmod +x npc_load.sh
-                ./npc_load.sh
-            else
-                echo -e "${RED}三人行穿透服务一键安装脚本下载失败。${NC}"
-            fi
-            ;;
-        4)
-            echo "正在下载Docker升级服务脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Docker_Update.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}Docker升级服务脚本下载成功。${NC}"
-                chmod +x Docker_Update.sh
-                ./Docker_Update.sh
-            else
-                echo -e "${RED}Docker升级服务脚本下载失败。${NC}"
-            fi
-            ;;
-        5)
-            echo "正在下载三人行精简版服务一键安装脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Last_Three_lite.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}三人行精简版服务一键安装脚本下载成功。${NC}"
-                chmod +x Last_Three_lite.sh
-                ./Last_Three_lite.sh
-            else
-                echo -e "${RED}三人行精简版服务一键安装脚本下载失败。${NC}"
-            fi
-            ;;
-        6)
-            echo "正在下载三人行服务包更新脚本"
-            if [ -f "Update.sh" ]; then
-                read -e -p "Update.sh 文件已存在，是否重新下载？(y/n): " re_download
-                if [[ ! $re_download =~ ^[Yy]$ ]]; then
-                    echo -e "${YELLOW}跳过下载，使用已存在的文件 Update.sh。${NC}"
-                    chmod +x Update.sh
-                    ./Update.sh
-                    break
-                fi
-            fi
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Update.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}三人行服务包更新脚本下载成功。${NC}"
-                chmod +x Update.sh
-                ./Update.sh
-            else
-                echo -e "${RED}三人行服务包更新脚本下载失败。${NC}"
-            fi
-            ;;
-        7)
-            echo "正在下载三人行 Sun-Panel 配置文件更改 IP 脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Change_Sun_Panel_IP.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}三人行 Sun-Panel 配置文件更改 IP 脚本下载成功。${NC}"
-                chmod +x Change_Sun_Panel_IP.sh
-                ./Change_Sun_Panel_IP.sh
-            else
-                echo -e "${RED}三人行 Sun-Panel 配置文件更改 IP 脚本下载失败。${NC}"
-            fi
-            ;;
-        8)
-            echo "正在下载三人行 jellyfin-library-poster 创建 Json 文件脚本"
-            url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Services/Create_Json.sh"
-            wget -q "$url"
-            if [ $? -eq 0 ]; then
-                echo -e "${GREEN}三人行 jellyfin-library-poster 创建 Json 文件脚本下载成功。${NC}"
-                chmod +x Create_Json.sh
-                ./Create_Json.sh
-            else
-                echo -e "${RED}三人行 jellyfin-library-poster 创建 Json 文件脚本下载失败。${NC}"
-            fi
-            ;;
-        *)
-            echo -e "${RED}无效的选项，请输入 0 - 6 之间的数字。${NC}"
-            sleep 2
-            handle_input
-            ;;
-    esac
 }
 
 function handle_delete_container_input() {
@@ -576,51 +409,6 @@ function handle_query_uid_gid_input() {
     printf "\033[2K\r"
 }
 
-function show_yml_files_menu() {
-    clear
-    show_info
-    echo -e "${YELLOW}当前文件夹下的 .yml 文件列表：${NC}"
-    local yml_files=(*.yml)
-    for i in "${!yml_files[@]}"; do
-        printf "%d. %s\n" $((i + 1)) "${yml_files[$i]}"
-    done
-    read -e -p "请输入要编辑的文件序号 (0 返回主菜单): " choice
-    if ! [[ $choice =~ ^[0-9]+$ ]]; then
-        echo -e "${RED}无效的输入，请输入 0 到 ${#yml_files[@]} 之间的数字。${NC}"
-        sleep 2
-        show_yml_files_menu
-        return
-    fi
-    if [ "$choice" -eq 0 ]; then
-        continue_loop=true
-        return
-    elif [ "$choice" -ge 1 ] && [ "$choice" -le "${#yml_files[@]}" ]; then
-        local index=$((choice - 1))
-        local file="${yml_files[$index]}"
-        echo -e "${YELLOW}请选择编辑器：1 - vi，2 - nano${NC}"
-        read -e -p "请输入选项编号: " editor_choice
-        case $editor_choice in
-            1)
-                echo -e "${YELLOW}正在使用 vi 编辑 $file...${NC}"
-                vi "$file"
-                ;;
-            2)
-                echo -e "${YELLOW}正在使用 nano 编辑 $file...${NC}"
-                nano "$file"
-                ;;
-            *)
-                echo -e "${RED}无效的选择，请输入 1 或 2。${NC}"
-                sleep 2
-                show_yml_files_menu
-                ;;
-        esac
-    else
-        echo -e "${RED}无效的选择，请输入 0 到 ${#yml_files[@]} 之间的数字。${NC}"
-        sleep 2
-        show_yml_files_menu
-    fi
-}
-
 function create_docker_network() {
     echo -e "${YELLOW}当前 Docker 网络列表：${NC}"
     docker network ls
@@ -640,31 +428,6 @@ function create_docker_network() {
         printf "\033[2K\r"
         break
     done
-}
-
-function handle_daemon_json_edit() {
-    echo -e "${YELLOW}正在查找 /etc/docker/daemon.json 文件，请稍后...${NC}"
-    local daemon_json_path=$(find / -name "daemon.json" -path "/etc/docker/*" 2>/dev/null | head -n 1)
-    if [ -n "$daemon_json_path" ]; then
-        echo -e "${YELLOW}找到 daemon.json 文件，路径为: $daemon_json_path${NC}"
-        echo -e "${YELLOW}请选择编辑器：1 - vi，2 - nano${NC}"
-        read -e -p "请输入选项编号: " editor_choice
-        case $editor_choice in
-            1)
-                echo -e "${YELLOW}正在使用 vi 编辑 $daemon_json_path...${NC}"
-                vi "$daemon_json_path"
-                ;;
-            2)
-                echo -e "${YELLOW}正在使用 nano 编辑 $daemon_json_path...${NC}"
-                nano "$daemon_json_path"
-                ;;
-            *)
-                echo -e "${RED}无效的选择，请输入 1 或 2。${NC}"
-                ;;
-        esac
-    else
-        echo -e "${RED}未找到 /etc/docker/daemon.json 文件。${NC}"
-    fi
 }
 
 function handle_service_alias_input() {
@@ -730,63 +493,10 @@ function handle_number_choices_input() {
     continue_loop=false
 }
 
-function handle_log_input() {
-    echo -e "${YELLOW}正在获取当前运行的 Docker 容器列表...${NC}"
-    local running_containers=($(docker ps --format "{{.Names}}" | sort))
-    if [ ${#running_containers[@]} -eq 0 ]; then
-        echo -e "${YELLOW}没有找到正在运行的 Docker 容器。${NC}"
-        return
-    fi
-
-    echo -e "${YELLOW}当前运行的 Docker 容器列表：${NC}"
-    for i in "${!running_containers[@]}"; do
-        printf "%d. %s\n" $((i + 1)) "${running_containers[$i]}"
-    done
-
-    local original_sigint_handler=$(trap -p SIGINT | cut -d\' -f2)
-    trap '' SIGINT
-
-    local docker_pid
-
-    cleanup() {
-        if [ -n "$docker_pid" ]; then
-            kill -TERM "$docker_pid" 2>/dev/null
-            wait "$docker_pid" 2>/dev/null
-        fi
-    }
-
-    while true; do
-        read -e -p "请输入要查看日志的容器序号 (0 返回主菜单): " choice
-        if [ "$choice" -eq 0 ]; then
-            break
-        elif [[ $choice =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le ${#running_containers[@]} ]; then
-            local index=$((choice - 1))
-            local container_name="${running_containers[$index]}"
-            echo -e "${YELLOW}正在查看容器 $container_name 的日志...${NC}"
-            echo -e "${YELLOW}按 Ctrl + C 停止查看日志并返回。${NC}"
-            docker logs -f "$container_name" &
-            docker_pid=$!
-
-            trap 'cleanup; echo -e "\n${YELLOW}已停止查看日志。${NC}"; break' SIGINT
-
-            wait "$docker_pid" 2>/dev/null
-            trap '' SIGINT  
-        else
-            echo -e "${RED}无效的输入，请输入 0 到 ${#running_containers[@]} 之间的数字。${NC}"
-        fi
-    done
-
-    if [ -n "$original_sigint_handler" ]; then
-        trap "$original_sigint_handler" SIGINT
-    else
-        trap - SIGINT
-    fi
-}
-
 function download_compose_file() {
     local idx=$1
     local file="${COMPOSE_FILES[$idx]}.yml"
-    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/${selected_system}/${file}"
+    local url="${ACCELERATOR}https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package_Free/refs/heads/main/${selected_system}/${file}"
     if [ -f "$file" ]; then
         read -e -p "文件 $file 已存在，是否重新下载？(y/n): " re_download
         if [[ $re_download =~ ^[Yy]$ ]]; then
@@ -835,16 +545,8 @@ function download_compose_file() {
 
 function path_replace() {
     local file=$1
-    case $friendly_selected in
-        "飞牛系统") echo -e "${YELLOW}飞牛路径示例：/vol1/*/ * vol1 存储空间1 * 用户ID${NC}" ;;
-        "群晖系统") echo -e "${YELLOW}群晖路径示例：/volume1/*/ volume1 存储空间1 * 根路径名称${NC}" ;;
-        "绿联（旧系统）") echo -e "${YELLOW}绿联旧系统路径示例：/mnt/dm-1/.ugreen_nas/*/ dm-1 存储空间1 * 根路径名称${NC}" ;;
-        "绿联（新系统）") echo -e "${YELLOW}绿联新系统路径示例：/volume1/@home/*/ volume1 存储空间1 * 根路径名称${NC}" ;;
-        "极空间") echo -e "${YELLOW}极空间路径示例：/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称${NC}" ;;
-        "威联通") echo -e "${YELLOW}威联通路径示例：/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹 ${NC}" ;;
-        "TrueNas") echo -e "${YELLOW}新 TrueNAS 路径示例：/mnt/test/ test 存储池名称 ${NC}" ;;
-        "ZimaOS") echo -e "${YELLOW}ZimaOS 路径示例：/var/lib/casaos_data/.media/SSD-Storage/ SSD-Storage 存储池名称 ${NC}" ;;
-    esac
+    # 仅保留飞牛系统路径提示和替换逻辑
+    echo -e "${YELLOW}飞牛路径示例：/vol1/*/ * vol1 存储空间1 * 用户ID${NC}"
     echo -e "${YELLOW}所有 * 均改为自己对应的数字${NC}"
     read -e -p "是否要进行路径替换操作？(y/n): " do_replace
     if [[ $do_replace =~ ^[Yy]$ ]]; then
@@ -859,41 +561,8 @@ function path_replace() {
             fi
         fi
         echo -e "\n${YELLOW}即将在所有 compose.yml 文件中执行替换:${NC}"
-        local sed_commands=()
-        case $friendly_selected in
-            "飞牛系统")
-                echo -e "${YELLOW}/vol1/1000/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/vol1/1000/|$new_path|g")
-                ;;
-            "群晖系统")
-                echo -e "${YELLOW}/volume1/My/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/volume1/My/|$new_path|g")
-                ;;
-            "绿联（旧系统）")
-                echo -e "${YELLOW}/mnt/dm-1/.ugreen_nas/509155/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/mnt/dm-1/.ugreen_nas/509155/|$new_path|g")
-                ;;
-            "绿联（新系统）")
-                echo -e "${YELLOW}/volume1/@home/Testroot/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/volume1/@home/Testroot/|$new_path|g")
-                ;;
-            "极空间")
-                echo -e "${YELLOW}/tmp/zfsv3/sata11/13051661743/data/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/tmp/zfsv3/sata11/13051661743/data/|$new_path|g")
-                ;;
-            "威联通")
-                echo -e "${YELLOW}/share/CACHEDEV1_DATA/Public/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/share/CACHEDEV1_DATA/Public/|$new_path|g")
-                ;;
-            "TrueNas")
-                echo -e "${YELLOW}/mnt/test/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/mnt/test/|$new_path|g")
-                ;;
-            "ZimaOS")
-                echo -e "${YELLOW}/var/lib/casaos_data/.media/SSD-Storage/ → [新路径] $new_path${NC}"
-                sed_commands=("s|/var/lib/casaos_data/.media/SSD-Storage/|$new_path|g")
-                ;;
-        esac
+        local sed_commands=("s|/vol1/1000/|$new_path|g")
+        echo -e "${YELLOW}/vol1/1000/ → [新路径] $new_path${NC}"
         read -e -p "确认替换？(y/n) " confirm
         if [[ $confirm =~ ^[Yy]$ ]]; then
             for cmd in "${sed_commands[@]}"; do
