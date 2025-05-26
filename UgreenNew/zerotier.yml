@@ -1,9 +1,0 @@
-services:
-  zerotier:
-    image: zerotier/zerotier:latest
-    container_name: zerotier
-    privileged: true
-    volumes:
-      - /volume1/@home/Testroot/Docker/zerotier:/var/lib/zerotier-one
-    restart: always
-    network_mode: host

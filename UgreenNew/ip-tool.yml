@@ -1,8 +1,0 @@
-services:
-  ip-tool:
-    image: jason5ng32/myip:latest
-    container_name: ip-tool
-    ports:
-      - 27005:18966
-    restart: always
-    network_mode: bridge
