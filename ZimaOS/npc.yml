@@ -1,9 +1,0 @@
-services:
-  npc:
-    image: yisier1/npc:latest
-    container_name: npc
-    volumes:
-      - /var/lib/casaos_data/.media/SSD-Storage/Docker/npc:/conf
-    command: -server=127.0.0.1:8024 -vkey=自行填写密钥 -type=tcp
-    restart: always
-    network_mode: host

@@ -1,9 +1,0 @@
-services:
-  frpc:
-    image: snowdreamtech/frpc:latest
-    container_name: frpc
-    volumes:
-      - /var/lib/casaos_data/.media/SSD-Storage/Frpc:/etc/frp
-    command: -c /etc/frp/frpc.ini
-    restart: always
-    network_mode: host
