@@ -1,8 +1,0 @@
-services:
-  yesplaymusic:
-    image: fogforest/yesplaymusic:latest
-    container_name: yesplaymusic
-    ports:
-      - 21015:80
-    restart: always
-    network_mode: bridge
