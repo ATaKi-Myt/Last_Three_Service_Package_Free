@@ -96,7 +96,7 @@ function show_info() {
 
 MAX_ATTEMPTS=3
 COMPOSE_FILES=(
-    "all in one"
+    "all-in-one"
     "1panel"
     "aipan"
     "alist-strm"
