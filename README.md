@@ -111,88 +111,21 @@
 | 78 | yesplaymusic | 音乐播放器 |21015|/|/|
 | 79 | zerotier | 异地组网工具 |/|/|/|
 
-## 三、服务包目录介绍列表
+## 三、服务包目录结构
 
-| 序号 | 文件夹名称 | 作用 |
-| :---: | :---: | :---: |
-| 1 | Compose | 用于存放懒人包配置文件的文件夹 |
-| 2 | Docker | 用于存放容器的文件夹 |
-| 3 | Downloads | 用于迅雷远程下载文件夹 |
-| 4 | Music | 用于存放音乐的 |
-| 5 | Photos | 用于存放照片的 |
-| 6 | Synchronous | 用于同步文件夹的 |
-| 7 | Video | 用于存放影视的文件夹，包含硬链接文件夹 |
+| 序号 | 文件夹名称   | 主要功能描述                                                                 |
+| :---: | :---: | :---: | 
+| 1    | Compose     | 存放Docker Compose配置文件，包含服务编排定义和环境变量设置                     |
+| 2    | Docker      | 存储Docker容器相关数据，包括自定义镜像、容器配置和持久化存储卷                 |
+| 3    | Downloads   | 迅雷远程下载默认存储路径，支持多协议文件下载和分类管理                         |
+| 4    | Music       | 音乐媒体库，支持自动元数据识别和媒体服务器集成                                |
+| 5    | Photos      | 照片管理目录，优化图片存储结构和缩略图生成                                     |
+| 6    | Synchronous | 跨设备同步文件夹，支持双向文件同步和版本控制                                   |
+| 7    | Video       | 影视媒体库，包含原文件存储和硬链接优化结构，支持Emby/Jellyfin媒体服务器       |
 
-## 四、如何使用服务包
+## 四、使用指南
 
-### 一、各系统根目录示例
-
-| 系统 | 根目录 |
-| :---: | :---: |
-|飞牛| `/vol1/*/ * vol1 存储空间1 * 用户ID`|
-|黑群晖| `/volume1/*/ volume1 存储空间1 * 根路径名称` |
-|绿联旧| `/mnt/dm-1/.ugreen_nas/*/ dm-1 存储空间1 * 根路径名称` |
-|绿联新| `/volume1/@home/*/ volume1 存储空间1 * 根路径名称` |
-|极空间| `/tmp/zfsv3/sata11/*/data/ sata11 存储空间 * 你的账户名称` |
-|威联通| `/share/CACHEDEV1_DATA/*/ CACHEDEV1_DATA 存储空间 * 文件夹` |
-|TrueNas| `/mnt/test/ test 存储池名称` |
-|ZimaOS| `/var/lib/casaos_data/.media/SSD-Storage/ SSD-Storage 存储池名称` |
-|CasaOS| `暂无` |
-
-### 二、外网用户使用示例
-
-* 打开 **FinalShell** 软件
-* 进入 **root** 权限，输入`sudo -i` 并输入 **root** **密码**，进入 root 权限
-* 以 **飞牛示例** ，输入`cd /vol1/1000/` 进入用户文件夹根目录，`mkdir Compose` 创建 Compose 文件夹
-* 输入`cd Compose` 进入 Compose 文件夹，并输入如下命令
-
-```bash
-wget https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh
-```
-
-* 拉取完成，`bash Last_Three_Service_Package.sh` 运行脚本
-* 根据提示选择加速链接（**如果为墙外用户可以不使用加速，如果为墙内用户建议使用加速**）
-* 根据提示选择系统（**选择您的 Nas 系统**）
-* 根据提示输入安装的 `Docker` 服务（输入序号即可）
-* 选择完成等待 `Docker pull` 和 `Docker run` 完成即可使用 `Docker` 服务了
-* 如果出现拉取 443 表示拉取种，522 这种一般替换加速源即可，在 `https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh` 前加入下方加速链接拉取即可
-
-### 三、大陆网用户使用示例
-
-| 序号 | 加速链接 |
-| :---: | :---: |
-|1| `https://gitproxy.click/`|
-|2| `https://github.moeyy.xyz/`|
-|3| `https://github.tbedu.top/`|
-|4| `https://github.proxy.class3.fun/`|
-|5| `https://ghfile.geekertao.top/`|
-|6| `https://github.proxy.class3.fun/`|
-|7| `https://github-proxy.lixxing.top/`|
-|8| `https://ghf.无名氏.top/`|
-|9| `https://ghm.078465.xyz/`|
-|10| `https://gh-proxy.net/`|
-
-```bash
-wget https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh
-```
-
-### 四、傻瓜式用户
-
-* 打开 **FinalShell** 软件
-* 进入 **root** 权限，输入`sudo -i` 并输入 **root** **密码**，进入 root 权限
-* 以 **飞牛存储空间 1 示例** ，复制如下命令运行即可，**如需改变存储位置** 请将 /vol1/1000/ 更改为 /vol*/1000/ *为数字，代表存储空间 *
-
-#### 4.1、外网用户
-
-```bash
-mkdir -p /vol1/1000/Compose && wget -q https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && cd /vol1/1000/Compose && bash Last_Three_Service_Package.sh
-```
-
-#### 4.2、大陆用户
-
-```bash
-mkdir -p /vol1/1000/Compose && wget -q https://gitproxy.click/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Service_Package/refs/heads/main/Last_Three_Service_Package.sh -O /vol1/1000/Compose/Last_Three_Service_Package.sh && cd /vol1/1000/Compose && bash Last_Three_Service_Package.sh
-```
+详细使用教程请参考官方Wiki：[wiki.yutumay.cn](https://wiki.yutumay.cn)
 
 ## 五、更新日志
 
