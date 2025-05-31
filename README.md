@@ -125,145 +125,18 @@
 
 ## 四、使用指南
 
-详细使用教程请参考官方Wiki：[wiki.yutumay.cn](https://wiki.yutumay.cn)
+详细使用教程请参考官方 Wiki：[wiki.yutumay.cn](https://wiki.yutumay.cn)
 
 ## 五、更新日志
 
-### Last_Three_Service_Package.sh v 1.0 版本更新日志：
+更新日志详情请参考官方 Wiki：[wiki.yutumay.cn](https://wiki.yutumay.cn)
 
-#### 一、脚本逻辑
+## 六、联系作者
 
-* 去除脚本内置的所有密码，并对此脚本进行开源
-* 融入之前的脚本内容，包含输入 f 搜索，输入 d 删除容器，输入 i 查询用户ID等......新增输入 s 进入其他服务列表，输入 vi 自定义编辑 `.yml` 文件，输入 net 创建网络服务等
-* 将懒人包内容和新的服务脚本加入其他服务列表共大家提供拉取
-* 对脚本内的所有逻辑进行了检查并修复逻辑漏洞
+**哔哩哔哩主页：** [最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)
 
-#### 二、脚本内容
+**博客地址：**  [三人行博客](https://blog.yutumay.cn) 
 
-* 从之前的的项目，集成全部内容到此脚本中，融入了 `all in one` 和选择性项目
-* 脚本 `Docker` 项目增至 55 个至多
-* 对 `aipan` `nastool` 等项目进行优化，挑选最优解共大家选择
-* 出于对大家的可自定义性，此脚本提供了，更改端口，更改文件路径等操作，更有支持 vi 自定义编辑 `.yml` 文件
-* 对原先的 `Docker` 项目进行了端口重塑，把端口固定在了 20000 - 32000 期间，避免了各系统的端口冲突
-* 目前存在问题的容器：1、极空间不适配 `clouddrive2` 的网盘挂载，2、黑群晖不适配 `teamspeak` 容器的安装
-
-#### 三、后续优化
-
-* 适配 `TrueNas` 、`CaSaos`
-* 增加所有系统的精简版内容
-* 增加所有系统的 `all in one` 内容
-
-### Last_Three_Service_Package.sh v1.0.1 版本更新日志：
-
-#### 一、脚本逻辑
-* 新增其他服务内的：三人行精简版服务一键安装脚本
-* 精简版服务内容如下（集成 emby jellyfin nastool moviepilot 按需删除无用容器）：
-
-| 包含容器 |
-| :---: |
-|nastool|
-|reader|
-|iptv-api|
-|firefox|
-|qbittorrent|
-|cloudsaver|
-|xunlei|
-|ip-tool|
-|homeassistant|
-|1panel|
-|mediago|
-|music-tag-web|
-|stirling-pdf|
-|iyuuplus|
-|qinglong|
-|chinesesubfinder|
-|aipan|
-|siyuan-note-unlock|
-|jellyfin|
-|kkfileview|
-|metatube|
-|komga|
-|verysync|
-|alist|
-|moviepilot|
-|sun-panel|
-|navidrome|
-|watchtower|
-|clouddrive2|
-|embyserver|
-|transmission|
-
-### Last_Three_Service_Package.sh v1.0.2 版本更新日志：
-#### 一、脚本逻辑
-* 暂无更新
-#### 二、脚本内容
-| 更新容器 |
-| :---: |
-|dockge|
-|libretv|
-|lucky|
-|qiandao|
-|synctv|
-#### 三、后续优化
-* 后续适配 TrueNAS
-
-### Last_Three_Service_Package.sh v1.0.3 版本更新日志：
-#### 一、脚本逻辑
-* 主菜单加入，输入 log，查看当前运行容器的容器日志
-* 服务菜单加入，服务包更新脚本
-* 已适配 TrueNAS
-#### 二、脚本内容
-| 更新容器 |
-| :---: |
-|taoSync|
-#### 三、后续优化
-* 暂无更新
-
-### Last_Three_Service_Package.sh v1.1.0 版本更新日志：
-#### 一、脚本逻辑
-* 服务菜单，增加更改 Sun-Panel 的 Json 配置文件 IP 服务
-* 插件目录更新，Sun-Panel 的最新配置文件
-* 优化了所有输入选项，均可清除内容功能
-* 主菜单逻辑更改，将内容以分页形式展示，每页展示 20 个内容，用户输入 p 和 n 执行上一页和下一页展示
-* 主菜单逻辑更改，将输入 vi 编辑，改为 bi 编辑，并且加入了 nano 编辑器，用户可以自行选则 vi 和 nano 编辑器
-* 主菜单逻辑更改，增加输入 s 保存脚本永久路径，永久路径作用于用户需要更改路径时候，可输入 l 来进行读取并更改
-#### 二、脚本内容
-| 更新容器 |
-| :---: |
-|zerotier|
-|tailscale|
-|alist-strm|
-|vscode|
-#### 三、后续优化
-* 暂无更新
-
-### Last_Three_Service_Package.sh v1.1.1 版本更新日志：
-#### 一、脚本逻辑
-* 服务菜单，增加 jellyfin-library-poster 的 Json 配置文件下载
-* 主菜单，增加 CDD 更改 Nas 镜像源文件操作
-* 适配 ZimaOS 系统
-#### 二、脚本内容
-| 更新容器 |端口|
-| :---: | :---: |
-|mdcx|20045/20046|
-|dpanel|30060|
-|istoreos|/|
-|jellyfin-library-poster|/|
-|rustdesk|21116/21117|
-|upsnap|30070|
-|yesplaymusic|21015|
-|Halo|30075|
-|vaultwarden|30080|
-#### 三、后续优化
-* 后续适配 CasaOS 系统
-* 开发双版本、Free 和 Pro 版本
-
-## 六、作者信息
-
-### 哔哩哔哩主页：***[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)***
-
-### 作者博客：***[三人行博客](https://lastthree.cn) (暂停维护)***
-
-### 作者微信：***M13051661743***
-
-### Telegram：***[Last Three](https://t.me/+ytneiJtDPeFjOWM9)***
+**联系方式**  
+- 微信：M13051661743  
+- Telegram：[Last Three](https://t.me/+ytneiJtDPeFjOWM9)
