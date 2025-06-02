@@ -1,0 +1,12 @@
+services:
+  godoos:
+    image: godoos/godoos:latest
+    container_name: godoos
+    ports:
+      - 26045:56780
+    volumes:
+      - /vol1/1000/Docker/godoos:/root/.godoos/os
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    network_mode: bridge
