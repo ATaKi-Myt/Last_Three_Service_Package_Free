@@ -90,7 +90,7 @@ function show_info() {
     echo -e "${BOLD}${CYAN}  ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝    ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝ ${NC}"
     echo ""
     echo -e "${CYAN}  博客地址：blog.yutumay.cn  作者微信：M13051661743  脚本版权：LastThree  此版本为 Free 版本，如果被骗与作者无关  ${NC}"
-    echo -e "${CYAN}  当前您使用的 Last_Three_Service_Package_Free 脚本的版本号为：V 1.2 版本，请您认真核对版本号，如有问题请及时反馈  ${NC}"
+    echo -e "${CYAN}  当前您使用的 Last_Three_Service_Package_Free 脚本的版本号为：V 1.2.1 版本，请您认真核对版本号，如有问题请及时反馈  ${NC}"
     echo ""
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
