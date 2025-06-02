@@ -1,0 +1,14 @@
+services:
+  cloud189:
+    image: xia1307/cloud189-auto-save:latest
+    container_name: cloud189
+    ports:
+      - 20050:3000
+    volumes:
+      - /vol1/1000/Docker/cloud189/data:/home/data
+      - /vol1/1000/Docker/cloud189/strm:/home/strm
+    environment:
+      - PUID=0
+      - PGID=0
+    restart: always
+    network_mode: bridge
