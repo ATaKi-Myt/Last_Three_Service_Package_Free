@@ -29,88 +29,91 @@
 
 ## 二、服务包 Docker 集成项目列表
 
-| 序号 | Docker 名称 | 作用 |端口| 用户名 | 密码 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 1 |all in one|三人行精简版|/|/|/|
-| 2 | 1panel | 服务器面板 |30010|admin|password|
-| 3 | aipan | 网盘资源索引器 |24000|/|/|
-| 4 | alist-strm | Strm流文件生成器 |30050|自行创建|自行创建|
-| 5 | alist | 网盘挂载 |24005|admin|运行日志获取|
-| 6 | babybuddy | 育儿管理面板 |25020|admin|password|
-| 7 | bitmagnet | 种子爬取器 |30085|自行创建|自行创建|
-| 8 | cashbook | 记账工具 |25000|自行创建|自行创建|
-| 9 | chinesesubfinder | 字幕下载工具 |20025|自行创建|自行创建|
-| 10 | clouddrive2 | 网盘挂载 |24015|自行创建|自行创建|
-| 11 | cloudsaver | 网盘资源转存工具 |24010|自行创建|自行创建|
-| 12 | dockge | Docker可视化工具 |30040|自行创建|自行创建|
-| 13 | dpanel | Docker监控工具 |30060|自行创建|自行创建|
-| 14 | emby | 媒体服务器 |20015|自行创建|自行创建|
-| 15 | emulatorjs | 掌机模拟器 |23000/23001|/|/|
-| 16 | ezbookkeeping | 记账工具 |25005|自行创建|自行创建|
-| 17 | firefox | 火狐浏览器 |27000|/|/|
-| 18 | frpc | frpc 穿透客户端 |/|/|/|
-| 19 | godoos | 轻量化办公系统 |26045|/|/|
-| 20 | halo | 博客网站 |30075|自行创建|自行创建|
-| 21 | homeassistant | 开源智能家居管理面板 |25030|自行创建|自行创建|
-| 22 | homebox | 家庭资产管理面板 |25015|自行创建|自行创建|
-| 23 | icloudpd | icloud 图片转存工具 |24020|/|/|
-| 24 | immich | AI 相册 |25035|自行创建|自行创建|
-| 25 | ip-tool | ip 检测工具箱 |27005|/|/|
-| 26 | iptv-api | iptv |20020|/|/|
-| 27 | istoreos | 软路由 |/|/|/|
-| 28 | iyuuplus | 转种辅种 |30000|自行创建|自行创建|
-| 29 | jackett | 索引器 |30030|/|/|
-| 30 | jellyfin-library-poster | 媒体服务器自动生成海报 |/|/|/|
-| 31 | jellyfin | 媒体服务器 |20010|自行创建|自行创建|
-| 32 | kkfileview | 多格式文件在线预览 |26020|/|/|
-| 33 | komga | 动漫库 |22005|自行创建|自行创建|
-| 34 | libretv | 电视剧在线观看 |20035|/|/|
-| 35 | lsky-pro | 私人图床 |26040|自行创建|自行创建|
-| 36 | lucky | 网络转发 |16601|666|666|
-| 37 | lyricapi | 音流刮削器 |21010|/|/|
-| 38 | mariadb | 数据库 |29010|/|/|
-| 39 | mdcx | 小姐姐刮削服务器 |20045/20046|/|/|
-| 40 | mediago | B站资源下载器 |28015|/|/|
-| 41 | metatube | 小姐姐刮削服务器 |20030|/|/|
-| 42 | moviepilot | 家庭影院 |20005|admin|运行日志获取|
-| 43 | mtphotos | AI 相册 |25040|自行创建|自行创建|
-| 44 | music-tag-web | 音乐刮削器 |21005|admin|admin|
-| 45 | mysql | 数据库 |29000|/|/|
-| 46 | nastool | 家庭影院 |20000|admin|password|
-| 47 | navidrome | 音乐服务器 |21000|自行创建|自行创建|
-| 48 | newsnow | 各大平台十条热搜 |30025|/|/|
-| 49 | npc | npc 穿透客户端 |/|/|/|
-| 50 | ollama | 智能体工具 |26025|/|/|
-| 51 | open-webui | 可视化智能体对话面板 |26030|自行创建|自行创建|
-| 52 | postgres | 数据库 |29005|/|/|
-| 53 | qbittorrent | 下载器 |28000|admin|运行日志获取|
-| 54 | qiandao | 每日签到 |30035|自行创建|自行创建|
-| 55 | qinglong | 青龙脚本面板 |30015|自行创建|自行创建|
-| 56 | reader | 电子书库 |22000|/|/|
-| 57 | rustdesk-server | 远程桌面 |30066/30067|/|/|
-| 58 | safeline | 雷池WAF |27015|/|/|
-| 59 | siyuan-note-unlock | 免登录版思源笔记 |26035|/|100|
-| 60 | stirling-pdf | pdf 工具箱 |26015|/|/|
-| 61 | sun-panel | 集成 Docker 状态及美化面板 |30005|admin@sun.cc|12345678|
-| 62 | synctv | 多人在线共享影院 |20040|root|root|
-| 63 | tailscale | 异地组网工具 |/|/|/|
-| 64 | taoSync | 网盘同步工具 |30045|admin|运行日志获取|
-| 65 | teamspeak | 低占用无广告游戏语音服务器 |23005|/|运行日志获取|
-| 66 | transmission | 下载器 |28005|root|root|
-| 67 | upsnap | 局域网络唤醒设备 |30070|/|/|
-| 68 | v2raya | 代理 |27010|/|/|
-| 69 | vaultwarden | 密码管理服务器 |30080|自行创建|自行创建|
-| 70 | vertex | 刷流 |30020|admin|config文件夹内的password文件|
-| 71 | verysync | 微力同步 |26010|/|/|
-| 72 | vscode | 代码编辑器 |30055|/|password|
-| 73 | wallos | 订阅服务统计 |25010|自行创建|自行创建|
-| 74 | watchtower | 自动检测更新镜像 |/|/|/|
-| 75 | wechat | 网页版微信 |26005|/|/|
-| 76 | wps-office | 在线文档编辑器 |26000|admin|admin|
-| 77 | xiaoaimusic | 小爱同学面板 |25025|/|/|
-| 78 | xunlei | 下载器 |28010|admin|admin|
-| 79 | yesplaymusic | 音乐播放器 |21015|/|/|
-| 80 | zerotier | 异地组网工具 |/|/|/|
+| 序号 | Docker 名称         | 作用               | 端口         | 用户名         | 密码                  | 适配版本 |
+| :---: | :------------------: | :-----------------: | :-----------: | :-------------: | :--------------------: | :-------: |
+| 1    | 1panel              | 服务器面板         | 30010        | admin          | password              | Free     |
+| 2    | aipan               | 网盘资源索引器     | 24000        | /              | /                     | Free     |
+| 3    | alist               | 网盘挂载           | 24005        | admin          | 运行日志获取          | Free     |
+| 4    | alist-strm          | Strm流文件生成   | 30050        | 自行创建       | 自行创建              | Free     |
+| 5    | all in one          | 三人行精简版       | /            | /              | /                     | Free     |
+| 6    | auto-strm           | 自动Strm流生成器   | 未指定        | /         | /                | Free     |
+| 7    | babybuddy           | 育儿管理面板       | 25020        | admin          | password              | Free     |
+| 8    | bitmagnet           | 种子爬取器         | 30085        | 自行创建       | 自行创建              | Free     |
+| 9    | cashbook            | 记账工具           | 25000        | 自行创建       | 自行创建              | Free     |
+| 10   | chinesesubfinder    | 字幕下载工具       | 20025        | 自行创建       | 自行创建              | Free     |
+| 11   | cloud189            | 天翼网盘strm     | 20050        | admin         | admin                | Free     |
+| 12   | clouddrive2         | 网盘挂载           | 24015        | 自行创建       | 自行创建              | Free     |
+| 13   | cloudsaver          | 网盘资源转存工具   | 24010        | 自行创建       | 自行创建              | Free     |
+| 14   | dockge              | Docker可视化工具   | 30040        | 自行创建       | 自行创建              | Free     |
+| 15   | dpanel              | Docker监控工具     | 30060        | 自行创建       | 自行创建              | Free     |
+| 16   | emby                | 媒体服务器         | 20015        | 自行创建       | 自行创建              | Free     |
+| 17   | emulatorjs          | 掌机模拟器         | 23000/23001  | /              | /                     | Free     |
+| 18   | ezbookkeeping       | 记账工具           | 25005        | 自行创建       | 自行创建              | Free     |
+| 19   | firefox             | 火狐浏览器         | 27000        | /              | /                     | Free     |
+| 20   | frpc                | frpc穿透客户端     | /            | /              | /                     | Free     |
+| 21   | godoos              | 轻量化办公系统     | 26045        | /              | /                     | Free     |
+| 22   | halo                | 博客网站           | 30075        | 自行创建       | 自行创建              | Free     |
+| 23   | homeassistant       | 开源智能家居管理面板 | 25030        | 自行创建       | 自行创建              | Free     |
+| 24   | homebox             | 家庭资产管理面板   | 25015        | 自行创建       | 自行创建              | Free     |
+| 25   | icloudpd            | icloud图片转存工具 | 24020        | /              | /                     | Free     |
+| 26   | immich              | AI相册             | 25035        | 自行创建       | 自行创建              | Free     |
+| 27   | ip-tool             | ip检测工具箱       | 27005        | /              | /                     | Free     |
+| 28   | iptv-api            | iptv               | 20020        | /              | /                     | Free     |
+| 29   | istoreos            | 软路由             | /            | /              | /                     | Free     |
+| 30   | iyuuplus            | 转种辅种           | 30000        | 自行创建       | 自行创建              | Free     |
+| 31   | jackett             | 索引器             | 30030        | /              | /                     | Free     |
+| 32   | jellyfin            | 媒体服务器         | 20010        | 自行创建       | 自行创建              | Free     |
+| 33   | jellyfin-library-poster | 媒体服务器自动生成海报 | /            | /              | /                     | Free     |
+| 34   | kkfileview          | 多格式文件在线预览 | 26020        | /              | /                     | Free     |
+| 35   | komga               | 动漫库             | 22005        | 自行创建       | 自行创建              | Free     |
+| 36   | libretv             | 电视剧在线观看     | 20035        | /              | /                     | Free     |
+| 37   | lsky-pro            | 私人图床           | 26040        | 自行创建       | 自行创建              | Free     |
+| 38   | lucky               | 网络转发           | 16601        | 666            | 666                   | Free     |
+| 39   | lyricapi            | 音流刮削器         | 21010        | /              | /                     | Free     |
+| 40   | mariadb             | 数据库             | 29010        | /              | /                     | Free     |
+| 41   | mdcx                | 小姐姐刮削服务器   | 20045/20046  | /              | /                     | Free     |
+| 42   | mediago             | B站资源下载器      | 28015        | /              | /                     | Free     |
+| 43   | metatube            | 小姐姐刮削服务器   | 20030        | /              | /                     | Free     |
+| 44   | moviepilot          | 家庭影院           | 20005        | admin          | 运行日志获取          | Free     |
+| 45   | mtphotos            | AI相册             | 25040        | 自行创建       | 自行创建              | Free     |
+| 46   | music-tag-web       | 音乐刮削器         | 21005        | admin          | admin                 | Free     |
+| 47   | mysql               | 数据库             | 29000        | /              | /                     | Free     |
+| 48   | nastool             | 家庭影院           | 20000        | admin          | password              | Free     |
+| 49   | navidrome           | 音乐服务器         | 21000        | 自行创建       | 自行创建              | Free     |
+| 50   | newsnow              | 各大平台十条热搜   | 30025        | /              | /                     | Free     |
+| 51   | npc                 | npc穿透客户端      | /            | /              | /                     | Free     |
+| 52   | ollama              | 智能体工具         | 26025        | /              | /                     | Free     |
+| 53   | open-webui          | 可视化智能体对话面板 | 26030        | 自行创建       | 自行创建              | Free     |
+| 54   | php-epg             | IPTV工具      | 20055        | 未指定         | 未指定                | Free     |
+| 55   | postgres            | 数据库             | 29005        | /              | /                     | Free     |
+| 56   | qbittorrent         | 下载器             | 28000        | admin          | 运行日志获取          | Free     |
+| 57   | qiandao             | 每日签到           | 30035        | 自行创建       | 自行创建              | Free     |
+| 58   | qinglong            | 青龙脚本面板       | 30015        | 自行创建       | 自行创建              | Free     |
+| 59   | reader              | 电子书库           | 22000        | /              | /                     | Free     |
+| 60   | rustdesk-server     | 远程桌面           | 30066/30067  | /              | /                     | Free     |
+| 61   | safeline            | 雷池WAF            | 27015        | /              | /                     | Free     |
+| 62   | siyuan-note-unlock  | 免登录版思源笔记   | 26035        | /              | 100                   | Free     |
+| 63   | stirling-pdf        | pdf工具箱          | 26015        | /              | /                     | Free     |
+| 64   | sun-panel           | 集成Docker状态及美化面板 | 30005        | admin@sun.cc   | 12345678              | Free     |
+| 65   | synctv              | 多人在线共享影院   | 20040        | root           | root                  | Free     |
+| 66   | tailscale           | 异地组网工具       | /            | /              | /                     | Free     |
+| 67   | taoSync             | 网盘同步工具       | 30045        | admin          | 运行日志获取          | Free     |
+| 68   | teamspeak           | 低占用无广告游戏语音服务器 | 23005        | /              | 运行日志获取          | Free     |
+| 69   | transmission        | 下载器             | 28005        | root           | root                  | Free     |
+| 70   | upsnap              | 局域网络唤醒设备   | 30070        | /              | /                     | Free     |
+| 71   | v2raya              | 代理               | 27010        | /              | /                     | Free     |
+| 72   | vaultwarden         | 密码管理服务器     | 30080        | 自行创建       | 自行创建              | Free     |
+| 73   | vertex              | 刷流               | 30020        | admin          | config文件夹内的password文件 | Free     |
+| 74   | verysync            | 微力同步           | 26010        | /              | /                     | Free     |
+| 75   | vscode              | 代码编辑器         | 30055        | /              | password              | Free     |
+| 76   | wallos              | 订阅服务统计       | 25010        | 自行创建       | 自行创建              | Free     |
+| 77   | watchtower          | 自动检测更新镜像   | /            | /              | /                     | Free     |
+| 78   | wechat              | 网页版微信         | 26005        | /              | /                     | Free     |
+| 79   | wps-office          | 在线文档编辑器     | 26000        | admin          | admin                 | Free     |
+| 80   | xiaoaimusic         | 小爱同学面板       | 25025        | /              | /                     | Free     |
+| 81   | xunlei              | 下载器             | 28010        | admin          | admin                 | Free     |
+| 82   | yesplaymusic        | 音乐播放器         | 21015        | /              | /                     | Free     |
+| 83   | zerotier            | 异地组网工具       | /            | /              | /                     | Free     |
 
 ## 三、服务包目录结构
 
