@@ -1,0 +1,14 @@
+services:
+  hanime-server:
+    image: heisenyu/hanime-server:latest
+    container_name: hanime-server
+    ports:
+      - 20055:7788
+    volumes:
+      - /vol1/1000/Docker/hanime-server:/app/backend/db
+      - /vol1/1000/Downloads:/app/backend/downloads
+    environment:
+      - USE_PROXY=true
+      - PROXY_URL=http://127.0.0.1:80
+    restart: always
+    network_mode: bridge
