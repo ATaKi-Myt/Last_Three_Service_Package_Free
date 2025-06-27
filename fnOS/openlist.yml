@@ -1,6 +1,6 @@
 services:
-  alist:
-    image: xhofe/alist:latest
+  openlist:
+    image: openlistteam/openlist:v4.0.4-aio
     container_name: alist
     ports:
       - 24005:5244
