@@ -1,0 +1,12 @@
+services:
+  moontv:
+    image: ghcr.io/senshinya/moontv:latest
+    container_name: moontv
+    ports:
+      - 20050:3000
+    # volumes:
+    #   - /vol1/1000/Docker/moontv/config.json:/app/config.json
+    environment:
+      - PASSWORD=password
+    restart: always
+    network_mode: bridge
